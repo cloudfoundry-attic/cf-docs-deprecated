@@ -1,0 +1,53 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    addressable (2.2.7)
+    adsf (1.0.1)
+      rack (>= 1.0.0)
+    cri (2.1.0)
+    haml (3.1.4)
+    interact (0.4)
+    json_pure (1.6.5)
+    kramdown (0.13.4)
+    mime-types (1.17.2)
+    nanoc (3.1.9)
+      nanoc3 (>= 3.1.9)
+    nanoc3 (3.2.4)
+      cri (~> 2.0)
+    nokogiri (1.4.7)
+    pygmentize (0.0.3)
+    rack (1.4.1)
+    rake (0.9.2.2)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    rubyzip (0.9.6.1)
+    systemu (2.4.2)
+    terminal-table (1.4.4)
+    uuidtools (2.1.2)
+    vmc (0.3.16.beta.3)
+      addressable (~> 2.2.6)
+      interact (~> 0.4.0)
+      json_pure (>= 1.5.1, < 1.7.0)
+      rest-client (>= 1.6.1, < 1.7.0)
+      rubyzip (~> 0.9.4)
+      terminal-table (~> 1.4.2)
+      uuidtools (~> 2.1.0)
+    yajl-ruby (0.8.3)
+    zip (2.0.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  adsf
+  haml
+  kramdown (~> 0.13.2)
+  mime-types (~> 1.16)
+  nanoc (~> 3.1.6)
+  nokogiri (~> 1.4.4)
+  pygmentize (~> 0.0.3)
+  rake (~> 0.9.2)
+  systemu
+  vmc (>= 0.3.16.beta.3)
+  yajl-ruby (~> 0.8.2)
+  zip (~> 2.0.2)

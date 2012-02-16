@@ -1,0 +1,15 @@
+*.*~
+.*~
+*~
+.idea
+.DS_Store
+target
+integration-repo
+ivy-cache
+tmp
+output/public
+output/log
+output/vendor
+*.sw?
+manifest.yml
+content/tags
