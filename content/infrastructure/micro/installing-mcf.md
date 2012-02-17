@@ -79,7 +79,7 @@ the VMware Cloud Foundry plug-in installed. See [Configuring SpringSource Tool S
 
 3.  Enter a unique domain name for your Micro Cloud Foundry. The name you enter is checked in real-time so you can see if it is available.
 
-	![Create Domain](/images/screenshots/installing-mcf/micro-dns.png "Micro DNS")
+	![Create Domain](/images/screenshots/installing-mcf/micro_dns.jpg "Micro DNS")
 
 4.  Click **Create**.
 
@@ -112,9 +112,37 @@ the VMware Cloud Foundry plug-in installed. See [Configuring SpringSource Tool S
 
 8.  Enter the configuration token from the Micro Cloud Foundry Web site.
 
-	![Micro Cloud Foundry VM Configuration](/images/screenshots/installing-mcf/micro_vm_cfg.png)
+```bash
+              Welcome to VMware Micro Cloud Foundry version 1.2.0
 
-    The Micro Cloud Foundry virtual machine verifies your DNS and configures the Micro Cloud.
+Network up
+Micro Cloud Foundry not configured
+
+1. configure
+2. refresh console
+3. help
+4. shutdown VM
+
+select option: 1
+
+set password Micro Cloud Foundry VM user
+Password: ********
+Confirmation: ********
+Password changed!
+
+1. DHCP
+2. Static
+Select network: 1
+
+HTTP proxy: |none|
+
+Enter Micro Cloud Foundry configuration token or offline domain name: shock-throw-caption
+```
+The Micro Cloud Foundry virtual machine verifies your DNS and configures the Micro Cloud.
+
+**Note**
+: If you plan to use Micro Cloud Foundry without an Internet connection, enter a fictious domain name instead of the DNS configuration token. This is an advanced configuration option described in [Using Micro Cloud Foundry](/infrastructure/micro/using-mcf.html#working-offline-with-micro-cloud-foundry).
+
 
 ## Registering a Micro Cloud Foundry User with vmc
 
@@ -136,19 +164,32 @@ machine. You log in with this account to publish and manage applications.
 In the steps that follow, *appname* is the domain you registered for
 your application at the Micro Cloud Foundry Web site.
 
-1.  Target your Micro Cloud Foundry. In a shell, enter the following command:
+Target your Micro Cloud Foundry. In a shell, enter the following command:
 
-        $ vmc target api.appname.cloudfoundry.me
+```bash
+$ vmc target api.appname.cloudfoundry.me
+```
+Create a new account using the `vmc register` command:
 
-2.  Create a new account using the `vmc register` command:
+```bash
+$ vmc register
+```
 
-        $ vmc register
+Enter your email address.
 
-3.  Enter your email address.
+Enter a password and confirm it when requested.
 
-4.  Enter a password and confirm it when requested.
+```bash
+$ vmc target api.pubs.cloudfoundry.me
+Successfully targeted to [http://api.pubs.cloudfoundry.me]
 
-	![Micro Cloud Foundry vmc Registration](/images/screenshots/installing-mcf/micro-vmc-register.png)
+$ vmc register
+Email: myemail@mydomain.com
+Password: ********
+Verify Password: ********
+Creating New User: OK
+Successfully logged into [http://api.pubs.cloudfoundry.me]
+```
 
 You are now ready to log in with `vmc` or set up SpringSource Tool Suite to deploy your
 applications to Micro Cloud Foundry.
@@ -157,4 +198,4 @@ applications to Micro Cloud Foundry.
 
 + [Log in to your Micro Cloud Foundry with vmc](using-mcf.html#using-microcloud-foundry-vmc)
 + [Log in to your Micro Cloud Foundry with SpringSource Tool Suite (STS)](using-mcf.html#using-micro-cloud-foundry-sts)
-+ [Read about managing the Micro Cloud Foundry virtual machine](using-mcf.html)
++ [Day-to-day Micro Cloud Foundry Management](using-mcf.html)
