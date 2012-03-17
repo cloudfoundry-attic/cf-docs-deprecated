@@ -636,22 +636,19 @@ h6.subhead {
 }
 .super-nav {
     float: right;
+    margin-right: 20px;
 }
 .super-nav li {
     display: inline;
     list-style-type: none;
     background: none;
     margin: 0;
-
     padding: 0 30px 0 0;
 }
 .super-nav li a {
     font-size: 12px;
     font-weight: bold;
-    color: #666666;
-}
-.super-nav li:first-child {
-    background: url('/images/super_nav_separator.png') 56px 4px no-repeat;
+    color: #7f7f7f;
 }
 .search-form {
     float: right;

@@ -56,12 +56,13 @@ Notice that Cloud Foundry passes the listen port for your application in an envi
 Create a `package.json` file with the following contents:
 
 ```javascript
+{
  "name":"hello-node",
-      "version":"0.0.1",
-      "dependencies":{
-          "express":""
-      }
-    }
+  "version":"0.0.1",
+  "dependencies":{
+      "express":""
+  }
+}
 
 ```
 

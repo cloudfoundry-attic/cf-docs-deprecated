@@ -57,9 +57,10 @@
                 %ul.super-nav
                   %li
                     %a{:href => "#{url(@config, :my_app)}/signup"} Register
-                    \/
+                  %li
                     %a{:href => "#{url(@config, :my_app)}/micro"} Sign In
-                    &nbsp;
+                  %li.fat
+                    %a{:href => "http://support.cloudfoundry.com", :rel => "external", :target => "_blank"} Support
               #nav
                 %ul
                   %li.selected

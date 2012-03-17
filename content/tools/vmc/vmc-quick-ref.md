@@ -42,7 +42,7 @@ prompt$ vmc *command* -n --options
 For example, to deploy an application and take the default value for all prompts:
 
 ```bash
-prompt$ vmc push &lt;appname&gt; -n
+prompt$ vmc push <appname> -n
 ```
 
 To display all commands and options which can be used as parameters on the command line:
@@ -62,7 +62,7 @@ prompt$ vmc target api.cloudfoundry.com
 Target a standalone a Micro Cloud Foundry running on your local virtual machine:
 
 ```bash
-prompt$ vmc target api.&lt;domain&gt;.cloudfoundry.com
+prompt$ vmc target api.<domain>.cloudfoundry.com
 ```
 
 **Note**: You specified the value of *domain* when you initially installed Micro Cloud Foundry.
@@ -84,7 +84,7 @@ prompt$ vmc targets
 Identify yourself to Cloud Foundry with your account information:
 
 ```bash
-prompt$ vmc login &lt;youremail@email.com&gt; --passwd &lt;yourpassword&gt;
+prompt$ vmc login <youremail@email.com> --passwd <yourpassword>
 ```
 
 Change your password:
@@ -108,13 +108,13 @@ prompt$ vmc info
 (Micro Cloud Foundry Only) Register a new user.  Requires administrator privileges:
 
 ```bash
-prompt$ vmc add-user --email &lt;newemail@email.com&gt; --passwd &lt;newpasswd&gt;
+prompt$ vmc add-user --email <newemail@email.com> --passwd <newpasswd>
 ```
 
 (Micro Cloud Foundry Only) Delete a registered user and all applications and service instances associated with the user.  Requires administrator privileges:
 
 ```bash
-prompt$ vmc delete-user &lt;useremail@email.com&gt;
+prompt$ vmc delete-user <useremail@email.com>
 ```
 
 ##Deploying Applications
@@ -128,14 +128,14 @@ prompt$ vmc push
 You can specify one or all of the following options to pass deployment values;  if you do not specify an option, `vmc push` will interactively prompt you for it:
 
 ```bash
-prompt$ vmc push &lt;appname&gt; --path &lt;directory&gt; --url &lt;deploymentURL&gt; --instances &lt;instance-number&gt;  --mem &lt;MB&gt; --no-start
+prompt$ vmc push <appname> --path <directory> --url <deploymentURL> --instances <instance-number>  --mem <MB> --no-start
 ```
 
 where:
 
 + *appname* refers to the internal name you want to give to your application.
 + *directory* refers to the absolute or relative local directory name that contains your application.  Note that *all* files in the directory will be pushed by the `vmc push` command, so be sure you include only the files you want to deploy in the directory.
-+ *deploymentURL* refers to the URL that you will later use to invoke your application in a browser; default is `&lt;appname&gt;.cloudfoundry.com`
++ *deploymentURL* refers to the URL that you will later use to invoke your application in a browser; default is `<appname>.cloudfoundry.com`
 * *instance-number* specifies the number of instances of the application to start; default is 1
 + *MB* specifies the upper memory limit of the application, in MB; default is 512 MB
 + *--no-start* specifies that you do not want Cloud Foundry to actually start the application yet, which it will do by default.
@@ -153,7 +153,7 @@ prompt$ vmc push hello --path /usr/bob/sample-apps/hello --url hello-bob.cloudfo
 Update a deployed application with the application bits in the current directory:
 
 ```bash
-prompt$ vmc update &lt;appname&gt;
+prompt$ vmc update <appname>
 ```
 
 **Note**: Be sure you specify the *name* of the application (first column in the output of `vmc apps`) rather than its deployment URL.
@@ -163,15 +163,15 @@ The preceding command immediately ends any existing user sessions connected to t
 Update the memory (in MB) that has been reserved for an existing deployment; the application will be automatically restarted:
 
 ```bash
-prompt$ vmc mem &lt;appname&gt; &lt;MB&gt;
+prompt$ vmc mem <appname> <MB>
 ```
 
-**Note**: Use `vmc stats &lt;appname&gt;` to view the currently reserved memory for the application, as well as how much it is currently using.
+**Note**: Use `vmc stats <appname>` to view the currently reserved memory for the application, as well as how much it is currently using.
 
 Register a new deployment URL with an existing deployed application; this command *adds* the URL to the existing list of registered URLs:
 
 ```bash
-prompt$ vmc map &lt;appname&gt; &lt;URL&gt;
+prompt$ vmc map <appname> <URL>
 ```
 
 **Note**: Use `vmc apps` to view the list of URLs currently registered for a deployed application.
@@ -179,13 +179,13 @@ prompt$ vmc map &lt;appname&gt; &lt;URL&gt;
 Unregister a URL for a deployed application:
 
 ```bash
-prompt$ vmc unmap &lt;appname&gt; &lt;URL&gt;
+prompt$ vmc unmap <appname> <URL>
 ```
 
 Scale an application (both up and down) by changing the number of instances that are currently deployed:
 
 ```bash
-prompt$ vmc instances &lt;appname&gt; &lt;number-of-instances&gt;
+prompt$ vmc instances <appname> <number-of-instances>
 ```
 
 **Note**: Use `vmc apps` to view the current number of instances for a deployed application.
@@ -195,7 +195,7 @@ prompt$ vmc instances &lt;appname&gt; &lt;number-of-instances&gt;
 Stop a currently running deployment:
 
 ```bash
-prompt$ vmc stop &lt;appname&gt;
+prompt$ vmc stop <appname>
 ```
 
 **Note**: Be sure you specify the *name* of the application (first column in the output of `vmc apps`) rather than its deployment URL.
@@ -203,25 +203,25 @@ prompt$ vmc stop &lt;appname&gt;
 Start a currently stopped deployment:
 
 ```bash
-prompt$ vmc start &lt;appname&gt;
+prompt$ vmc start <appname>
 ```
 
 Restart a currently running deployment:
 
 ```bash
-prompt$ vmc restart &lt;appname&gt;
+prompt$ vmc restart <appname>
 ```
 
 Delete an application:
 
 ```bash
-prompt$ vmc delete &lt;appname&gt;
+prompt$ vmc delete <appname>
 ```
 
 Rename an application:
 
 ```bash
-prompt$ vmc rename &lt;appname&gt; &lt;new-appname&gt;
+prompt$ vmc rename <appname> <new-appname>
 ```
 
 ##Managing and Binding Services
@@ -237,7 +237,7 @@ prompt$ vmc services
 Create a new instance of a service type and assign it a name:
 
 ```bash
-prompt$ vmc create-service &lt;service-type&gt; &lt;service-instance-name&gt;
+prompt$ vmc create-service <service-type> <service-instance-name>
 ```
 
 **Note**: Use `vmc services` to view the list of available service types for which you can create an instance.  Use the name of the service type listed in the first column of the first table.
@@ -245,13 +245,13 @@ prompt$ vmc create-service &lt;service-type&gt; &lt;service-instance-name&gt;
 Create a new instance of a service type, assign it a name, and immediately bind it to a deployed application:
 
 ```bash
-prompt$ vmc create-service &lt;service-type&gt; &lt;service-instance-name&gt; &lt;appnam&gt;
+prompt$ vmc create-service <service-type> <service-instance-name> <appnam>
 ```
 
 Bind a service instance to a deployed application.   Assumes that you have already deployed the application using `vmc push`:
 
 ```bash
-prompt$ vmc bind-service &lt;service-instance-name&gt; &lt;appname&gt;
+prompt$ vmc bind-service <service-instance-name> <appname>
 ```
 
 **Note**:  Use `vmc services` to view the name of your service instance (first column of second table).
@@ -259,13 +259,13 @@ prompt$ vmc bind-service &lt;service-instance-name&gt; &lt;appname&gt;
 Remove the binding between a service instance and an application:
 
 ```bash
-prompt$ vmc unbind-service &lt;service-instance-name&gt; &lt;appname&gt;
+prompt$ vmc unbind-service <service-instance-name> <appname>
 ```
 
 Delete an instance of a service:
 
 ```bash
-prompt$ vmc delete-service &lt;service-instance-name&gt;
+prompt$ vmc delete-service <service-instance-name>
 ```
 
 To bind an existing service instance at the same time you deploy an application using `vmc push`, enter `y` at the two prompts then specify the number of the service instance from the provided list.  For example (only relevant output and prompts of the `vmc push` command shown):
@@ -342,7 +342,7 @@ prompt$ vmc apps
 Display the standard output log entries for an application:
 
 ```bash
-prompt$ vmc logs &lt;appname&gt;
+prompt$ vmc logs <appname>
 ```
 
 **Note**: Be sure you specify the *name* of the application (first column in the output of `vmc apps`) rather than its deployment URL.
@@ -350,35 +350,35 @@ prompt$ vmc logs &lt;appname&gt;
 Display the recent crashes of a particular application:
 
 ```bash
-prompt$ vmc crashes &lt;appname&gt;
+prompt$ vmc crashes <appname>
 ```
 
 Display any fatal errors that occurred for an application:
 
 ```bash
-prompt$ vmc crashlogs &lt;appname&gt;
+prompt$ vmc crashlogs <appname>
 ```
 
 Display resource information (such as core usage, memory, disk space and uptime) of each instance of a deployed application:
 
 ```bash
-prompt$ vmc stats &lt;appname&gt;
+prompt$ vmc stats <appname>
 ```
 
 List the environment variables for an application:
 
 ```bash
-prompt$ vmc env &lt;appname&gt;
+prompt$ vmc env <appname>
 ```
 
 Add an environment variable to an application:
 
 ```bash
-prompt$ vmc env-add &lt;appname&gt; &lt;variable=value&gt;
+prompt$ vmc env-add <appname> <variable=value>
 ```
 
 Delete an environment variable you previously added to an application:
 
 ```bash
-prompt$ vmc env-del &lt;appname&gt; &lt;variable&gt;
+prompt$ vmc env-del <appname> <variable>
 ```

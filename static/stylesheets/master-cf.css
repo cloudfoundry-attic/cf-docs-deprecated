@@ -1,11 +1,15 @@
 @media screen {
-.super-nav li {
-    padding: 0 20px 0 0;
+
+.super-nav li.fat {
+    padding-left: 12px;
+    background: url('/images/nav_separator.gif') 0px 6px no-repeat;
 }
 
-.super-nav li:first-child {
-    background: none;
+.super-nav li {
+    padding: 0 10px;
+    background: url('/images/nav_separator.gif') 70px 6px no-repeat;
 }
+
 
 .hero-error {
   width: 900px;
@@ -22,15 +26,15 @@
 }
 
 li {
-    margin: 0 0 5px 30px;
+  margin: 0 0 5px 30px;
 }
 
 .new:after {
-    color: #FF8920;
-    content: "New!";
-    font-size: 60%;
-    padding-left: 0.3em;
-    vertical-align: super;
+  color: #FF8920;
+  content: "New!";
+  font-size: 60%;
+  padding-left: 0.3em;
+  vertical-align: super;
 }
 
 .sub-nav a {
