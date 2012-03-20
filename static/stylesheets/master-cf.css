@@ -280,3 +280,12 @@ label.error {
 .default-jobs-iframe {
    margin-left:-200px
 }
+/**
+ * FIX FOR FORMATTING IN FIREFOX ON LINUX
+ */
+.linux.gecko .super-nav li.fat {
+  background: none;
+}
+.linux.gecko #nav ul li a {
+  font-size: 13px;
+}
