@@ -5,11 +5,7 @@ tags:
     - sts
 ---
 
-If you are developing in Java with the Eclipse IDE or STS
-(SpringSource Tool Suite), install the Cloud Foundry Integration
-Extension to deploy applications to Cloud Foundry. This document
-describes how to install the extension and how to get started
-deploying applications from Eclipse or STS.
+If you are developing in Java with the Eclipse IDE or STS (SpringSource Tool Suite), install the Cloud Foundry Integration Extension to deploy applications to Cloud Foundry. This document describes how to install the extension and how to get started deploying applications from Eclipse or STS.
 
 **Subtopics**
 
@@ -18,9 +14,11 @@ deploying applications from Eclipse or STS.
 +   [Installing the Cloud Foundry Integration Extension in Eclipse](#installing-the-cloud-foundry-integration-extension-in-eclipse)
 +   [Define a New Server for a Cloud Foundry Target](#define-a-new-server-for-a-cloud-foundry-target)
 +   [Deploying Applications to Cloud Foundry from STS or Eclipse](#deploying-applications-to-cloud-foundry-from-sts-or-eclipse)
-    +   [Provisioning Application Services](#provisioning-application-services)
-    +   [Binding Services to an Application](#binding-services-to-an-application)
+    +   [Define application services](#define-application-services)
+    +   [Bind application services](#bind-application-services)
 +   [Remote File Access](#remote-file-access)
++   [Update and Restart an Application](#update-and-restart-an-application)
++   [Debugging an Application](#debugging-an-application)
 
 ## Prerequisites
 
@@ -29,13 +27,18 @@ following Web sites:
 
 +   [Eclipse download](http://www.eclipse.org/downloads/)
 
-    Confirm that you have **Eclipse IDE for JEE Developers** so that all known
-    dependencies are satisfied. (In Eclipse, click **Help > About Eclipse** to
-    view the version of Eclipse you have installed.)
+    Confirm that you have **Eclipse IDE for JEE Developers** so that all known dependencies are satisfied.
+    (In Eclipse, click **Help > About Eclipse** to view the version of Eclipse you have installed.).
+    The minimum supported Eclipse JEE package is **Indigo**.
 
 +   [SpringSource Tool Suite download](http://www.springsource.com/downloads/sts)
 
-    Install version 2.6.1 or higher.
+    Install version 2.9.0 or higher.
+
++   Cloud Foundry Integration 1.0.0 is currently the latest release of the integration, and is the first version to be open sourced under the
+    Eclipse Public License (EPL). As a consequence, earlier versions of Cloud Foundry Integration, including those with version number 2.7.0,
+    cannot be upgraded to the latest version, 1.0.0. Users must first uninstall older Cloud Foundry Integrations prior to installing the latest
+    version.
 
 ## Installing the Cloud Foundry Integration Extension in STS
 
@@ -57,13 +60,19 @@ In STS, follow these steps to install the Cloud Foundry Integration Extension.
 
     An install wizard guides you through the installation steps.
 
-    ![STS Cloud Foundry install wizard](/images/screenshots/configuring-STS/sts-cf-install-wiz.png)
+    ![STS Cloud Foundry install wizard](/images/screenshots/configuring-STS/cf_eclipse_install_wizard.png)
 
-*  When the installer completes, click **Yes** to restart STS.
+*  Cloud Foundry offers two install options:
+   +  **Core / Cloud Foundry Integration**
 
-*  Select **Window > Show View > Servers**.
+      Required installation for users who wish to use the feature but not extend the Cloud Foundry Integration.
 
-    ![STS Servers Panel](/images/screenshots/configuring-STS/sts-servers-panel.png)
+   + **Resources / Cloud Foundry Integration**
+
+      Optional SDK installation of Cloud Foundry Integration source files for users who wish to extend the Cloud Foundry Integration.
+      Users are not required to install **Core / Cloud Foundry** installation with this option.
+
+*  When the installer completes, click **Yes** to restart STS or Eclipse.
 
 ## Installing the Cloud Foundry Integration Extension in Eclipse
 
@@ -75,14 +84,13 @@ In Eclipse, follow these steps to install the Cloud Foundry Integration Extensio
 
 *  In the **Find** field, enter "cloud foundry" and click **Go**.
 
-    ![Eclipse Extension installation](/images/screenshots/configuring-STS/eclipse_mkt.png)
+    ![Eclipse Extension installation](/images/screenshots/configuring-STS/cf_eclipse_marketplace.png)
 
-*  In the search results, select "Cloud Foundry Integration" for your Eclipse
-    version and click **Install**.
+*  In the search results, select "Cloud Foundry Integration for Eclipse" and click **Install**.
 
     Eclipse examines resources and dependencies.
 
-*  Click **Next** to being the installation.
+*  Click **Next** to begin the installation.
 
     An install wizard guides you through license acceptance and installation steps.
 
@@ -99,15 +107,20 @@ Follow these steps to define the new Server.
 
 *  Choose **Window > Show View > Servers**.
 
-*  Right-click in the Servers panel and choose **New > Server**.
+*  Either click new server wizard or right-click on an empty area in the Servers view and choose **New > Server**.
 
-    ![STS New Server](/images/screenshots/configuring-STS/sts-new-server.png)
+    ![STS New Server](/images/screenshots/configuring-STS/cf_eclipse_empty_servers_view.png)
 
     The **Define a New Server** wizard starts.
 
-*  Expand the VMware folder, select Cloud Foundry, and click **Next**.
+*  Expand the VMware folder, select Cloud Foundry.
 
-    ![STS New Server Wizard](/images/screenshots/configuring-STS/sts-new-server-wizard.png)
+    ![STS New Server Wizard](/images/screenshots/configuring-STS/cf_eclipse_new_cf_server.png)
+
+*  Specify a display name for the Cloud Foundry server instance that should be created in Server name. Server host name should
+   remain localHost. Click **Next**.
+
+   ![STS New Server Wizard Account](/images/screenshots/configuring-STS/cf_eclipse_new_server_account.png)
 
 *  Select the Cloud Foundry target you want to set up from the URL list.
 
@@ -116,8 +129,6 @@ Follow these steps to define the new Server.
     +   **Local Cloud**. A local installation of the VMware Cloud Application Platform (VCAP).
 
     +   **Microcloud**. A Micro Cloud Foundry virtual machine.
-
-    +   **vmforce**. The open Java cloud from VMware and salesforce.com.
 
 *  If you selected **Microcloud**, enter the domain name you registered for
 your Micro Cloud Foundry at http://cloudfoundry.com/micro and a descriptive name.
@@ -128,8 +139,8 @@ your Micro Cloud Foundry at http://cloudfoundry.com/micro and a descriptive name
 
 *  Enter an email address and password for the Cloud Foundry target.
 
-    + For VMware Cloud Foundry or vmforce targets, the email must be
-    pre-registered at the Web site.
+    + For a VMware Cloud Foundry target, the email must be
+    pre-registered at the Web site. A **CloudFoundry.com** signup button allows users to pre-register an e-mail account.
 
     + For Local Cloud or Microcloud targets, use an email address you have
     already registered, or enter a new email and password to register, and then click
@@ -140,7 +151,7 @@ your Micro Cloud Foundry at http://cloudfoundry.com/micro and a descriptive name
 
 * Click **Finish**.
 
-    The new Cloud Foundry target appears in the Servers panel.
+    The new Cloud Foundry target appears in the Servers view.
 
 ## Deploying Applications to Cloud Foundry From STS or Eclipse
 
@@ -160,23 +171,22 @@ services, such as a MySQL or vFabric Postgres database, or RabbitMQ messaging.
 ## Define Application Details
 
 *  In STS or Eclipse, select **Windows > Show View > Servers** to display the
-    Servers pane.
+    Servers view.
 
-    ![Show Servers](/images/screenshots/configuring-STS/sts-show-servers.png)
+    ![Show Servers](/images/screenshots/configuring-STS/cf_eclipse_servers_view_cf_server.png)
 
     Currently deployed applications, if any, are listed beneath the servers.
 
-*  To deploy an application, drag it to the target Cloud Foundry Server.
+*  To deploy an application, drag it to the target Cloud Foundry Server in the Servers view.
 
-    Alternatively, you can right click the target Cloud Foundry Server, choose
-    **Add and Remove...** and use the Add and Remove selector dialog to choose
-    available applications to add to the Cloud Foundry server.
+    Alternatively, you can double click on the server and the Cloud Foundry editor will open, allowing users to drag and drop
+    applications into the Applications tab.
 
-    The Cloud Foundry Integration Extension examines the application to
-    determine the application type, then displays the Application details
-    wizard.
+    The Cloud Foundry Integration Extension examines the application to determine the application type and verify that it is
+    deployable to the selected Cloud Foundry server. If so, it opens an Application details wizard, where the application can be
+    configured and optional services bound. Supported application types include **Spring**, **Grails**, **Lift**, and **Java Web**.
 
-    ![Application details](/images/screenshots/configuring-STS/sts-application-details.png)
+    ![Application details](/images/screenshots/configuring-STS/cf_eclipse_application_details.png)
 
 *  Change the name of the application, if desired, and select the correct
     Application Type if the integration extension incorrectly identified the
@@ -187,44 +197,52 @@ services, such as a MySQL or vFabric Postgres database, or RabbitMQ messaging.
     application for administration. The name exposed to users in the
     application's URL is set on the next page of the wizard.
 
-    ![Launch deployment](/images/screenshots/configuring-STS/sts-launch-deployment.png)
+    ![Launch deployment](/images/screenshots/configuring-STS/cf_eclipse_application_details_regular_start.png)
 
 *  Edit the Deployed URL and change the Memory Reservation if needed.
 
     The Deployed URL must be unique at the target Cloud Foundry.
 
-*  If you need to bind services to the application, unselect **Start application on deployment**.
+*  If you need to bind services to the application, click **Next** to bind them prior to deployment, or unselect **Start application on
+   deployment** and bind the services after deployment through the Cloud Foundry server editor.
 
-*  Click **Finish**.
+*  Click **Finish**, although optionally a user may select **Next** to bind services prior to deployment.
 
-    The application is deployed. If you chose **Start application on deployment** it is started and can be accessed at the mapped URL.
+    The application is deployed. If you chose **Start application on deployment** it is started and can be accessed at the mapped
+    URL. If deploying to a microcloud or local cloud with debugging support, an additional option for starting the application in
+    **Debug** mode is displayed.
 
-*  Double-click the application under the target server to check its status.
+    ![Launch deployment debug](/images/screenshots/configuring-STS/cf_eclipse_application_details_debug_start.png)
 
-    ![Applications Control Panel](/images/screenshots/configuring-STS/sts-application-control-panel.png)
+*  If clicking **Next**, existing services can be bound to the application, or additional services can be defined and then bound.
+
+    ![Bind services on deployment](/images/screenshots/configuring-STS/cf_eclipse_application_deployment_services.png)
+
+*  Once deployed, in the Servers view, double-click the application to open the editor and display the application stats as well as
+   controls to start, stop, restart, update and restart the application, and also change the application's configuration and bound services.
+
+    ![Applications Control Panel](/images/screenshots/configuring-STS/cf_eclipse_cf_editor.png)
 
 ## Define Application Services
 
 You must define a service before you bind it to a deployed application. The
 Cloud Foundry Integration extension retrieves a catalog of available services
 from the target Cloud Foundry. After you define a service, you can bind it to
-the application.
+the application. Services can be bound to an application from the Application details
+wizard during deployment or from the Cloud Foundry server editor after deployment, if the application is stopped.
 
-Follow these steps to define a service.
+Follow these steps to define a service from the editor.
 
-*  In the Servers panel, double-click the application name.
+*  In the Servers view, double-click the application name.
 
-    STS displays the Package Explorer in the navigation panel and the
-    Applications tab in the workspace.
-
-    ![STS Applications Tab](/images/screenshots/configuring-STS/sts-applications-tab.png)
+    ![STS Applications Tab](/images/screenshots/configuring-STS/cf_eclipse_cf_editor.png)
 
     The Applications tab shows details about the applications on the Cloud
     Foundry target.
 
 *  In the Services section, click the **Add service** icon.
 
-    ![STS Add Service](/images/screenshots/configuring-STS/sts-add-service-button.png)
+    ![STS Add Service](/images/screenshots/configuring-STS/cf_eclipse_editor_services_table.png)
 
 *  Provide a name for the new service and select the type of service.
 
@@ -235,12 +253,10 @@ Follow these steps to define a service.
 
 *  Click **Finish**.
 
-    ![STS Service Defined](/images/screenshots/configuring-STS/sts-services-list.png)
-
     The plug-in requests the service from Cloud Foundry and the new service
     appears in the Services section.
 
-## Binding Application Services
+## Bind Application Services
 
 When you bind a service to an application, the Cloud Foundry Integration
 extension updates the application configuration files to access the defined
@@ -248,11 +264,8 @@ service. The application must not be running when you bind services.
 
 *  If it is running, stop the application:
 
-        + In the Server panel, right-click on the application name and select
-        **Stop**, or
-
-        + In the Applications panel, select the application and click the
-        **Stop** button.
+   + In the Servers view, right-click on the application name and select **Stop**, or
+   + In the Applications panel in the Cloud Foundry server editor, select the application and click the **Stop** button.
 
 *  In the Applications panel, select the application you want to bind a
     service to.
@@ -260,29 +273,75 @@ service. The application must not be running when you bind services.
 *  Select the service you want to bind in the Services panel and drag it to the
     Application Services Panel.
 
-    ![sts bind service](/images/screenshots/configuring-STS/sts-bind-service.png)
+    ![sts bind service](/images/screenshots/configuring-STS/cf_eclipse_bind_service.png)
 
 *  Click the **Start** button.
 
 ## Remote File Access
 
-The Cloud Foundry Integration extension provides a file browser you can use to
+The Cloud Foundry Integration extension provides a file browser that you can use to
 view files deployed to Cloud Foundry. For example, you can view configuration
 files and log files on the remote Cloud Foundry server.
 
-Follow these steps to access the Remote Systems view.
+Follow these steps to access the Remote Systems View.
 
 *  Select **Window > Show View > Servers**.
 
-*  In the Servers panel, expand a server and double-click on a deployed application.
+*  In the Servers view, expand a Cloud Foundry server and double-click on a deployed application.
 
 *  Under the Application Details pane, click **Remote Systems View**.
 
-    ![Remote Systems View](/images/screenshots/configuring-STS/remote-systems-view-link.png)
+    ![Remote Systems View](/images/screenshots/configuring-STS/cf_eclipse_remote_view_link.png)
 
-    The Remote Systems tab appears below the workspace.
+    The Remote Systems View appears in the Eclipse workbench.
 
 *  Browse the file tree and open files. Right-click a file to see the options
-    that are available to you.
+   that are available to you.
 
-	![Browsing Files in Remote Files view](/images/screenshots/configuring-STS/sts-browsing-files.png)
+    ![Browsing Files in Remote Files view](/images/screenshots/configuring-STS/cf_eclipse_remote_systems_view.png)
+
+## Update and Restart an Application
+
+The Applications Tab in the Cloud Foundry editor allows users to modify application details like memory, number of running instances, mapped application URLs, as well as starting, stopping, restarting, and update and restarting an application.
+
+
+   ![Regular Update and Restart](/images/screenshots/configuring-STS/cf_eclipse_editor_regular_updaterestart.png)
+
+   Users can restart an application without publishing changes in an application through a **Restart** button or context menu action
+   in the Servers view, or update changes in a deployed application and restarting it using an **Update and Restart** option.
+
+   **Update and Restart** incrementally publishes local changes in an application, and is optimized to only push resources that have
+   changed since the last publish.
+
+   Stop and Starting an application performs a full publish.
+
+## Debugging an Application
+
+   Applications deployed to a microcloud or local cloud with debugging support also enable debugging functionality like starting an application
+   in debug mode, or connecting an application already running in debug mode to the Eclipse debugger.
+
+   ![Debug from Editor](/images/screenshots/configuring-STS/cf_eclipse_editor_debug.png)
+
+   For applications running in debug mode, applications can be restarted or update and restarted in either **Debug** or **Run** mode,
+   through a drop down menu beside both the **Restart** and **Update and Restart** buttons.
+   The button icon and hover tooltip text indicate which mode the application is currently running in.
+
+   ![Debug Update and Restart](/images/screenshots/configuring-STS/cf_eclipse_editor_updaterestart_debug.png)
+
+   If an application is already running in debug mode, but not connected to the local debugger, the editor allows a user to
+   connect to the debugger without restarting the application through a **Connect to Debugger** button.
+
+   ![Connect to Debugger](/images/screenshots/configuring-STS/cf_eclipse_editor_connect_to_debugger.png)
+
+   If an application is disconnected from the local debugger in the Eclipse Debug view, it will still continue running in
+   debug mode in the Cloud Foundry target until it is stopped or removed from the Cloud Foundry target.
+
+   Debugging behavior in the Cloud Foundry Integration is similar to debugging local applications, and it is integrated
+   into the Eclipse Debug perspective. Users can set break points, step through code, and suspend an application.
+
+   ![Application Debugging](/images/screenshots/configuring-STS/cf_eclipse_debugging_app.png)
+
+   Multiple applications, and application instances of the same application, running on the same Cloud Foundry target can be
+   debugged at the same time, with the Debug view differentiating each debugged application instance by the Cloud Foundry server
+   name, application name, and instance ID.
+
