@@ -1,15 +1,12 @@
 @media screen {
 
-.super-nav li.fat {
-    padding-left: 12px;
-    background: url('/images/nav_separator.gif') 0px 6px no-repeat;
-}
-
 .super-nav li {
-    padding: 0 10px;
-    background: url('/images/nav_separator.gif') 70px 6px no-repeat;
+  padding: 0 8px 0 12px;
 }
 
+.super-nav li + li {
+  background: url('/images/nav_separator.gif') 0 6px no-repeat;
+}
 
 .hero-error {
   width: 900px;
