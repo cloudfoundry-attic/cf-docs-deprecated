@@ -10,6 +10,8 @@ tmp
 output/public
 output/log
 output/vendor
+output/newrelic.yml
 *.sw?
 manifest.yml
 content/tags/*.md
+/vendor
