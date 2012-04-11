@@ -26,11 +26,11 @@ test: true
 
 fb_app_id: 147862838623179
 
-docs_name: start
+docs_name: docs
 
 docs_app:
-  prod: "https://start.cloudfoundry.com"
-  test: "https://start-test.cloudfoundry.com"
+  prod: "https://docs.cloudfoundry.com"
+  test: "https://docs-test.cloudfoundry.com"
 
 my_app:
   prod: "http://my.cloudfoundry.com"

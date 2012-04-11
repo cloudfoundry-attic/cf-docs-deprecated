@@ -1,6 +1,6 @@
 Copyright (c) 2006-2012 VMware, Inc. All Rights Reserved.
 
-# start.cloudfoundry.com
+# docs.cloudfoundry.com
 
 These are the Cloud Foundry docs built with [nanoc][nanoc].
 
@@ -12,15 +12,16 @@ Ruby 1.9 is required to build the site. This repo assumes(via .rvmrc) you have
 To create the docs gemset follow these steps:
 
     $ rvm use 1.9.2
-    Using /Users/ciberch/.rvm/gems/ruby-1.9.2-p290
+    Using /Users/<your_username>/.rvm/gems/ruby-1.9.2-p290
+
     $ rvm gemset create docs
-    'docs' gemset created (/Users/ciberch/.rvm/gems/ruby-1.9.2-p290@docs).
-    $ rvm genset use docs
-    $ gem install bundler
+    'docs' gemset created (/Users/<your_username>/.rvm/gems/ruby-1.9.2-p290@docs).
+
+    $ rvm gemset use docs
 
 Use this command to get all the necessary gems to build the docs:
 
-    bundle install
+    $ bundle install
 
 You can see the available commands with nanoc:
 
@@ -47,21 +48,6 @@ Many of the values used in this template are set in the confi.yaml including:
 * Base urls for all the links
 * Test version of docs vs production version of docs
 * Social buttons preferences
-
-### JSON Responses
-
-We specify the JSON responses in ruby so that we don't have to write
-them by hand all over the docs.  You can render the JSON for a resource
-like this:
-
-    <%= json :issue %>
-
-This looks up `CloudFoundry::Resources::APP` in `lib/resources.rb`.
-
-Some actions return arrays.  You can modify the JSON by passing a block:
-
-    <%= json(:issue) { |hash| [hash] } %>
-
 
 ### Colorized Code Blocks
 
@@ -128,6 +114,7 @@ You can then open your browser to http://localhost:3000
 
 Compilation times got you down?  Use `autocompile`!
 
+    $ nanoc tags
     $ nanoc autocompile
 
 This starts a web server too, so there's no need to run `nanoc view`.
@@ -143,9 +130,11 @@ You can run this app by doing
 You can then open your browser to http://0.0.0.0:4567/ and see the same pages
 as with `nanoc view` and opening http://localhost:3000
 
-## Making Changes
+## Contributing to the documentation
 
-* Clone the repo and cd into it
+* Signup at [https://reviews.cloudfoundry.org](https://reviews.cloudfoundry.org)
+* Install the `gerrit-cli` gem
+* `gerrit clone` the repo `ssh://<your-username>@reviews.cloudfoundry.org:29418/cf-docs` and cd into it
 * Update the pages (inside of folder `content`)
 * Remove the old pages `rm -rf output/public`
 * If you changed tags, regenerate them with `nanoc tags`
@@ -153,6 +142,7 @@ as with `nanoc view` and opening http://localhost:3000
 * Test  `nanoc autocompile` or `nanoc view`
 * Commit your change `git commit -am "Changes to have a simpler tutorial"`
 * Squash commits into one if you want to send your changes upstream.
+* Submit changes with `gerrit push`
 
 # License
 
