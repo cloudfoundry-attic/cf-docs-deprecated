@@ -41,7 +41,7 @@ to publish the application to a local or hosted Cloud Foundry instance.
 ## Installation Overview
 
 Installing Micro Cloud Foundry includes downloading the virtual machine and then
-running it in [VMware Workstation][1], [VMware Fusion][2], or
+running it in [VMware Workstation][1], [VMware Fusion][2] (Mac), or
 [VMware Player][3] and configuring it. While you are at the Micro Cloud Foundry
 Web site, you register a unique application name (*appname*) for your
 application.
@@ -58,7 +58,7 @@ Before you begin, be sure you have these items:
 
 +   A [Cloud Foundry](http://cloudfoundry.com/) account.
 
-+   [VMware Workstation][1], [VMware Fusion][2], or [VMware Player][3] installed.
++   [VMware Workstation][1], [VMware Fusion][2] (Mac), or [VMware Player][3] installed.
 
 +   Ruby and the [vmc](/tools/vmc/installing-vmc.html) gem installed.
 
