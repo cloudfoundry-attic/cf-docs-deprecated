@@ -6,6 +6,8 @@ tags:
     - sts
 ---
 
+[Back to STS & Eclipse](/tools/sts/sts-eclipse.html)
+
 ## Remote File Access
 
 The Cloud Foundry Integration extension provides a file browser that you can use to

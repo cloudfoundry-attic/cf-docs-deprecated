@@ -7,6 +7,8 @@ tags:
     - mysql
 ---
 
+[Back to Ruby, Rails, Sinatra](/frameworks/ruby/ruby-rails-sinatra.html)
+
 This is a guide for Rails 3.1 developers using Cloud Foundry. It makes the following assumptions:
 
 +   You have vmc installed.

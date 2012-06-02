@@ -7,6 +7,8 @@ tags:
     - CLI
 ---
 
+[Back to VMC](/tools/vmc/vmc.html)
+
 You use the Cloud Foundry command-line interface (known as `vmc`) at a Unix terminal or Windows command prompt to execute all the Cloud Foundry operations, such as configuring your applications and deploying them to Cloud Foundry.
 
 You execute the `vmc` commands in the same way whether you are deploying your application to the PaaS Cloud Foundry (`cloudfoundry.com`), or to your own local version of Cloud Foundry (Micro Cloud Foundry).  The basic commands are the same; the only difference is that you initially specify a different target before you log in using your Cloud Foundry credentials.
