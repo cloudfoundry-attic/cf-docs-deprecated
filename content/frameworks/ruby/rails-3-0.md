@@ -7,6 +7,8 @@ tags:
     - mysql
 ---
 
+[Back to Ruby, Rails, Sinatra](/frameworks/ruby/ruby-rails-sinatra.html)
+
 This is a guide for Ruby on Rails 3.0 developers who are using Cloud Foundry.
 For more information about Ruby and Cloud Foundry, see:
 

@@ -13,6 +13,8 @@ tags:
 
 This guide assumes that you already have Java and [Grails installed](http://grails.org/Installation) and know how to build a simple Grails application. That's all you need to start working with Cloud Foundry.
 
+(If you are working Spring, Roo or Grails and would like to see some code samples, check out this useful link: [https://github.com/SpringSource/cloudfoundry-samples/wiki](https://github.com/SpringSource/cloudfoundry-samples/wiki) )
+
 ## Grails Cloud Foundry Plug-in
 
 Let's assume you have a standard Grails application using nothing more than a MySQL database and that you want to deploy this application to Cloud Foundry. The first step is to install the [Cloud Foundry plug-in](http://grails.org/plugin/cloud-foundry). This plug-in adds some commands to Grails that make it trivially easy to deploy and manage your application.
