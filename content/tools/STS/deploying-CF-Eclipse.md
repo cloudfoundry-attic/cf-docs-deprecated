@@ -6,6 +6,8 @@ tags:
     - sts
 ---
 
+[Back to STS & Eclipse](/tools/sts/sts-eclipse.html)
+
 **Subtopics**
 
 +   [Define a New Server for a Cloud Foundry Target](#define-a-new-server-for-a-cloud-foundry-target)
