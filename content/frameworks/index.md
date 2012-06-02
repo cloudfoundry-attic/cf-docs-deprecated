@@ -19,8 +19,7 @@ Each application framework has its own configuration process, described in the f
 + [Spring Applications](/frameworks/java/spring/spring.html)
 + [Grails Applications](/frameworks/java/spring/grails.html)
 + [Node.js Applications](/frameworks/nodejs/nodejs.html)
-+ [Ruby Applications](/frameworks/ruby/ruby.html)
-+ [Rails Applications](/frameworks/ruby/rails-3-0.html)
++ [Ruby, Rails and Sinatra](/frameworks/ruby/ruby-rails-sinatra.html)
 
 For a list of available Services see [Services](/services.html).
 

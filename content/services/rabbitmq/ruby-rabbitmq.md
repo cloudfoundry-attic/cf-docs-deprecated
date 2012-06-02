@@ -8,6 +8,8 @@ tags:
     - code-attached
 ---
 
+[Back to RabbitMQ](/services/rabbitmq/rabbitmq.html)
+
 Cloud Foundry supports [RabbitMQ](http://www.rabbitmq.com/), the
 open-source message broker, as a service. The Cloud Foundry RabbitMQ service is
 based on rabbitmq-server-2.4.1.

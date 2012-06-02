@@ -7,6 +7,8 @@ tags:
     - mysql
 ---
 
+[Back to MySQL Overview](/services/mysql/mysql-overview.html)
+
 Ruby on Rails applications that use MySQL are reconfigured automatically when you deploy to Cloud Foundry.
 This section describes how to access the Cloud Foundry MySQL service from other Ruby applications, such as applications that use Sinatra.
 

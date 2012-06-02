@@ -6,6 +6,8 @@ tags:
     - redis
 ---
 
+[Back to Redis](/services/redis/redis.html)
+
 [Redis](http://redis.io/) is an open source key-value store, also known as a NoSQL database. You set, get, update and delete information using a key.
 
 For application written in Ruby, such as applications in Rails or Sinatra, follow this process:

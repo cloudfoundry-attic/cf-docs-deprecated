@@ -1,10 +1,12 @@
 ---
-title: Debugging VMC
+title: Debugging with VMC
 description: Debugging Problems With Your Applications
 tags:
     - debug
     - vmc
 ---
+
+[Back to VMC](/tools/vmc/vmc.html)
 
 This chapter includes the following topics to help you debug problems with your application:
 

@@ -10,6 +10,10 @@ tags:
 
 This section provides practical information for Spring developers who are using Cloud Foundry to deploy their applications.  In particular, the section describes Spring programming and packaging topics that are specific to the Cloud Foundry environment, and what you need to do to use the provided services, such as MySQL and RabbitMQ.
 
+(If you're interested in using Spring Insight to monitor your Java applications on Cloud Foundry, read [this](/frameworks/java/spring/spring-insight.html).)
+
+(If you are working Spring, Roo or Grails and would like to see some code samples, check out this useful link: [https://github.com/SpringSource/cloudfoundry-samples/wiki](https://github.com/SpringSource/cloudfoundry-samples/wiki) )
+
 ## Prerequisites
 
 It is assumed that you have already installed either VMC, SpringSource STS, or Eclipse and that you have used one of these tools to deploy a simple HelloWorld application to Cloud Foundry, either to your local Micro version or to the service hosted at cloudfoundry.com.  It is also assumed that you are already a proficient Spring application developer.  For additional information, see:
