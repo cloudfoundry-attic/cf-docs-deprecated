@@ -6,6 +6,8 @@ tags:
     - CLI
 ---
 
+[Back to VMC](/tools/vmc/vmc.html)
+
 This section groups the main VMC commands into functional categories and provides typical usage.   In the examples, text displayed like `<this>` indicates a variable whose value is specific to your environment.
 
 Run `vmc help` to view the complete list of VMC commands, along with their parameters and a brief description.
@@ -309,6 +311,8 @@ prompt$ vmc push
 
 ```
 
+
+
 ##Getting Information about the Cloud Foundry Target
 
 Display the supported programming languages:
@@ -382,3 +386,33 @@ Delete an environment variable you previously added to an application:
 ```bash
 prompt$ vmc env-del <appname> <variable>
 ```
+
+
+
+
+
+## Update application without dropping user traffic
+
+In general, when developing and testing applications with Cloud Foundry, **vmc update** fits the bill quite well.
+
+However, when an app is considered "live", like our own www site, you should follow the steps below that will ensure no user requests are drop during the transition.
+
+We use the concept of a new application that will assume the URL space of the original application.
+
+Here is how to update your application without any downtime:
+
+NOTE: 'vmc update' will drop traffic..
+
+- vmc push [app]NEW (bind any shared services, like DB, Cache, etc)
+
+ TEST [app]NEW.cloudfoundry.com
+
+- vmc map [app]NEW [app].cloudfoundry.com
+
+ TEST [app].cloudfoundry.com several times, looping through new and old now..
+
+- vmc unmap [app]OLD [app].cloudfoundry.com # Does not drop traffic, just kills all new traffic
+
+ TEST
+
+- vmc delete [app]OLD

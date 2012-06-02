@@ -7,6 +7,8 @@ tags:
     - vmc
 ---
 
+[Back to Ruby, Rails, Sinatra](/frameworks/ruby/ruby-rails-sinatra.html)
+
 The following sections provide basic information about installing Ruby and RubyGems on Windows and a variety of Linux computers.
 
 ## Windows

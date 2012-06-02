@@ -7,6 +7,8 @@ tags:
     - tutorial
 ---
 
+[Back to RabbitMQ](/services/rabbitmq/rabbitmq.html)
+
 Node.js is an event-driven, scalable, Javascript-based platform for networking applications. Cloud Foundry provides a runtime environment for Node.js applications and the Cloud Foundry deployment tools recognize Node.js applications.
 
 RabbitMQ is a message broker that provides robust messaging services for your applications.

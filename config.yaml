@@ -42,7 +42,7 @@ blog_app:
 
 www_app:
   prod: "http://www.cloudfoundry.com"
-  test: "http://www-test.cloudfoundry.com"
+  test: "http://www.cloudfoundry.com"
 
 # ------------------------------------------------------------------------
 

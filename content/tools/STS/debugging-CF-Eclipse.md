@@ -6,6 +6,8 @@ tags:
     - sts
 ---
 
+[Back to STS & Eclipse](/tools/sts/sts-eclipse.html)
+
 ## Debugging an Application
 
    Applications deployed to Micro Cloud Foundry or local cloud with debugging support also enable debugging functionality like starting an application

@@ -6,6 +6,8 @@ tags:
     - sinatra
 ---
 
+[Back to Ruby, Rails, Sinatra](/frameworks/ruby/ruby-rails-sinatra.html)
+
 Follow these steps to create a simple Ruby application and deploy it to Cloud Foundry.
 
 Before you begin, be sure you have met these prerequisites:

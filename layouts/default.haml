@@ -93,7 +93,7 @@
                         %a{:href => "/getting-started.html"} Getting Started
                       Quick steps to deploy your app.
                     %form.search-form-docs{:action => "#{url(@config, :www_app)}/search", :method => "get", :onsubmit => "return submitQuery()"}
-                      %input.search-input-docs{:autocomplete => "off", :name => "q", :placeholder=> "search docs", :type => "text", :value => ""}/
+                      %input.search-input-docs{:autocomplete => "off", :name => "q", :placeholder=> "search docs", :type => "text", :value => "more:docs"}/
                     %br/
                     %br/
                     #js-sidebar.sidebar-shell
@@ -101,30 +101,20 @@
                         %ul
                           %li.js-topic
                             %h3
-                              %a{:href => "#"} Frameworks
+                              %a{:href => "#"} Frameworks & Languages
                             %ul.js-guides
                               %li
                                 %a{:href => "/frameworks.html"} Overview
                               %li
-                                %a{:href => "/frameworks/java/spring/spring.html"} Java > Spring
+                                %a{:href => "/frameworks/java/spring/spring.html"} Spring
                               %li
-                                %a{:href => "/frameworks/java/spring/grails.html"} Java > Spring > Grails
+                                %a{:href => "/frameworks/java/spring/grails.html"} Grails
                               %li
                                 %a{:href => "/frameworks/scala/scala.html"} Scala
                               %li
                                 %a{:href => "/frameworks/nodejs/nodejs.html"} Node.js
                               %li
-                                %a{:href => "/frameworks/ruby/ruby-simple.html"} Ruby > Quick Start
-                              %li
-                                %a{:href => "/frameworks/ruby/ruby.html"} Ruby > Cloud Foundry Development
-                              %li
-                                %a{:href => "/frameworks/ruby/installing-ruby.html"} Ruby > Installing
-                              %li
-                                %a{:href => "/frameworks/ruby/rails-3-0.html"} Ruby > Rails 3.0
-                              %li
-                                %a{:href => "/frameworks/ruby/rails-3-1.html"} Ruby > Rails 3.1
-                              %li
-                                %a{:href => "/frameworks/ruby/sinatra.html"} Ruby > Sinatra
+                                %a{:href => "/frameworks/ruby/ruby-rails-sinatra.html"} Ruby, Rails, Sinatra
                           %li.js-topic
                             %h3
                               %a{:href => "#"} Infrastructure
@@ -132,9 +122,7 @@
                               %li
                                 %a{:href => "/infrastructure/overview.html"} Overview
                               %li
-                                %a{:href => "/infrastructure/micro/installing-mcf.html"} MCF > Installing
-                              %li
-                                %a{:href => "/infrastructure/micro/using-mcf.html"} MCF > Day-to-day use
+                                %a{:href => "/infrastructure/micro/mcf.html"} MCF
                           %li.js-topic
                             %h3
                               %a{:href => "#"} Services
@@ -142,49 +130,38 @@
                               %li
                                 %a{:href => "/services.html"} Overview
                               %li
-                                %a{:href => "/services/mongodb/nodejs-mongodb.html"} MongoDB > Node.js
+                                %a{:href => "/services/mongodb/mongodb.html"} MongoDB
                               %li
-                                %a{:href => "/services/mongodb/ruby-mongodb.html"} MongoDB > Ruby
+                                %a{:href => "/services/mysql/mysql-overview.html"} MySQL
                               %li
-                                %a{:href => "/services/mongodb/ruby-mongodb-gridfs.html"} MongoDB > Ruby > GridFS
+                                %a{:href => "/services/rabbitmq/rabbitmq.html"} RabbitMQ
                               %li
-                                %a{:href => "/services/mysql/mysql.html"} MySQL
+                                %a{:href => "/services/redis/redis.html"} Redis
                               %li
-                                %a{:href => "/services/mysql/ruby-mysql.html"} MySQL > Ruby
-                              %li
-                                %a{:href => "/services/rabbitmq/ruby-rabbitmq.html"} RabbitMQ > Ruby
-                              %li
-                                %a{:href => "/services/rabbitmq/nodejs-rabbitmq.html"} RabbitMQ > Node.js
-                              %li
-                                %a{:href => "/services/redis/ruby-redis.html"} Redis > Ruby
+                                %a{:href => "/services/postgres/postgres.html"} vFabric Postgres
                           %li.js-topic
                             %h3
                               %a{:href => "#"} Tools
                             %ul.js-guides
                               %li
-                                %a{:href => "/tools/vmc/installing-vmc.html"} VMC > Installing
+                                %a{:href => "/tools/vmc/vmc.html"} VMC
                               %li
-                                %a{:href => "/tools/vmc/caldecott.html"} VMC > Accessing Services
+                                %a{:href => "/tools/STS/sts-eclipse.html"} STS & Eclipse
                               %li
-                                %a{:href => "/tools/vmc/debugging.html"} VMC > Debugging
+                                %a{:href => "/tools/gallery/box.html"} Box Integration
+                          %li.js-topic
+                            %h3
+                              %a{:href => "#"} Samples
+                            %ul.js-guides
                               %li
-                                %a{:href => "/tools/vmc/vmc-quick-ref.html"} VMC > Quick Reference
-                              -# In Beta
-                              -#%li
-                              -#  %a{:href => "/tools/spring-insight.html"} Spring Insight > Performance Monitoring
-                              %li
-                                %a{:href => "/tools/STS/configuring-STS.html"} Eclipse > Installing
-                              %li
-                                %a{:href => "/tools/STS/deploying-CF-Eclipse.html"} Eclipse > Deploying Applications
-                              %li
-                                %a{:href => "/tools/STS/debugging-CF-Eclipse.html"} Eclipse > Debugging
-                              %li
-                                %a{:href => "/tools/STS/remote-CF-Eclipse.html"} Eclipse > Remote Access
-                              %li
-                                %a{:href => "/tools/gallery/box.html"} Gallery > Box > Sample App
+                                %a{:href => "/samples/cool-apps.html"} Cool Apps
                     %p
                       %strong
-                        %a{:href => "http://support.cloudfoundry.com", :target => "_blank"} Forums
+                        %a{:href => "/faq.html"} FAQ
+                      Frequently asked questions.
+                    %p
+                      %strong
+                        %a{:href => "http://stackoverflow.com/questions/tagged/cloudfoundry", :target => "_blank"} Forums
                       Join the conversation.
                     %p
                       %strong
@@ -214,7 +191,7 @@
             %p
               %a{:href => "#{url(@config, :www_app)}/faq"} FAQ
               |
-              %a{:href => "http://support.cloudfoundry.com", :rel => "external"} Forums
+              %a{:href => "http://stackoverflow.com/questions/tagged/cloudfoundry", :rel => "external"} Forums
               |
               %a{:href => url(@config, :blog_app), :rel => "external"} Blog
               |

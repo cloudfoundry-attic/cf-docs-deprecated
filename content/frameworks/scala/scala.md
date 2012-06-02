@@ -10,6 +10,10 @@ tags:
 
 Most Scala applications written to [Lift](http://liftweb.net/) and [Spring](http://springframework.org/) will deploy seamlessly without modification to Cloud Foundry.  Other Scala applications may require minor modifications to bind with application services in the cloud.
 
+## Can I use Lift on Cloud Foundry?
+
+[Yes](/frameworks/scala/lift.html)
+
 ## Scala Support in Action
 
 Cloud Foundry simplifies application deployment so you can focus on application development. You can use SpringSource Tools Suite (STS) or the vmc command-line tool to deploy Scala applications.
