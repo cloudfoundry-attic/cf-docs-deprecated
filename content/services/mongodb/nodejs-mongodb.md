@@ -6,8 +6,6 @@ tags:
     - nodejs
 ---
 
-[Back to MongoDB](/services/mongodb/mongodb.html)
-
 Before you begin, review these prerequisites:
 
 +	[Cloud Foundry account](http://cloudfoundry.com/signup) and [vmc](/tools/vmc/installing-vmc.html)

@@ -6,8 +6,6 @@ tags:
     - overview
 ---
 
-[Back to MySQL Overview](/services/mysql/mysql-overview.html)
-
 [MySQL](http://www.mysql.com/products/community), the popular open source relational database, is provided as a service on Cloud Foundry, accessible to applications using any of the Cloud Foundry supported runtimes and frameworks. When deploying a Rails, Grails, or Spring application to Cloud Foundry, vmc or STS may automatically configure your application to use the Cloud Foundry instance. If your application cannot be automatically configured, you can get the information your application needs to connect to the database from the [`VCAP_SERVICES`](#the-vcap_services-environment-variable) environment variable.
 
 ## The VCAP_SERVICES Environment Variable

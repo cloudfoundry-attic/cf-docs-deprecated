@@ -6,8 +6,6 @@ tags:
     - grails
 ---
 
-[Back to MongoDB](/services/mongodb/mongodb.html)
-
 The [Grails](http://www.grails.org) framework allows rapid development of web applications that run in a Java servlet container. Grails is based on the Groovy language and the Spring framework.
 
 To use Grails with Cloud Foundry, install the Cloud Foundry Grails plugin from your application directory:

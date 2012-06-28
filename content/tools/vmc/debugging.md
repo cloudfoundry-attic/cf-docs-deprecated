@@ -6,8 +6,6 @@ tags:
     - vmc
 ---
 
-[Back to VMC](/tools/vmc/vmc.html)
-
 This chapter includes the following topics to help you debug problems with your application:
 
 + [Viewing Log Files](#viewing-log-files)

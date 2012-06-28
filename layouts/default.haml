@@ -103,57 +103,132 @@
                             %h3
                               %a{:href => "#"} Frameworks & Languages
                             %ul.js-guides
-                              %li
+                              %li.js-subtopic
                                 %a{:href => "/frameworks.html"} Overview
-                              %li
+                              %li.js-subtopic
                                 %a{:href => "/frameworks/java/spring/spring.html"} Spring
-                              %li
+                                %ul.js-subguides
+                                  %li
+                                    %a{:href => "/frameworks/java/spring/spring-insight.html"} Spring Insight
+                              %li.js-subtopic
                                 %a{:href => "/frameworks/java/spring/grails.html"} Grails
-                              %li
+                              %li.js-subtopic
                                 %a{:href => "/frameworks/scala/scala.html"} Scala
-                              %li
+                                %ul.js-subguides
+                                  %li
+                                    %a{:href => "/frameworks/scala/lift.html"} Lift
+                              %li.js-subtopic
                                 %a{:href => "/frameworks/nodejs/nodejs.html"} Node.js
-                              %li
+                              %li.js-subtopic
                                 %a{:href => "/frameworks/ruby/ruby-rails-sinatra.html"} Ruby, Rails, Sinatra
+                                %ul.js-subguides
+                                  %li
+                                    %a{:href => "/frameworks/ruby/ruby.html"} Overview
+                                  %li
+                                    %a{:href => "/frameworks/ruby/installing-ruby.html"} Installing Ruby
+                                  %li
+                                    %a{:href => "/frameworks/ruby/ruby-simple.html"} Creating an App
+                                  %li
+                                    %a{:href => "/frameworks/ruby/rails-3-0.html"} Rails 3.0
+                                  %li
+                                    %a{:href => "/frameworks/ruby/rails-3-1.html"} Rails 3.1
+                                  %li
+                                    %a{:href => "/frameworks/ruby/sinatra.html"} Sinatra
                           %li.js-topic
                             %h3
                               %a{:href => "#"} Infrastructure
                             %ul.js-guides
-                              %li
+                              %li.js-subtopic
                                 %a{:href => "/infrastructure/overview.html"} Overview
-                              %li
+                              %li.js-subtopic
                                 %a{:href => "/infrastructure/micro/mcf.html"} MCF
+                                %ul.js-subguides
+                                  %li
+                                    %a{:href => "/infrastructure/micro/installing-mcf.html"} Installing MCF
+                                  %li
+                                    %a{:href => "/infrastructure/micro/using-mcf.html"} Using MCF
                           %li.js-topic
                             %h3
                               %a{:href => "#"} Services
                             %ul.js-guides
-                              %li
+                              %li.js-subtopic
                                 %a{:href => "/services.html"} Overview
-                              %li
+                              %li.js-subtopic
                                 %a{:href => "/services/mongodb/mongodb.html"} MongoDB
-                              %li
+                                %ul.js-subguides
+                                  %li
+                                    %a{:href => "/services/mongodb/grails-mongodb.html"} Grails
+                                  %li
+                                    %a{:href => "/services/mongodb/nodejs-mongodb.html"} Node.js
+                                  %li
+                                    %a{:href => "/services/mongodb/ruby-mongodb.html"} Ruby
+                                  %li
+                                    %a{:href => "/services/mongodb/ruby-mongodb-gridfs.html"} GridFS
+                              %li.js-subtopic
                                 %a{:href => "/services/mysql/mysql-overview.html"} MySQL
-                              %li
+                                %ul.js-subguides
+                                  %li
+                                    %a{:href => "/services/mysql/mysql.html"} Introduction
+                                  %li
+                                    %a{:href => "/services/mysql/grails-mysql.html"} Grails
+                                  %li
+                                    %a{:href => "/services/mysql/ruby-mysql.html"} Ruby
+                              %li.js-subtopic
                                 %a{:href => "/services/rabbitmq/rabbitmq.html"} RabbitMQ
-                              %li
+                                %ul.js-subguides
+                                  %li
+                                    %a{:href => "/services/rabbitmq/faq-rabbitmq.html"} FAQ
+                                  %li
+                                    %a{:href => "/services/rabbitmq/nodejs-rabbitmq.html"} Node.js
+                                  %li
+                                    %a{:href => "/services/rabbitmq/ruby-rabbitmq.html"} Ruby
+                                  %li
+                                    %a{:href => "/services/rabbitmq/spring-rabbitmq.html"} Spring
+                              %li.js-subtopic
                                 %a{:href => "/services/redis/redis.html"} Redis
-                              %li
+                                %ul.js-subguides
+                                  %li
+                                    %a{:href => "/services/redis/ruby-redis.html"} Ruby
+                              %li.js-subtopic
                                 %a{:href => "/services/postgres/postgres.html"} vFabric Postgres
+                                %ul.js-subguides
+                                  %li
+                                    %a{:href => "/services/postgres/postgres-ruby.html"} Ruby
                           %li.js-topic
                             %h3
                               %a{:href => "#"} Tools
                             %ul.js-guides
-                              %li
+                              %li.js-subtopic
                                 %a{:href => "/tools/vmc/vmc.html"} VMC
-                              %li
+                                %ul.js-subguides
+                                  %li
+                                    %a{:href => "/tools/vmc/installing-vmc.html"} Installing
+                                  %li
+                                    %a{:href => "/tools/vmc/debugging.html"} Debugging
+                                  %li
+                                    %a{:href => "/tools/vmc/vmc-quick-ref.html"} Quick Reference
+                                  %li
+                                    %a{:href => "/tools/vmc/vmc-non-interactive.html"} Non-Interactive Mode
+                                  %li
+                                    %a{:href => "/tools/vmc/caldecott.html"} Caldecott
+                              %li.js-subtopic
                                 %a{:href => "/tools/STS/sts-eclipse.html"} STS & Eclipse
-                              %li
+                                %ul.js-subguides
+                                  %li
+                                    %a{:href => "/tools/STS/configuring-sts.html"} Configuring
+                                  %li
+                                    %a{:href => "/tools/STS/debugging-CF-Eclipse.html"} Debugging
+                                  %li
+                                    %a{:href => "/tools/STS/deploying-CF-Eclipse.html"} Deploying
+                                  %li
+                                    %a{:href => "/tools/STS/remote-CF-Eclipse.html"} Remote Access
+                              %li.js-subtopic
                                 %a{:href => "/tools/gallery/box.html"} Box Integration
                           %li.js-topic
                             %h3
                               %a{:href => "#"} Samples
                             %ul.js-guides
-                              %li
+                              %li.js-subtopic
                                 %a{:href => "/samples/cool-apps.html"} Cool Apps
                     %p
                       %strong

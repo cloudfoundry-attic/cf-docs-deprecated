@@ -6,8 +6,6 @@ tags:
     - non interactive
 ---
 
-[Back to VMC](/tools/vmc/vmc.html)
-
 VMC client's default mode of operation is 'Interactive'.
 
 It is possible to invoke VMC in non-interactive mode by using one of the following command line switches.

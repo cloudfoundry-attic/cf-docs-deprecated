@@ -7,8 +7,6 @@ tags:
     - bundler
 ---
 
-[Back to Ruby, Rails, Sinatra](/frameworks/ruby/ruby-rails-sinatra.html)
-
 As we launch Cloud Foundry, a few elements of the framework and code are still being polished. This article provides some explanations and useful tips on things to watch and limitations.
 
 Here are the highlights of the topics covered below:

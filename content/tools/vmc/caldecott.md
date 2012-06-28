@@ -7,8 +7,6 @@ tags:
     - vmc
 ---
 
-[Back to VMC](/tools/vmc/vmc.html)
-
 Application services such as databases and messaging are built-in to Cloud Foundry, which helps speed development and ease application management. You do not have to install and manage servers because they are part of the Cloud Foundry platform. Your application code interacts with the Cloud Foundry services, but sometimes you need to access a service interactively. For example, you might want to run ad hoc queries, view data to help debug a problem, or import or export data.
 
 An application called Caldecott, after the Caldecott Tunnel in the Berkeley Hills in California, allows you to access your services in the cloud. Caldecott uses tunneling to connect a port on your local computer to the service in the cloud. The `vmc tunnel` command uploads the Caldecott application to your Cloud Foundry instance, sets up the tunneling, and offers to start a standard client on your computer to work with the service.

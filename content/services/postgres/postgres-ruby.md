@@ -8,8 +8,6 @@ tags:
     - tutorial
 ---
 
-[Back to Postgres](/services/postgres/postgres.html)
-
 This tutorial explains how to use the PostgreSQL service for Cloud Foundry from a Rails 3 application.
 
 In this tutorial, we'll build a very simple application that uses PostgreSQL service. Once you understand that, you will be able to integrate more realistic uses of the service into your Rails 3 applications on Cloud Foundry.

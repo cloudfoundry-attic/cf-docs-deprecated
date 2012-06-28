@@ -8,8 +8,6 @@ tags:
     - code-attached
 ---
 
-[Back to RabbitMQ](/services/rabbitmq/rabbitmq.html)
-
 This tutorial explains how to use the RabbitMQ service for Cloud Foundry from a Java and Spring application.
 
 There are a number of ways that messaging can be useful in the context of a Spring web application. See the [Getting Started](http://www.rabbitmq.com/getstarted.html) area on the main RabbitMQ web site for some ideas. But in this tutorial, we'll build a very simple application that uses RabbitMQ, focusing on the basics of connecting to the RabbitMQ service. Once you understand that, you will be able to integrate more realistic uses of the service into your Spring applications on Cloud Foundry.

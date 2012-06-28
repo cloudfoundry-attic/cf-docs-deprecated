@@ -6,8 +6,6 @@ tags:
     - faq
 ---
 
-[Back to RabbitMQ](/services/rabbitmq/rabbitmq.html)
-
 ### What is the RabbitMQ service?
 The RabbitMQ service on Cloud Foundry brings the messaging functionality of RabbitMQ to developers building applications on Cloud Foundry. Like the rest of CloudFoundry.com, the RabbitMQ service is currently offered as a free beta service.
 

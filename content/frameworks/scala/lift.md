@@ -6,8 +6,6 @@ tags:
     - lift
 ---
 
-[Back to Scala](/frameworks/scala/scala.html)
-
 ## Background
 
 The blog entry announcing support for [Scala / Lift on CloudFoundry](http://blog.cloudfoundry.com/2011/06/02/cloud-foundry-now-supporting-scala/) has valuable information on getting your Lift application deployed onto CloudFoundry. This KB article provides some additional context and information to help address some common challenges in doing so.

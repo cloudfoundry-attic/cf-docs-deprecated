@@ -572,7 +572,7 @@ div.sidebar-module > ul {
     margin: 0;
 }
 
-li.js-topic {
+li.js-topic, li.js-subtopic {
     font-size: 16px;
     line-height: 1.6;
     margin: 0 0 0 17px;
@@ -580,6 +580,20 @@ li.js-topic {
 
 ul.js-guides {
     margin: 0 0 0 -2px;
+}
+
+ul.js-subguides {
+    margin-left: 22px;
+}
+
+ul.js-subguides li a {
+   font-size:13px;
+   margin: -5px 0 0 10px;
+   font-weight: normal;
+}
+
+li.js-subtopic a {
+    font-weight:bold;
 }
 
 div.sidebar-module > p {
@@ -643,7 +657,7 @@ div.sidebar-module > ul h3.disable span {
 div.sidebar-module > ul h3.disable span {
   padding-left: 20px;
   background-image: url(../images/active-arrow.png);
-  background-position: left center;
+  background-position: 0px 8px;
   background-repeat: no-repeat;
   cursor: default;
 }
@@ -666,9 +680,17 @@ div.sidebar-module li.disable {
 
 }
 
-div.sidebar-module li.disable {
+div.sidebar-module > ul li ul li.disable {
   background-image: url(../images/active-arrow.png);
-  background-position: left center;
+  background-position: 0px 9px;
+  background-repeat: no-repeat;
+  padding-left: 3px;
+  margin-left: -26px;
+}
+
+div.sidebar-module > ul li ul li ul li.disable {
+  background-image: url(../images/active-arrow.png);
+  background-position: 0px 7px;
   background-repeat: no-repeat;
   padding-left: 3px;
   margin-left: -26px;

@@ -6,8 +6,6 @@ tags:
     - sts
 ---
 
-[Back to STS & Eclipse](/tools/sts/sts-eclipse.html)
-
 If you are developing in Java with the Eclipse IDE or STS (SpringSource Tool Suite), install the Cloud Foundry Integration Extension to deploy applications to Cloud Foundry. This document describes how to install the extension and how to get started deploying applications from Eclipse or STS.
 
 **Subtopics**

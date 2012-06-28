@@ -6,8 +6,6 @@ tags:
     - CLI
 ---
 
-[Back to VMC](/tools/vmc/vmc.html)
-
 This section groups the main VMC commands into functional categories and provides typical usage.   In the examples, text displayed like `<this>` indicates a variable whose value is specific to your environment.
 
 Run `vmc help` to view the complete list of VMC commands, along with their parameters and a brief description.

@@ -6,8 +6,6 @@ tags:
     - faq
 ---
 
-[Back to Spring](/frameworks/java/spring/spring.html)
-
 **Q. What is Insight?**
 Insight is a byte-code instrumentation monitoring tool for development and production. It is designed to provide light-weight visibility into the operation of a user's application and enable applications to more easily transition into production. Insight for Cloud Foundry is in the beta phase and open to those who have been given an access token.
 

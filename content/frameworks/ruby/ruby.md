@@ -6,8 +6,6 @@ tags:
     - overview
 ---
 
-[Back to Ruby, Rails, Sinatra](/frameworks/ruby/ruby-rails-sinatra.html)
-
 This guide for Ruby developers describes Cloud Foundry support for Ruby
 applications, including applications built using the Sinatra or Ruby on Rails
 frameworks.

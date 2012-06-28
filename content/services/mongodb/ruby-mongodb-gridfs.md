@@ -8,8 +8,6 @@ tags:
     - tutorial
 ---
 
-[Back to MongoDB](/services/mongodb/mongodb.html)
-
 GridFS is a specification for storing files larger than the MongoDB size limit in MongoDB databases. It works by storing the file in chunks, which are managed through an API that treats the collection of chunks as a single ojbect. This tutorial shows how to use GridFS in a Rails application by adding an avatar to the User model.
 
 Many web applications allow users to upload and retrieve generated images, such as profile pictures, photos, or video thumbnails. If you are using Ruby on Rails there are a couple of great frameworks you can use: PaperClip and CarrierWave.
