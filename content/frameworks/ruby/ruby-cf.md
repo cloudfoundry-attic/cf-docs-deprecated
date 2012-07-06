@@ -12,7 +12,6 @@ As we launch Cloud Foundry, a few elements of the framework and code are still b
 Here are the highlights of the topics covered below:
 
 + Your application MUST supply a Gemfile that specifies ALL required gems
-+ rmagick gem (current at rmagick-2.13.1) is not supported OOtB
 + Some Gemfile features are not supported
 + VCAP does not currently support Isolate well
 + VCAP does not 'detect' Rails 2.3 applications (but there’s a workaround)
@@ -29,8 +28,6 @@ Here are the highlights of the topics covered below:
 Some important comments about Gems and Gemfiles:
 
 GEM list completeness - The proper way to interact with cloud foundry is to supply a complete Gemfile and then also run bundle package;bundle install each time you touch your Gemfile and prior to any vmc push or vmc update commands. **Your application MUST supply a Gemfile that specifies ALL required gems.**
-
-Gems that don’t work - **rmagick gem (current at rmagick-2.13.1) is not supported** out of the box.  Rmagick requires [http://www.imagemagick.org/script/index.php](http://www.imagemagick.org/script/index.php) native library to be installed.
 
 The following Gemfile features are not supported -
 

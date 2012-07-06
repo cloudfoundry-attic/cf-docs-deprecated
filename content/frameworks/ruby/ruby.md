@@ -48,10 +48,6 @@ You should use [Bundler](http://gembundler.com) to package your applications.
 Run `bundle package; bundle install` each time you modify your Gemfile and
 before any `vmc push` or `vmc update` command.
 
-The rmagick gem (currently at rmagick-2.13.1) is not supported out of the box.
-Rmagick requires http://www.imagemagick.org/script/index.php native library to
-be installed.
-
 [Isolate](https://github.com/jbarnette/isolate) is not well-supported on Cloud
 Foundry.
 
