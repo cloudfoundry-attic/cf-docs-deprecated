@@ -47,11 +47,10 @@ var app = require('express').createServer();
 app.get('/', function(req, res) {
     res.send('Hello from Cloud Foundry');
 });
-app.listen(process.env.VCAP_APP_PORT || 3000);
+app.listen(3000);
 
 ```
 
-Notice that Cloud Foundry passes the listen port for your application in an environment variable, accessed by `process.env.VCAP_APP_PORT`.
 
 Create a `package.json` file with the following contents:
 
