@@ -89,6 +89,9 @@ $ cd myapp
 $ grep -i -r proxy .
 ```
 
+### What runtimes are supported on CloudFoundry.com (beta)?
+
+Use the vmc runtimes command to view the complete list of supported runtimes ($vmc runtimes)
 
 ### What are the account, application and service limits for my CloudFoundry.com (beta) account?
 
@@ -172,7 +175,7 @@ In the case of an app running successfully and then crashing, it could be someth
 This will show you the account wide resources for memory, services, and application instances. This is a good place to check first.
 
 
-**vmc stats <appname>**
+**vmc stats \<appname\>**
 
 
 This will show you detailed information on the resource usage of your application. So for instance, the application that runs [http://www.cloudfoundry.com](http://www.cloudfoundry.com/), named **www**, outputs the following:
