@@ -123,6 +123,7 @@ $ vmc runtimes
 | ruby19 | Ruby 1.9    | 1.9.2p180 |
 | node   | Node.js     | 0.4.12    |
 | node06 | Node.js     | 0.6.8     |
+| node08 | Node.js     | 0.8.2     |
 +--------+-------------+-----------+
 
 ```
