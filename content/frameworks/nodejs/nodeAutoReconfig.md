@@ -1,21 +1,26 @@
 ---
-title: Node.js Auto-reconfig
-description: Node.js Auto-reconfig Feature and FAQs
+title: Node.js Auto-reconfiguration
+description: Node.js Auto-reconfiguration Feature and FAQs
 tags:
     - nodejs
     - autoreconfig
+    - redis
+    - mongodb
+    - mysql
+    - postgresql
+    - rabbitmq
+    - services
 ---
 ## Auto-reconfiguration for Node.js applications
-Auto-reconfiguration is a Cloud Foundry internal feature that automatically
-configures connection settings of an app while running on Cloud Foundry. These connections settings could be the app's port or URI to connect to a service (like MongoDB or Redis etc).
+Cloud Foundry automatically configures your Node.js application to listen on the right port and connect to the services that are bound to it.
 
-This enables users who are running their app on localhost:3000 & say connected to mongodb mongodb://localhost/myDB to push their app to Cloud Foundry without making any changes to their code.
+For example, if your app is listening for web requests at localhost:3000 and connected to your local MongoDB mongodb://localhost/myDB, you can push it directly to Cloud Foundry without making any changes to your code.
 
 Let's take a look at 'before' & 'after' auto-reconfiguration to see how it works.
 
 ### Port Example: BEFORE Auto-reconfiguration
 
-Notice that earlier the user had to get port from the `process.env.VCAP_APP_PORT` environment variable and make changes to the code
+Notice that earlier the user had to get the port from the `process.env.VCAP_APP_PORT` environment variable and make changes to the code
 in order to run it on Cloud Foundry.
 
 ```javascript
@@ -46,7 +51,7 @@ http.createServer(function(req, res){
 Now, let's take a look at how powerful auto-configuration is by using a MongoDB example.
 
 ### MongoDB Example: BEFORE Auto-reconfiguration
-In the below example, you can see that we had a rather messy `generate_mongo_url` function that figures out what mongoDB's url should be when the app runs on Cloud Foundry and also on localhost.
+In the below example, you can see that we had a rather messy `generate_mongo_url` function that figures out what MongoDB's url should be when the app runs on Cloud Foundry and also on localhost.
 
 ```javascript
 
@@ -136,16 +141,16 @@ var print_visits = function(req, res){
 
 ### MongoDB Example: AFTER Auto-reconfiguration
 
-With Auto-reconfig, users don't need to add code to figure out what the mongoDB's url should be. They can simply upload their code that's running on localhost to Cloud Foundry, and it will just work.
+With Auto-reconfig, users don't need to add code to figure out what the MongoDB's url should be. They can simply upload their code that's running on localhost to Cloud Foundry, and it will just work.
 
-PS: Notice `var mongoUrl = 'mongodb://localhost:27017/test';` is still pointing to mongodb on localhost and that the `generate_mongo_url` function is gone.
+PS: Notice `var mongoUrl = 'mongodb://localhost:27017/test';` is still pointing to MongoDB on localhost and that the `generate_mongo_url` function is gone.
 
 
 ```javascript
 
 var http = require('http');
 
-//With auto-reconfig, we don't have to change localhost's mongodb url
+//With auto-reconfig, we don't have to change localhost's MongoDB url
 var mongoUrl = 'mongodb://localhost:27017/test';
 
 http.createServer(function (req, res) {
@@ -200,10 +205,10 @@ var print_visits = function(req, res){
 
 When your application is staged during the deployment process, Cloud Foundry will make two modifications:
 
-* It will provide the cf-autoconfig node module to your application.
+* It will provide the [cf-autoconfig](https://npmjs.org/package/cf-autoconfig) node module to your application.
 * It will preload the cf-autoconfig module while bootstrapping your application.
 
-The cf-autoconfig module exploits the Node.js caching mechanism. This module searches application files for supported node modules and redefines module connection functions so that they are being called with Cloud Foundry connection parameters. For example, let’s see how it redefines the connect function of the mongodb node module:
+The cf-autoconfig module exploits the Node.js caching mechanism. This module searches application files for supported node modules and redefines module connection functions so that they are being called with Cloud Foundry connection parameters. For example, let’s see how it redefines the connect function of the MongoDB node module:
 
 ```javascript
 
@@ -218,7 +223,7 @@ if ("connect" in moduleData) {
   moduleData.connect.prototype = oldConnectProto;
 }
 ```
-Other functions are redefined the same way. Please take a look at the cf-autoconfig module source on github, feel free to provide feedback or even submit a pull request.
+Other functions are redefined the same way. Please take a look at the [cf-autoconfig module source on Github](https://github.com/cloudfoundry/vcap-node/tree/master/cf-autoconfig).  Feel free to provide feedback or even submit a pull request.
 
 ### Supported modules
 
@@ -231,7 +236,7 @@ The following is the list of supported modules:
 * [pg](https://github.com/brianc/node-postgres)
 * [redis](https://github.com/mranney/node_redis)
 
-According to [search.npmjs.org](http://search.npmjs.org), these modules are the most depended on. This means there are many other modules that use these modules for the database connection layer and auto-reconfiguration will be applied to them as well.
+According to [npmjs.org](http://www.npmjs.org), these modules are the most depended on. This means there are many other modules that use these modules for the database connection layer and auto-reconfiguration will be applied to them as well.
 
 ### Limitations
 
@@ -294,7 +299,7 @@ The following is the list of supported modules:
 * [pg](https://github.com/brianc/node-postgres)
 * [redis](https://github.com/mranney/node_redis)
 
-According to [search.npmjs.org](http://search.npmjs.org), these modules are the most depended on. This means there are many other modules that use these modules for the database connection layer and auto-reconfiguration will be applied to them as well.
+According to [npmjs.org](http://www.npmjs.org), these modules are the most depended on. This means there are many other modules that use these modules for the database connection layer and auto-reconfiguration will be applied to them as well.
 
 
 
