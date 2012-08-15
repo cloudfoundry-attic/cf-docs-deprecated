@@ -74,7 +74,7 @@ $prompt vmc services
 +------------+---------+---------------------------------------+
 | Service    | Version | Description                           |
 +------------+---------+---------------------------------------+
-| mongodb    | 1.8     | MongoDB NoSQL store                   |
+| mongodb    | 2.0     | MongoDB NoSQL store                   |
 | mysql      | 5.1     | MySQL database service                |
 | postgresql | 9.0     | vFabric Postgres database service     |
 | rabbitmq   | 2.4     | RabbitMQ messaging service            |

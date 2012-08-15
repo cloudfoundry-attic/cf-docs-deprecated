@@ -56,7 +56,7 @@ This section describes the Micro Cloud Foundry version 1.2 default configuration
 
 ### Service Versions
 
-+ mongodb:  MongoDB NoSQL store, version 1.8
++ mongodb:  MongoDB NoSQL store, version 2.0
 + mysql: MySQL database service, version 5.1
 + postgresql: vFabric PostgreSQL database service, version 9.0
 + rabbitmq: RabbitMQ messaging service, version 2.4
