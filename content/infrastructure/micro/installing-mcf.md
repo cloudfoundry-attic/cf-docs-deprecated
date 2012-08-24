@@ -73,7 +73,7 @@ the VMware Cloud Foundry plug-in installed. See [Configuring SpringSource Tool S
 
 1.  In your Web browser, go to [Micro Cloud Foundry](https://cloudfoundry.com/micro).
 
-2.  Log in with your Cloud Foundry email and password. (Click **sign up** if you need an account.)
+2.  Click on 'Get Micro Cloud Foundry' and then log in with your Cloud Foundry email and password. (Click **Get an Account** if you need an account.)
 
 2.  Check the box to accept the End User License Agreement, and click **Accept**.
 
