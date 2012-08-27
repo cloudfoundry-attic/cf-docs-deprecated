@@ -27,7 +27,8 @@ Subtopics:
 
 ## Supported Ruby Versions
 
-Cloud Foundry supports Ruby 1.8.7-p302 or higher and Ruby 1.9.2-p174 or higher.
+As of this writing, Cloud Foundry supports `ruby 1.8.7-p302` or higher and
+`ruby 1.9.2-p180` or higher.
 Ruby 1.8.7 is the default. If you use Ruby 1.9.2, add the vmc `--runtime ruby19`
 option when you push your application to Cloud Foundry:
 
@@ -38,25 +39,21 @@ option when you push your application to Cloud Foundry:
 Cloud Foundry requires a Gemfile in the root of your application that lists
 the gems your application depends upon.
 
-The following Gemfile features are not supported:
-
--  gem dependencies on git URLs or branches
--  gem :path => "some/path"
--  platform-conditional gems
-
 You should use [Bundler](http://gembundler.com) to package your applications.
-Run `bundle package; bundle install` each time you modify your Gemfile and
+Run `bundle install;bundle package` each time you modify your Gemfile and
 before any `vmc push` or `vmc update` command.
 
-[Isolate](https://github.com/jbarnette/isolate) is not well-supported on Cloud
-Foundry.
+For more details see:
+
++ [Ruby on Cloud Foundry](/frameworks/ruby/ruby-cf.html)
 
 ## Using Ruby on Rails with Cloud Foundry
 
-Ruby on Rails works well with Cloud Foundry. There are some differences in the requirements for Rails 3.0 and 3.1, which you can read about at these links:
+Ruby on Rails works well with Cloud Foundry. There are some differences in the
+requirements for Rails 3.0 and 3.1 or 3.2 which you can read about at these links:
 
 +   [Ruby on Rails 3.0](/frameworks/ruby/rails-3-0.html)
-+   [Ruby on Rails 3.1](/frameworks/ruby/rails-3-1.html)
++   [Ruby on Rails >= 3.1](/frameworks/ruby/rails-3-1.html)
 
 ## Using Cloud Foundry Services
 
