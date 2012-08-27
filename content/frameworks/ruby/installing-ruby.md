@@ -5,6 +5,7 @@ tags:
     - tutorial
     - ruby
     - vmc
+    - Gemfile
 ---
 
 The following sections provide basic information about installing Ruby and RubyGems on Windows and a variety of Linux computers.
@@ -17,6 +18,52 @@ Be sure you use the Ruby-enabled command prompt window when you later install an
 Finally, update RubyGems from the Ruby Command Prompt:
 
     prompt> gem update --system
+
+### Support for Windows Gemfiles
+
+Once you have Ruby installed, you can follow the instructions on [Ruby Apps on Cloud Foundry](ruby-cf.html) to learn the details of pushing an app and working with your Gemfile
+
+One thing to note for Windows users is the following:
+
+When a `Gemfile.lock` is generated on a Windows machine, it often contains gems with Windows-specific versions.
+Versions of gems such as mysql2, thin, and pg end up containing “-x86-mingw32”.
+
+For example, running `bundle install` on a Windows machine with a Gemfile that looks like this:
+
+``` ruby
+gem ‘sinatra’
+gem ‘mysql2’
+gem ‘json’
+```
+
+Would result in a Gemfile.lock that looks like this:
+
+``` ruby
+GEM
+  remote: http://rubygems.org/
+  specs:
+    json (1.7.3)
+    mysql2 (0.3.11-x86-mingw32)
+    rack (1.4.1)
+    rack-protection (1.2.0)
+      rack
+    sinatra (1.3.2)
+      rack (~> 1.3, >= 1.3.6)
+      rack-protection (~> 1.2)
+      tilt (~> 1.3, >= 1.3.3)
+    tilt (1.3.3)
+
+PLATFORMS
+  x86-mingw32
+
+DEPENDENCIES
+  json
+  mysql2
+  sinatra
+
+```
+
+Now Cloud Foundry will be able to properly install these gems without the need to modify your `Gemfile.lock`
 
 ## Mac OS X
 Version 10.5 and higher of Mac OS X already ships with Ruby and RubyGems installed.
