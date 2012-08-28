@@ -6,7 +6,7 @@ tags:
     - sts
 ---
 
-If you are developing in Java with the Eclipse IDE or STS (SpringSource Tool Suite), install the Cloud Foundry Integration Extension to deploy applications to Cloud Foundry. This document describes how to install the extension and how to get started deploying applications from Eclipse or STS.
+If you are developing in Java with the Eclipse IDE or STS (Spring Tool Suite), install the Cloud Foundry Integration Extension to deploy applications to Cloud Foundry. This document describes how to install the extension and how to get started deploying applications from Eclipse or STS.
 
 **Subtopics**
 
@@ -25,13 +25,13 @@ following Web sites:
     (In Eclipse, click **Help > About Eclipse** to view the version of Eclipse you have installed.).
     The minimum supported Eclipse JEE package is **Indigo**.
 
-+   [SpringSource Tool Suite download](http://www.springsource.com/downloads/sts)
++   [Spring Tool Suite download](http://www.springsource.org/sts)
 
     Install version 2.9.0 or higher.
 
-+   Cloud Foundry Integration for Eclipse 1.0.0 is currently the latest release of the integration, and is the first version to be open sourced under the
++   Cloud Foundry Integration for Eclipse 1.1.0 is currently the latest release of the integration, and is the first version to be open sourced under the
     Eclipse Public License (EPL). As a consequence, earlier versions of Cloud Foundry Integration, including those with version number 2.7.0,
-    cannot be upgraded to the latest version, 1.0.0. Users must first uninstall older Cloud Foundry integrations prior to installing the latest
+    cannot be upgraded to the latest version, 1.1.0. Users must first uninstall older Cloud Foundry integrations prior to installing the latest
     version.
 
 ## Installing the Cloud Foundry Integration Extension in STS

@@ -30,7 +30,7 @@ When you use Micro Cloud Foundry, you run a local virtual machine that provides
 the same services Cloud Foundry provides your application. The virtual machine
 connects with VMware servers to set up DNS for your application. You develop on
 your local computer and then use the `vmc` Ruby command line utility, or the
-Eclipse/SpringSource Tool Suite (STS) Cloud Foundry plug-in, to publish your
+Eclipse/Spring Tool Suite (STS) Cloud Foundry plug-in, to publish your
 application to your Micro Cloud Foundry. You and others on your network, can
 then test your application at
 http://api.*appname*.cloudfoundry.me.
@@ -62,8 +62,8 @@ Before you begin, be sure you have these items:
 
 +   Ruby and the [vmc](/tools/vmc/installing-vmc.html) gem installed.
 
-+   If you develop in Java, [SpringSource Tool Suite (STS)] or Eclipse with
-the VMware Cloud Foundry plug-in installed. See [Configuring SpringSource Tool Suite or Eclipse for Cloud Foundry](/tools/STS/configuring-STS.html).
++   If you develop in Java, [Spring Tool Suite (STS)] or Eclipse with
+the VMware Cloud Foundry plug-in installed. See [Configuring Spring Tool Suite or Eclipse for Cloud Foundry](/tools/STS/configuring-STS.html).
 
 [1]: http://www.vmware.com/products/workstation/overview.html
 [2]: http://www.vmware.com/products/fusion/overview.html
@@ -156,7 +156,7 @@ machine. You log in with this account to publish and manage applications.
 : See [VMC Quick Reference](/tools/vmc/vmc-quick-ref.html) for additional information
     about using the `vmc` command.
 
-: See [Configuring SpringSource Tool Suite or Eclipse for Cloud
+: See [Configuring Spring Tool Suite or Eclipse for Cloud
     Foundry](/tools/STS/configuring-STS.html) for help setting up the Cloud Foundry
     Integration plug-in in STS or Eclipse and for registering a Micro Cloud
     Foundry user from within the plug-in.
@@ -191,11 +191,11 @@ Creating New User: OK
 Successfully logged into [http://api.pubs.cloudfoundry.me]
 ```
 
-You are now ready to log in with `vmc` or set up SpringSource Tool Suite to deploy your
+You are now ready to log in with `vmc` or set up Spring Tool Suite to deploy your
 applications to Micro Cloud Foundry.
 
 ## Next Steps
 
 + [Log in to your Micro Cloud Foundry with vmc](using-mcf.html#using-microcloud-foundry-vmc)
-+ [Log in to your Micro Cloud Foundry with SpringSource Tool Suite (STS)](using-mcf.html#using-micro-cloud-foundry-sts)
++ [Log in to your Micro Cloud Foundry with Spring Tool Suite (STS)](using-mcf.html#using-micro-cloud-foundry-sts)
 + [Day-to-day Micro Cloud Foundry Management](using-mcf.html)

@@ -37,7 +37,7 @@ The target end users are developers who are interested in making sure that their
 We announced the private beta of Insight for Cloud Foundry at SpringOne 2GX (Oct 2011). We plan to announce a public beta a few weeks after SpringOne, but not before we are confident that everything is working as it should.
 
 **Q. How can I use Insight with my own plugins outside of Cloud Foundry?**
-Insight is available for free download with tc Server Developer Edition or SpringSource Tool Suite: [http://springsource.org/insight](http://springsource.org/insight)
+Insight is available for free download with tc Server Developer Edition or Spring Tool Suite: [http://springsource.org/insight](http://springsource.org/insight)
 
 **Q. How do new users gain access to Insight on Cloud Foundry?**
 To gain access to Insight on Cloud Foundry, you will need to be a registered user of Cloud Foundry. While in beta, you will also need a token. We distribute tokens once in a while when we're ready to increase our beta test group.

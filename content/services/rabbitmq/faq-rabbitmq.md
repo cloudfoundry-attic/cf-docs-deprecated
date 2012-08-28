@@ -13,7 +13,7 @@ The RabbitMQ service on Cloud Foundry brings the messaging functionality of Rabb
 RabbitMQ is a popular open-source [message broker](http://en.wikipedia.org/wiki/Message_broker), developed at VMware. See the [RabbitMQ site](http://www.rabbitmq.com/) for more details.
 
 ### How does the RabbitMQ service relate to Cloud Foundry?
-In addition to providing a platform for applications, Cloud Foundry provides a portfolio of on-demand services that developers can bind to their applications. Services available at the launch of Cloud Foundry included MySQL, MongoDB and Redis. The RabbitMQ service is on a par with those other services. You use the standard Cloud Foundry vmc commands (or their SpringSource Tool Suite equivalents) to create, bind, unbind and delete RabbitMQ services.
+In addition to providing a platform for applications, Cloud Foundry provides a portfolio of on-demand services that developers can bind to their applications. Services available at the launch of Cloud Foundry included MySQL, MongoDB and Redis. The RabbitMQ service is on a par with those other services. You use the standard Cloud Foundry vmc commands (or their Spring Tool Suite equivalents) to create, bind, unbind and delete RabbitMQ services.
 
 ### Which languages and frameworks can I use with the RabbitMQ service?
 Any that are supported by Cloud Foundry and that have an AMQP client library available.

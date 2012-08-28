@@ -1,6 +1,6 @@
 ---
 title: Deploying and Managing Applications
-description: Managing applications on Cloud Foundry
+description: Managing Applications on Cloud Foundry
 tags:
     - overview
     - vmc

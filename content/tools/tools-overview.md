@@ -10,7 +10,7 @@ tags:
 Cloud Foundry provides two tools for performing all the tasks associated with deploying and managing applications:
 
 + VMC, a command-line interface delivered as a Ruby Gem.
-+ Extension to Eclipse or SpringSource Tool Suite (STS) if you use the Eclipse IDE to develop your Java applications.
++ Extension to Eclipse or Spring Tool Suite (STS) if you use the Eclipse IDE to develop your Java applications.
 
 Both tools provide the same functionality, so the decision of which one to use is based on what type of environment you prefer: command-line or graphical IDE.  You can, of course, use both tools for different tasks.
 

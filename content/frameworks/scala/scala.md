@@ -16,7 +16,7 @@ Most Scala applications written to [Lift](http://liftweb.net/) and [Spring](http
 
 ## Scala Support in Action
 
-Cloud Foundry simplifies application deployment so you can focus on application development. You can use SpringSource Tools Suite (STS) or the vmc command-line tool to deploy Scala applications.
+Cloud Foundry simplifies application deployment so you can focus on application development. You can use the Spring Tool Suite (STS) or the vmc command-line tool to deploy Scala applications.
 
 Here is an example of deploying the [PocketChange](https://github.com/cloudfoundry-samples/pocketchangeapp-cf-runtime) application to Cloud Foundry using vmc. For most prompts, you just press Enter to accept the default.
 

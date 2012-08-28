@@ -31,7 +31,7 @@ This tutorial will use the vmc command line tool used to interact with Cloud Fou
 $ gem update vmc
 ```
 
-vmc is not the only way to develop with Cloud Foundry: [SpringSource Tool Suite](http://www.springsource.org/sts) supports Clound Foundry in an Eclipse-powered development environment. See [this section](http://www.springsource.org/sts) for how to use Cloud Foundry within STS.
+vmc is not the only way to develop with Cloud Foundry: [Spring Tool Suite](http://www.springsource.org/sts) supports Clound Foundry in an Eclipse-powered development environment. See [this section](http://www.springsource.org/sts) for how to use Cloud Foundry within STS.
 
 Creating an Initial Spring MVC App
 Now we will create a minimal Spring VMC app and push it to Cloud Foundry, following the article [Green Beans: Getting Started with Spring MVC](http://blog.springsource.org/2011/01/04/green-beans-getting-started-with-spring-mvc/). The application source comprises just five files. The file locations will obey the normal Maven project layout.

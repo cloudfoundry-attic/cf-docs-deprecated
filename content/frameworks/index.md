@@ -23,4 +23,4 @@ Each application framework has its own configuration process, described in the f
 
 For a list of available Services see [Services](/services.html).
 
-After you configure your application to integrate with Cloud Foundry services, you use standard Cloud Foundry tools (VMC, SpringSource Tool Suite, or the Eclipse plugin) to create instances of these services and bind them to your applications when you deploy them to Cloud Foundry. See [Deploying Applications](/tools/deploying-apps.html) for details on how to use these tools.
+After you configure your application to integrate with Cloud Foundry services, you use standard Cloud Foundry tools (VMC, Spring Tool Suite, or the Eclipse plugin) to create instances of these services and bind them to your applications when you deploy them to Cloud Foundry. See [Deploying Applications](/tools/deploying-apps.html) for details on how to use these tools.
