@@ -5,14 +5,37 @@ tags:
     - faq
 ---
 
-### How Do I Get Started on Cloud Foundry
++ [How Do I Get Started on Cloud Foundry?](#getstarted)
++ [How can I change my CloudFoundry.com password?](#changepwd)
++ [I'm having trouble with my login credentials.](#login)
++ [Why can't I register the application name I want?](#appname)
++ [Can apps use the local file system for storage?](#filesys)
++ [Is there session support?](#sessionsupport)
++ [What happens when a service runs out of capacity?](#capacity)
++ [Can I send and receive email from my app?](#email)
++ [Is there a firewall that prevents my app from accessing external services?](#firewall)
++ [Why is my app returning "504 Gateway Time-out" errors?](#504)
++ [I'm having issues with HTTP_proxy.](#http_proxy)
++ [What runtimes are supported on CloudFoundry.com (beta)?](#supportedruntimes)
++ [What are the account, application and service limits for my CloudFoundry.com (beta) account?](#limits)
++ [My app stopped running.](#stoppedapp)
++ [I'm getting the VMC Error: 'The input stream is exhausted'](#streamexhausted)
++ [Can I use Hyperic to monitor my applications on Cloud Foundry?](#hypericmonitoring)
++ [My Ruby/Sinatra/Rails app is failing on start.](#startfail)
++ [Is there a Getting Started guide in Japanese?](#japanesestart)
++ [How can I update my application without dropping user traffic?](#updateapp)
++ [My application is still reporting as running even after exiting.](#runafterexit)
+
+
+
+#### <a id="getstarted"></a> How Do I Get Started on Cloud Foundry?
 For resources on getting started with Cloud Foundry, please refer to our [Getting Started Guide](/getting-started.html).
 
-### How can I change my CloudFoundry.com password?
+#### <a id="changepwd"></a> How can I change my CloudFoundry.com password?
 
 Please use the following link to reset your CloudFoundry.com password: [https://my.cloudfoundry.com/passwd](https://my.cloudfoundry.com/passwd)
 
-### I'm having trouble with my login credentials
+#### <a id="login"></a> I'm having trouble with my login credentials.
 
 Here are a few things you can do to make sure that you are using your credentials correctly:
 
@@ -24,22 +47,22 @@ Please try with the temporary password provided in the Welcome email from Cloud 
 
 If you are still not able to use vmc, open a ticket by clicking on the "Submit a request" tab. Make sure to provide us with the details and the support team will look into it for you.
 
-### Why can't I register the application name I want?
+#### <a id="appname"></a> Why can't I register the application name I want?
 
 Application names must be longer than 3 characters. In addition, please note that some names are reserved and will not be allowed even if they are of the right length.
 
 If you receive the message: "The URI: 'fo.cloudfoundry.com' has already been taken or reserved", please pick another name for your application.
 
 
-### Can apps use the local file system for storage?
+#### <a id="filesys"></a> Can apps use the local file system for storage?
 Your application needs to treat local file storage as ephemeral, which can disappear when your application stops, crashes, or moves. It should not be used for durable storage of content such as user-uploaded files. Further, if more than one instance of your app is running the local storage is only visible to a specific instance of the app, and is not visible or shared across all instances. If persistent storage is required, a local service such as [MongoDB GridFS](http://www.mongodb.org/display/DOCS/GridFS) or external blob stores such as [Box.net](http://developers.blog.box.com/2011/12/14/deploying-to-cloud-foundry-and-heroku-from-box/) or [Amazon S3](http://aws.amazon.com/s3/) can be used.
 
-### Is there session support?
+#### <a id="sessionsupport"></a> Is there session support?
 When scaling an app to multiple instances the topic of session management arises. Cloud Foundry uses session affinity, also known as sticky sessions: when a user login request is handled by a particular instance of your app, future requests from that user/session will be routed to the same app instance. Sticky sessions are provided for all apps and do not have to be configured, with the exception of Node.js. Node.js apps need to set a cookie named JSESSIONID to a unique value for each user/session.
 
 Cloud Foundry does not offer session replication: if the particular instance crashes the user is routed to another instance which won't have authentication data in the session, and the user will have to log in again.
 
-### What happens when a service runs out of capacity?
+#### <a id="capacity"></a> What happens when a service runs out of capacity?
 When a service runs out of capacity (e.g. MySQL hits the 128MB size limit), the service switches to a read/delete-only mode. For example, on a SQL service removing data and reading data is allowed, but writing more data is disabled:
 
 ```bash
@@ -52,17 +75,17 @@ update ... # not allowed
 
 The application bound to a service that has run out of capacity may see errors such as "INSERT is disabled." Other services (redis, MongoDB) will exhibit similar behavior.
 
-### Can I send and receive email from my app?
+#### <a id="email"></a> Can I send and receive email from my app?
 Applications cannot send outbound email via TCP port 25. An app can use an external email service available on a different port (such as 587 for SMTP-AUTH). Applications cannot receive email by listening on port 25 either. We recommend using an external mail service such as [SendGrid](http://sendgrid.com/) or [Mailgun](http://mailgun.net/).
 
-### Is there a firewall that prevents my app from accessing external services?
+#### <a id="firewall"></a> Is there a firewall that prevents my app from accessing external services?
 No, your application has direct access to the internet with the exception of connecting to TCP port 25 (used for sending email).
 
-### Why is my app returning "504 Gateway Time-out" errors?
+#### <a id="504"></a> Why is my app returning "504 Gateway Time-out" errors?
 The error page originates from the CloudFoundry.com HTTP Router and not your application. Application requests taking longer than 30 seconds are terminated by the Router. The 30-second timeout cannot be adjusted and applies to all apps running on CloudFoundry.com. However, the Router supports long-polling and streaming on a rolling 30-second window: if an application sends data to a client within 30 seconds, the timeout counter is reset and starts again at 30 seconds. To troubleshoot 504 errors, please investigate what is causing the delayed response from an app and ensure data is returned every 30 seconds.
 
 
-### I'm having issues with HTTP_proxy
+#### <a id="http_proxy"></a> I'm having issues with HTTP_proxy.
 
 When CloudFoundry.com launched in April 2011, applications making outbound requests had to use an HTTP proxy (for about the first 10 days of operation). When we removed the need for a proxy, we did not eliminate the HTTP_PROXY, http_proxy, etc. environment variables. These variables used to be made available to your application, however, now we are eliminating the HTTP_PROXY, HTTPS_PROXY, http_proxy, https_proxy, no_proxy, NO_PROXY. For the vast majority of applications, this change will have no effect. All well written applications either use http client classes that correctly process and use proxy related environment variables, OR the application writer codes his algorithms to correctly use the proxy environment variables when they are present.
 
@@ -89,11 +112,11 @@ $ cd myapp
 $ grep -i -r proxy .
 ```
 
-### What runtimes are supported on CloudFoundry.com (beta)?
+#### <a id="supportedruntimes"></a> What runtimes are supported on CloudFoundry.com (beta)?
 
 Use the vmc runtimes command to view the complete list of supported runtimes ($vmc runtimes)
 
-### What are the account, application and service limits for my CloudFoundry.com (beta) account?
+#### <a id="limits"></a> What are the account, application and service limits for my CloudFoundry.com (beta) account?
 
 **Account Limits**
 
@@ -158,7 +181,7 @@ MongoDB memory is limited to 240MB.
 
 
 
-### My app stopped running.
+#### <a id="stoppedapp"></a> My app stopped running.
 
 If any application stops running without the end user initiating that action, we consider it a crash.
 
@@ -198,7 +221,7 @@ Currently CloudFoundry.com will terminate applications that exceed their memory 
 If your app is stopping unexpectedly after running for some time, and you don't suspect your app, please use this checklist to see if you are running into a resource limit issue.
 
 
-### I'm getting the VMC Error: 'The input stream is exhausted'
+#### <a id="streamexhausted"></a> I'm getting the VMC Error: 'The input stream is exhausted'
 
 **Problem**
 
@@ -279,12 +302,12 @@ Starting Application: OK
 ```
 
 
-### Can I use Hyperic to monitor my applications on Cloud Foundry?
+#### <a id="hypericmonitoring"></a> Can I use Hyperic to monitor my applications on Cloud Foundry?
 
 [Yes](http://blog.cloudfoundry.com/2011/06/29/hyperic-brings-application-monitoring-to-cloud-foundry/)
 
 
-### My Ruby/Sinatra/Rails app is failing on start.
+#### <a id="startfail"></a> My Ruby/Sinatra/Rails app is failing on start.
 
 When performing a vmc push for a Ruby/Sinatra/Rails app, and after answering all the prompted questions, you might see this error:
 
@@ -315,11 +338,11 @@ If you can not find the missing elements for upload, see if you can find the ans
 One of the common causes for the sample demo applications (hello.rb) as shown in our demos failing to start is due to copy/paste, which copies in smart quotes and causes the application to not run.  Please type in the demo application by hand.  Also, please make sure that you do not have any extraneous tab (\t) characters in the source file, and replace them with spaces.
 
 
-### Is there a Getting Started guide in Japanese?
+#### <a id="japanesestart"></a> Is there a Getting Started guide in Japanese?
 
 [Yes](/getting-started-japanese.html)
 
-### How can I update my application without dropping user traffic?
+#### <a id="updateapp"></a> How can I update my application without dropping user traffic?
 
 In general, when developing and testing applications with Cloud Foundry, **vmc update** fits the bill quite well.
 
@@ -346,6 +369,6 @@ NOTE: 'vmc update' will drop traffic..
 - vmc delete [app]OLD
 
 
-### My application is still reporting as running even after exiting.
+#### <a id="runafterexit"></a> My application is still reporting as running even after exiting.
 
 If you exit an app using System.exit(), Tomcat's security manager will prevent the process from terminating. This will cause the system to report the application as running. We will be adding a custom health check so that app terminated in this way may be detected by the system.

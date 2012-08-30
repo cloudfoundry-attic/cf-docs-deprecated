@@ -3,8 +3,8 @@ title: STS and Eclipse
 description: Working with Spring Tool Suite and Eclipse
 tags:
     - sts
-    - spring tool suite
-    - springsource tool suite
+    - spring-tool-suite
+    - springsource-tool-suite
     - eclipse
 ---
 

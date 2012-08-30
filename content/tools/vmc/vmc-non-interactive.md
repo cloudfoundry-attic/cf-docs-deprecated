@@ -3,7 +3,7 @@ title: Using VMC in Non Interactive Mode
 description: How to Use vmc in Non Interactive Mode
 tags:
     - vmc
-    - non interactive
+    - non-interactive
 ---
 
 VMC client's default mode of operation is 'Interactive'.

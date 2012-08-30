@@ -2,7 +2,7 @@
 title: Spring Insight on Cloud Foundry FAQ
 description: Monitoring Java Applications on Cloud Foundry with Spring Insight
 tags:
-    - spring insight
+    - spring-insight
     - faq
 ---
 

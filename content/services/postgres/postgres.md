@@ -3,7 +3,7 @@ title: Postgres
 description: PostgreSQL on Cloud Foundry - Frequently Asked Questions
 tags:
     - postgres
-    - vFabric Postgres
+    - vFabric-Postgres
     - postgresql
 ---
 
