@@ -157,11 +157,25 @@ $ vmc target api.cloudfoundry.com
 $ vmc login
 ```
 
+Have Play clean the project and then create a distributable zip file:
+
+```bash
+$ play clean dist
+```
+
+The output should show that a zip file was create in ./dist/ with a file name not too disimilar to <projectname>-1.0-SNAPSHOT.zip,
+the output should end with something like;
+
+```bash
+Your application is ready in /Users/danhigham/Projects/play/HelloWorld/dist/helloworld-1.0-SNAPSHOT.zip
+```
+
 Push the application. You can press `Enter` to accept the defaults at most of the prompts,
-but be sure to enter a unique URL for the application. Here is an example push:
+but be sure to enter a unique URL for the application and to also specify the location of the zip file 
+using the path switch. Here is an example push:
 
 ``` bash
-$ vmc push
+$ vmc push --path=./dist/helloworld-1.0-SNAPSHOT.zip
     Would you like to deploy from the current directory? [Yn]:
     Application Name: helloworld-scala
     Application Deployed URL [helloworld-scala.cloudfoundry.com]:
