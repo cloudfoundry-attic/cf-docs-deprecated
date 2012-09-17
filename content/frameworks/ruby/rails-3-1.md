@@ -98,13 +98,6 @@ Pre-compile your asset pipeline.
 $ bundle exec rake assets:precompile
 ```
 
-### VCS
-
-Commit the current configuration to your version control system. Consider including:
-   + `Gemfile.lock`
-   + gems packaged into `vendor/cache`
-   + assets compiled into `public/assets`
-
 ### Deploy
 
 ```bash
