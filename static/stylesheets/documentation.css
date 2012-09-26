@@ -596,6 +596,22 @@ li.js-subtopic a {
     font-weight:bold;
 }
 
+ul.spring-subtopic {
+     margin-left: 32px;
+     font-weight: bold;
+}
+
+ul.spring-subguides {
+    margin-left: 36px;
+    font-weight: bold;
+}
+
+ul.spring-subguides li a {
+   font-size:13px;
+   margin: -7px 0 0 10px;
+   font-weight: normal;
+}
+
 div.sidebar-module > p {
   background: #fafafb;
   border: solid #CACACA;
