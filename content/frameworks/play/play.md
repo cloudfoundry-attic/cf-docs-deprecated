@@ -28,3 +28,4 @@ Before you get started, you need the following:
 +  [Getting started with Play Scala](/frameworks/play/scala-getting-started.html) on Cloud Foundry
 +  [Play Java App with MySQL](/frameworks/play/java-mysql.html)
 +  [Play Java App with PostgreSQL](/frameworks/play/java-postgresql.html)
++  [Play Java App with MongoDB](/frameworks/play/java-mongodb.html)
