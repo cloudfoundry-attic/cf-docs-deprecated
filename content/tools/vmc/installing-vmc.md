@@ -77,7 +77,7 @@ prompt$ vmc target api.cloudfoundry.com
 prompt$ vmc target
 ```
 
-*   Login using the user credentials you received via email after you registered with Cloud Foudnry.  Your username is typically your email address.
+*   Login using the user credentials you received via email after you registered with Cloud Foundry.  Your username is typically your email address.
 
 ```bash
 prompt$ vmc login
@@ -115,7 +115,7 @@ This section shows how to deploy a simple application that does not require any 
 
 *  Open a terminal window (Linux) or command prompt (Windows) and change the directory that contains your application.
 
-    For example, if you created the simple Ruby [Hello World](#creating-a-simple-sinatra-application) application using Sintatra:
+    For example, if you created the simple Ruby [Hello World](#creating-a-simple-sinatra-application) application using Sinatra:
 
 ```bash
 prompt$ cd /usr/bob/sample-apps/hello

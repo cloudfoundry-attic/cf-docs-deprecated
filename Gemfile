@@ -12,6 +12,6 @@ gem "systemu"
 
 group :development do
   gem "adsf"
-  gem 'zip', "~> 2.0.2"
+  gem 'rubyzip'
   gem "vmc", ">= 0.3.16.beta.3"
 end

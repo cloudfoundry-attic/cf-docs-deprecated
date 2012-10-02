@@ -6,41 +6,118 @@ tags:
     - examples
 ---
 
-[Inflikr](http://inflickr.cloudfoundry.com/) is a Flikr Explorer that has a cool UI (In beta for Chrome and Safari browsers only)
+Have a cool Cloud Foundry app you'd like to see listed here?  [Email us](mailto:jacksonc@vmware.com) !
+
+### Node.js
+<table class="std">
+ <tr>
+   <th>App</th>
+   <th>Source</th>
+   <th>Description</th>
+   <th>Service(s) Used</th>
+ </tr>
+ <tr>
+   <td><a href="http://inflickr.cloudfoundry.com/" target="_blank">Inflikr</a></td>
+   <td><a href="https://github.com/eboudrant/inflickr" target="_blank">https://github.com/eboudrant/inflickr</a></td>
+   <td>A Flickr explorer. Developed using NodeJS / ExpressJS With Cloud9IDE Deployed on Cloud Foundry.</td>
+   <td></td>
+ </tr>
+ <tr>
+   <td><a href="http://taxireceipt.cloudfoundry.com/" target="_blank">TaxiReceipt</a></td>
+   <td><a href="https://github.com/olemartin/taxireceipt" target="_blank">https://github.com/olemartin/taxireceipt</a></td>
+   <td>An experimental node.js application for tracking Taxi Receipts.</td>
+   <td>MongoDB</td>
+ </tr>
+ <tr>
+   <td><a href="http://infinigram.cloudfoundry.com" target="_blank">Infinigram</a></td>
+   <td><a href="https://github.com/olemartin/taxireceipt" target="_blank">https://github.com/olemartin/taxireceipt</a></td>
+   <td>Instagram photo viewer with infinite scroll.</td>
+   <td></td>
+ </tr>
+ <tr>
+   <td><a href="http://hackback.cloudfoundry.com" target="_blank">Hackback</a></td>
+   <td><a href="https://github.com/rjyo/hackback" target="_blank">https://github.com/rjyo/hackback</a></td>
+   <td>A well designed Node.js app for HackerNews links.</td>
+   <td></td>
+ </tr>
+</table>
 
 
-[Vaadin](http://vaadin.cloudfoundry.com/) is a Framework that does Server side rendering (Primarily Java Focused)
+### Java
+<table class="std">
+ <tr>
+   <th>App</th>
+   <th>Source</th>
+   <th>Description</th>
+   <th>Service(s) Used</th>
+ </tr>
+ <tr>
+   <td><a href="http://word-mindmap.cloudfoundry.com/" target="_blank">Word MindMap</a></td>
+   <td><a href="https://github.com/tuo/word-mindmap" target="_blank">https://github.com/tuo/word-mindmap</a></td>
+   <td>This app provides an interesting way to look at Synonyms through a MindMap style UI.</td>
+   <td></td>
+ </tr>
+ <tr>
+   <td><a href="http://vaadin.cloudfoundry.com/" target="_blank">Vaadin</a></td>
+   <td><a href="https://github.com/eboudrant/inflickr" target="_blank">https://github.com/eboudrant/inflickr</a></td>
+   <td>A Framework that does Server side rendering.</td>
+   <td></td>
+ </tr>
+ <tr>
+   <td><a href="http://graphflow.cloudfoundry.com/" target="_blank">Graphflow</a></td>
+   <td><a href="https://github.com/oxlade39/graphflow" target="_blank">https://github.com/oxlade39/graphflow</a></td>
+   <td>A Spring, Neo4J, HTML5, and JQuery based Application.</td>
+   <td></td>
+ </tr>
+</table>
 
 
-[Word MindMap](http://word-mindmap.cloudfoundry.com/) provides an interesting way to look at Synonyms through a MindMap style UI
+
+### Ruby
+<table class="std">
+ <tr>
+   <th>App</th>
+   <th>Source</th>
+   <th>Description</th>
+   <th>Service(s) Used</th>
+ </tr>
+ <tr>
+   <td><a href="http://mongo.cloudfoundry.com/" target="_blank">Mongo</a></td>
+   <td><a href="https://github.com/banker/mongulator" target="_blank">https://github.com/banker/mongulator</a></td>
+   <td>A Sinatra/JQuery based console Demo for MongoDB.</td>
+   <td></td>
+ </tr>
+ <tr>
+   <td><a href="http://spkihash.cloudfoundry.com/" target="_blank">Spkihash</a></td>
+   <td><a href="https://github.com/nahi/spkihash" target="_blank">https://github.com/nahi/spkihash</a></td>
+   <td>A public key fingerprint calculator for Chrome.</td>
+   <td></td>
+ </tr>
+</table>
 
 
-[TaxiReceipt](http://taxireceipt.cloudfoundry.com/) is an experimental node.js application for tracking Taxi Receipts.
-(Source : [https://github.com/olemartin/taxireceipt](https://github.com/olemartin/taxireceipt) | Node.js & MongoDB based)
+
+### Groovy
+<table class="std">
+ <tr>
+   <th>App</th>
+   <th>Source</th>
+   <th>Description</th>
+   <th>Service(s) Used</th>
+ </tr>
+ <tr>
+   <td><a href="http://scaffolding.cloudfoundry.com/" target="_blank">Scaffolding</a></td>
+   <td><a href="https://github.com/robfletcher/grails-scaffolding" target="_blank">https://github.com/robfletcher/grails-scaffolding</a></td>
+   <td>A sample project for prototyping changes to Grails scaffolding.</td>
+   <td></td>
+ </tr>
+</table>
 
 
-[Infinigram](http://infinigram.cloudfoundry.com/) is an Infinite scrolling Node.js Powered App.
-(Source : [https://github.com/nulltask/infinigram](https://github.com/nulltask/infinigram))
 
 
-[Mongo](http://mongo.cloudfoundry.com/) is a Sinatra/JQuery based console Demo for MongoDB.
-(Source : [https://github.com/banker/mongulator](https://github.com/banker/mongulator))
 
 
-[Scaffolding](http://scaffolding.cloudfoundry.com/) is a sample project for prototyping changes to Grails scaffolding.
-(Source : [https://github.com/robfletcher/grails-scaffolding](https://github.com/robfletcher/grails-scaffolding))
 
 
-[Graphflow](http://graphflow.cloudfoundry.com/) is a Spring, Neo4J, HTML5, and JQuery based Application.
-(Source : [https://github.com/oxlade39/graphflow](https://github.com/oxlade39/graphflow) )
 
-
-[Hackback](http://hackback.cloudfoundry.com) is a well designed Node.js app for HackerNews links.
-(Source : [https://github.com/rjyo/hackback](https://github.com/rjyo/hackback))
-
-
-[Spkihash](http://spkihash.cloudfoundry.com/) is a public key fingerprint calculator for Chrome.
-(Source : [https://github.com/nahi/spkihash](https://github.com/nahi/spkihash) )
-
-
-[Functionsource](http://functionsource.com/) is a Rails/Node.js Site for Developer News and a Cloud Foundry launch partner.
