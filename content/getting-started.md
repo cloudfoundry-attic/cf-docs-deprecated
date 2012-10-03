@@ -3,7 +3,8 @@ title: Get Started
 description: Getting Started with Cloud Foundry
 ---
 
-1. Register at the [Cloud Foundry Web page](http://www.cloudfoundry.com). You will receive an email with your user credentials.
+1. Register for a free account [here](http://my.cloudfoundry.com/signup). You will receive an email with your user credentials.
+If you ever need to reset your password, you can do so [here](http://my.cloudfoundry.com/passwd).
 
 2. Install one or both of the Cloud Foundry tools that you use to deploy and manage applications:
 

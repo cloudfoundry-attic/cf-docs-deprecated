@@ -773,4 +773,9 @@ background: white;
 	background:linear-gradient(top,#ffffff 0%,#EEEEEE 100%);/* W3C */
 }
 
+.forgot_pass {
+  font-size: 14px;
+  margin: 97px 0 0 18px;
+}
+
 /* @end */
