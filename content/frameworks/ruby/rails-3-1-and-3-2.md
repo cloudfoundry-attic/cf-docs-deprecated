@@ -1,5 +1,5 @@
 ---
-title: Ruby on Rails 3.1 and 3.2
+title: Ruby on Rails 3.1 and above
 description: Ruby on Rails 3.1 and 3.2 Development with Cloud Foundry
 tags:
     - ruby
@@ -105,6 +105,7 @@ Ruby 1.8
 ```bash
 $ vmc push
 ```
+
 Ruby 1.9
 
 ```bash
