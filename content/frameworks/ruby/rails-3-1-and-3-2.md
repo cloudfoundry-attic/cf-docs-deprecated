@@ -1,6 +1,6 @@
 ---
-title: Ruby on Rails 3.1 and Above
-description: Ruby on Rails 3.1 Development with Cloud Foundry
+title: Ruby on Rails 3.1 and 3.2
+description: Ruby on Rails 3.1 and 3.2 Development with Cloud Foundry
 tags:
     - ruby
     - rails
@@ -100,8 +100,15 @@ $ bundle exec rake assets:precompile
 
 ### Deploy
 
+Ruby 1.8
+
 ```bash
 $ vmc push
+```
+Ruby 1.9
+
+```bash
+$ vmc push --runtime ruby19
 ```
 
 Respond to the interactive prompts to deploy and start the application.
