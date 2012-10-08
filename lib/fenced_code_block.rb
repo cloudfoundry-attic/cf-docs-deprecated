@@ -1,4 +1,4 @@
-require "CGI"
+require "cgi"
 
 class FencedCodeBlock < Nanoc3::Filter
   identifier :fenced_code_block
