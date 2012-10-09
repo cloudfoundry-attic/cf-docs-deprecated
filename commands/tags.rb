@@ -14,7 +14,7 @@ run do |opts, args, cmd|
   FileUtils.mkdir(output_dir)
 
   require "nanoc3"
-  require "nanoc3/cli/logger"
+  require "nanoc/cli/logger"
 
   # Load nanoc site
   site = Nanoc3::Site.new(".")

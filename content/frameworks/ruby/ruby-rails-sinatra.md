@@ -18,7 +18,7 @@ Working with Ruby, Rails and Sinatra on Cloud Foundry is easy. The following doc
 ## Rails
 
 + [Ruby on Rails 3.0 Development with Cloud Foundry](/frameworks/ruby/rails-3-0.html)
-+ [Ruby on Rails 3.1 Development with Cloud Foundry](/frameworks/ruby/rails-3-1.html)
++ [Ruby on Rails 3.1 and 3.2 Development with Cloud Foundry](/frameworks/ruby/rails-3-1.html)
 
 ## Sinatra
 
