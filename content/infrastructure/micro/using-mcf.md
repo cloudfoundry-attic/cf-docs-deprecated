@@ -21,11 +21,11 @@ tags:
 
 ## Micro Cloud Foundry Default Configuration
 
-This section describes the Micro Cloud Foundry version 1.2 default configuration.
+This section describes the default configuration of the latest Micro Cloud Foundry.
 
 ### Virtual Machine Configuration
 
-+ RAM: 1GB
++ RAM: 2GB
 + Disk: 16GB
 + vCPUs: 2
 
@@ -41,8 +41,10 @@ This section describes the Micro Cloud Foundry version 1.2 default configuration
 + ruby18: Ruby 1.8, version 1.8.7
 + ruby19: Ruby 1.9, version 1.9.2p180
 + java: Java 6, version 1.6
++ java7: Java 7, version 1.7
 + node: Node.js, version 0.4.12
-+ node06: Node.js, version 6.0.8
++ node06: Node.js, version 0.6.8
++ node08: Node.js, version 0.8.2
 
 ### Frameworks
 
@@ -53,6 +55,9 @@ This section describes the Micro Cloud Foundry version 1.2 default configuration
 + java_web
 + lift
 + spring
++ rack
++ play
++ standalone
 
 ### Service Versions
 
@@ -114,20 +119,20 @@ the default configuration limits for the virtual machine and services.
 
 Micro Cloud Foundry has the following default resource limits:
 
-+ VM: 1 GB RAM, 16 GB disk
++ VM: 2 GB RAM, 16 GB disk
 + MySQL: 2 GB disk, max 256 MB per instance
 + MongoDB: 256 MB per instance
 + Redis: 256 MB per instance
 
 The admin user has the following limits:
 
-+ 1.0 G memory
++ 2 GB memory
 + Up to 16 provisioned services
 + Up to 16 applications
 
 ## Increasing Micro Cloud Foundry Virtual Machine Memory
 
-The Micro Cloud Foundry virtual machine is initially configured with 1GB memory.
+The Micro Cloud Foundry virtual machine is initially configured with 2GB memory.
 If you need more memory for your applications, follow these steps:
 
 1. Shut down the Micro Cloud Foundry virtual machine.
@@ -301,7 +306,7 @@ Commands
   status              Display current status
 ```
 
-To reconfigure and control the virtual machine, vmc needs paths to the .vmx file and the vmrun command. It may find the vmrun command on your path, but the first time you run it you must provide the path to the micro.vmx file using the --vmx option. The paths are saved in the .vmc_micro file in your home directory so you do not have to specify the options agai on future runs.
+To reconfigure and control the virtual machine, vmc needs paths to the .vmx file and the vmrun command. It may find the vmrun command on your path, but the first time you run it you must provide the path to the micro.vmx file using the --vmx option. The paths are saved in the .vmc_micro file in your home directory so you do not have to specify the options again on future runs.
 
 In the following example, the path to the micro.vmx file is specified. vmc discovers that the VM is not running and offers to start it. It reports the status and asks whether to save the password for future runs.
 
@@ -359,7 +364,7 @@ Another proxy related problem occurs when the VM's network adaptor uses bridged 
 
 ### Problems Accessing Your Instance
 
-If the DNS entry for you Micro Cloud Foundry VM is not up-to-date, accessing your instance can fail. For example:
+If the DNS entry for your Micro Cloud Foundry VM is not up-to-date, accessing your instance can fail. For example:
 
 ```bash
 $ vmc target api.martin.cloudfoundry.me
