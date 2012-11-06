@@ -649,7 +649,6 @@ h6.subhead {
     font-size: 12px;
     font-weight: bold;
     color: #7f7f7f;
-    -webkit-text-size-adjust: none;
 }
 .search-form {
     float: right;
@@ -1426,6 +1425,60 @@ table.alt td {
 .striped td {
     background: #f6f6f6;
 }
+
+table.spring-tutorial-index-table {
+	width: 100%
+	border: 1px solid #B0B0B0;
+	margin: 1em 0 1em 1px;
+	border: 1px solid;
+	border-color: #BBB;
+	border-spacing: 0;
+	border-collapse: collapse;
+	clear: right;
+}
+table.spring-tutorial-index-table tbody {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 14px;
+	vertical-align: baseline;
+	background: transparent;
+}
+table.spring-tutorial-index-table thead {
+	text-align: left;
+}
+table.spring-tutorial-index-table thead th {
+	text-align: left;
+	font-weight: bold;
+	padding: 6px 12px;
+	border: 1px solid #BBB;
+	background-color: #EFF1F5;
+	white-space: nowrap;
+}
+table.spring-tutorial-index-table td {
+	padding: 6px 12px;
+	border: 1px solid #BBB;
+	background-color: white;
+	text-align: left;
+	vertical-align: top;
+}
+table.spring-tutorial-index-table td:nth-child(1) {
+	padding: 6px 12px;
+	border: 1px solid #BBB;
+	background-color: white;
+	text-align: center;
+	vertical-align: top;
+}
+table.spring-tutorial-index-table tbody {
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+/**
+table.spring-tutorial-index-table tr:nth-child(even) {
+background: #F2F2F2;
+}**/
 /* HOMEPAGE
 ****************************/
 .hero-wrap {
@@ -2535,4 +2588,4 @@ td.gsc-branding-text, td.gcsc-branding-text {
   background-position: 0px 494px;
   height:494px;
 }
-}
+
