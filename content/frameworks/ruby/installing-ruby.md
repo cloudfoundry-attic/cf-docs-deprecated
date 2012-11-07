@@ -13,7 +13,7 @@ The following sections provide basic information about installing Ruby and RubyG
 ## Windows
 Download and install [Ruby Installer for Windows](http://www.rubyinstaller.org/ "ruby installer for windows"). The installer already includes RubyGems.
 
-Be sure you use the Ruby-enabled command prompt window when you later install and use `vmc`.   You access this command prompt from the Windows Start menu (**All Programs > Ruby \<version\> > Start Command Prompt with Ruby**).
+Be sure you use the Ruby-enabled command prompt window when you later install and use `vmc`.   You access this command prompt from the Windows Start menu (**All Programs &rarr; Ruby \<version\> &rarr; Start Command Prompt with Ruby**).
 
 Finally, update RubyGems from the Ruby Command Prompt:
 
@@ -31,9 +31,9 @@ Versions of gems such as mysql2, thin, and pg end up containing “-x86-mingw32�
 For example, running `bundle install` on a Windows machine with a Gemfile that looks like this:
 
 ``` ruby
-gem ‘sinatra’
-gem ‘mysql2’
-gem ‘json’
+gem 'sinatra'
+gem 'mysql2'
+gem 'json'
 ```
 
 Would result in a Gemfile.lock that looks like this:
@@ -68,7 +68,7 @@ Now Cloud Foundry will be able to properly install these gems without the need t
 ## Mac OS X
 Version 10.5 and higher of Mac OS X already ships with Ruby and RubyGems installed.
 
-If you are using an earlier version of Mac OS, download and install the latest version of [Ruby](http://www.ruby-lang.org/en/downloads/ "ruby source code") and then [RubyGems](http://rubygems.org/pages/download).
+If you are using an earlier version of Mac OS, download and install the latest version of [Ruby](http://www.ruby-lang.org/en/downloads/ "ruby source code") and [RubyGems](http://rubygems.org/pages/download).
 
 ## Ubuntu
 
@@ -76,31 +76,22 @@ From a terminal, use the `apt-get` command-line tool to install Ruby and RubyGem
 
 1. Install the full Ruby package and RubyGems:
 
-    `prompt$ sudo apt-get install ruby-full rubygems`
+        prompt$ sudo apt-get install ruby-full rubygems
 
     Consult your system administrator for any required authentication credentials for the `sudo` command.
 
 2.  Test to ensure that the `gem` command is in your path:
 
-    `prompt$ which gem`
+        prompt$ which gem
 
     If the command is not found, then update your `PATH` variable accordingly.  For example, you can update your `.bashrc` file with the following line:
 
-    `export PATH=$PATH:/var/lib/gems/1.8/bin`
+        export PATH=$PATH:/var/lib/gems/1.8/bin
 
-3.	Update RubyGems:
-
-    Ubuntu 10.04
+3.	Update RubyGems (Ubuntu 10.04 _only_):
 
         prompt$ sudo gem install rubygems-update
         prompt$ sudo /var/lib/gems/1.8/bin/update_rubygems
-
-    Ubuntu 11.10
-
-        prompt$ sudo su -
-        prompt# export REALLY_GEM_UPDATE_SYSTEM=true
-        prompt# gem update --system
-        prompt# exit
 
 ## RedHat/Fedora
 
