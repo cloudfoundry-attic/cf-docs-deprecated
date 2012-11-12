@@ -21,7 +21,7 @@ Before you get started, you need the following:
 
 ## Deploying Node.js Applications to Cloud Foundry
 
-When you deploy a Node.js application to Cloud Foundry, the current directory must contain the application, `app.js`, and, if your application depends on any modules, a `package.json` file that names them.
+When you deploy a Node.js application to Cloud Foundry, the current directory must contain the application and the app.js file.
 
 Here are steps to create and deploy a "hello world" Node.js web server application that uses the [Express](http://expressjs.com) web module:
 
@@ -74,8 +74,8 @@ Create a `package.json` file with the following content:
 {
  "name":"hello-node",
   "version":"0.0.1",
-  "dependencies":{
-      "express":""
+  "scripts":{
+      "start":"node server.js"
   }
 }
 
