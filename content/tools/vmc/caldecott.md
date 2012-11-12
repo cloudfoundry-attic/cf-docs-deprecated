@@ -13,21 +13,26 @@ An application called Caldecott, after the Caldecott Tunnel in the Berkeley Hill
 
 ## Prerequisites
 
-+	Caldecott requires Ruby 1.9.2.
-
-+ 	You must have vmc 0.3.14 or later. Use the following command to check your version:
++ You must have vmc 0.3.14 or later. Use the following command to check your version, and optionally update vmc:
 
 ```bash
+Linux & Mac
 $ vmc -v
+$ sudo gem update vmc
 ```
-
-	Enter this vmc command to update the vmc gem:
 
 ```bash
-$ gem update vmc
+Windows
+> vmc -v
+> gem update vmc
 ```
 
-+ 	Caldecott can start a client program for the service you want to access, for example `mysql` for MySQL or `psql` for PostgreSQL. The client must be installed on your computer and be on the execution PATH so that Caldecott scripts can start it. If you want to use a different client, Caldecott will display the connection information and credentials you will need to connect to the service. The following table shows the client programs Caldecott can start for each service.
++ Before Caldecott can be installed some development dependencies need to be available on your machine. We are working to simplify this; in the meantime please follow these instructions:
+    + Ubuntu: `$ sudo apt-get install g++ libssl-dev`
+    + Mac OS X: Download and install either *Command Line Tools* or *Xcode* from [Apple](http://developer.apple.com/downloads).
+    + Windows: If you're using a Ruby from [RubyInstaller](http://rubyinstaller.org/), install their [DevKit](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit).
+
++ Caldecott can start a client program for the service you want to access, for example `mysql` for MySQL or `psql` for PostgreSQL. The client must be installed on your computer and be on the execution PATH so that Caldecott scripts can start it. If you want to use a different client, Caldecott will display the connection information and credentials you will need to connect to the service. The following table shows the client programs Caldecott can start for each service.
 
 <table class="std">
 	<tr>
@@ -56,16 +61,19 @@ $ gem update vmc
 	</tr>
 </table>
 
-## Setting up Caldecott
+## Installing Caldecott
 
 Install the Caldecott Ruby gem with this command:
 
 ```bash
-$ gem install caldecott
+Windows
+> gem install caldecott --no-rdoc --no-ri
 ```
 
-Note
-: The Caldecott gem currently requires the eventmachine gem, which requires native compilation. We are working to simplify this.
+```bash
+Linux & Mac
+$ sudo gem install caldecott --no-rdoc --no-ri
+```
 
 ## Using Caldecott
 
@@ -74,7 +82,6 @@ Note
 ```bash
 $ vmc target api.cloudfoundry.com
 $ vmc login
-
 ```
 
 * Use this command to view the existing services:
@@ -83,72 +90,62 @@ $ vmc login
 $ vmc services
 ```
 
-	The command output has two parts. The first, System Services, reports services that can be provisioned in the Cloud Foundry instance. You are interested in the second section, Provisioned Services, which lists your existing services.
+The command output has two parts. The first, *System Services*, reports services that can be provisioned in the Cloud Foundry instance. You are interested in the second section, *Provisioned Services*, which lists your existing services.
 
-		=========== Provisioned Services ============
+    =========== Provisioned Services ============
 
-	    +------------------+------------+
-	    | Name             | Service    |
-	    +------------------+------------+
-	    | mongodb-12345    | mongodb    |
-	    | mysql-12345      | mysql      |
-	    | postgresql-12345 | postgresql |
-	    | redis-12345      | redis      |
-	    +------------------+------------+
+	  +------------------+------------+
+	  | Name             | Service    |
+	  +------------------+------------+
+	  | mongodb-12345    | mongodb    |
+	  | mysql-12345      | mysql      |
+	  | postgresql-12345 | postgresql |
+	  | redis-12345      | redis      |
+	  +------------------+------------+
 
 * Create a tunnel to the service. For example, to connect to the MySQL service:
 
 ```bash
 $ vmc tunnel mysql-12345
-	Trying to deploy Application: 'caldecott'.
-	Create a password:
-
 ```
 
-	The first time you create a tunnel, vmc uploads the Caldecott application to your Cloud Foundry instance and prompts you to set a password to protect it. You will need to provide that password each time you create a tunnel to that Cloud Foundry instance in the future.
-
-	After you provide the password, the Caldecott application is uploaded:
+* First, the Caldecott application is deployed:
 
 ```bash
-Uploading Application:
-      Checking for available resources: OK
-      Processing resources: OK
-      Packing application: OK
-      Uploading (1K): OK
-    Push Status: OK
-    Binding Service [mysql-12345]: OK
-    Staging Application: OK
-    Starting Application: OK
-
+Deploying tunnel application 'caldecott'.
+ Uploading Application:
+   Checking for available resources: OK
+   Packing application: OK
+   Uploading (1K): OK
+ Push Status: OK
+ Binding Service [mysql-12345]: OK
+ Staging Application 'caldecott': OK
+ Starting Application 'caldecott': OK
 ```
-
-	See [More About the Tunnel Command](#more-about-the-tunnel-command) for a complete description of the `vmc tunnel` command options.
 
 * Caldecott creates the tunnel and prompts you to start a client. Here is an example of a session using `mysql` to access data on Cloud Foundry:
 
 ```bash
+Getting tunnel connection info: OK
 
-	Getting tunnel connection info: OK
+Service connection info:
+  username : um4rwWyhwa07B
+  password : pBiBlqjINB6cm
+  name     : dd368741dbc1945cfb62315565efcf1b5
 
-	Service connection info:
-	  username : um4rwWyhwa07B
-	  password : pBiBlqjINB6cm
-	  name     : dd368741dbc1945cfb62315565efcf1b5
+Starting tunnel to mysql-12345 on port 10000.
+1: none
+2: mysql
+Which client would you like to start?: 2
+Launching 'mysql --protocol=TCP --host=localhost --port=10000
+--user=um4rwWyhwa07B --password=pBiBlqjINB6cm dd368741dbc1945cfb62315565efcf1b5'
 
-	Starting tunnel to mysql-24e9c on port 10000.
-	1: none
-	2: mysql
-	Which client would you like to start?: 2
-	Launching 'mysql --protocol=TCP --host=localhost --port=10000
-	--user=um4rwWyhwa07B --password=pBiBlqjINB6cmdd368741dbc1945cfb62315565efcf1b5'
-
-	Welcome to the MySQL monitor.  Commands end with ; or \g.
-	Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-		.
-		.
-		.
-	mysql>
-
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+	.
+	.
+	.
+mysql>
 ```
 
 * When you exit the client, the tunnel is disconnected.
