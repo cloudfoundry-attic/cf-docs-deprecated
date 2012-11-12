@@ -51,8 +51,24 @@ app.listen(3000);
 
 ```
 
+If your application is using a server file other than server.js, app.js, index.js, main.js and application.js, then a package.json file is required.
+If you have two of the files listed above inside the root of your package, then you would need package.json to specify which file with which to start.
 
-Create a `package.json` file with the following contents:
+By default, here is the order of files loaded as your server starts:
+
+1. application.js
+
+2. main.js
+
+3. index.js
+
+4. app.js
+
+5. server.js
+
+For example, if main.js and app.js are in your root package, main.js will be read by default, unless you specify otherwise in the package.json.
+
+Create a `package.json` file with the following content:
 
 ```javascript
 {
@@ -64,6 +80,10 @@ Create a `package.json` file with the following contents:
 }
 
 ```
+
+If there is a `server.js` file in the root of your package, npm will use the default the `start` command of `node server.js`.
+If your application is using app.js as its starting point, you don't need package.json.
+
 
 ### Deploy the App
 
@@ -136,3 +156,9 @@ $ vmc runtimes
 
 +	[Using Cloud Foundry MongoDB services](/services/mongodb/nodejs-mongodb.html) from Node.js applications
 +	[Using Cloud Foundry RabbitMQ services](/services/rabbitmq/nodejs-rabbitmq.html) from Node.js
+
+## Read More
+
++ [Cloud Foundry Supports Node.js Modules with NPM](http://blog.cloudfoundry.com/2012/05/24/cloud-foundry-supports-node-js-modules-with-npm/)
++ [New Runtime Module for Node.js Applications](http://blog.cloudfoundry.com/2012/08/21/new-runtime-module-for-node-js-applications/)
++ [Cloud Foundry Now Supports Auto-Reconfiguration for Node.js Applications](http://blog.cloudfoundry.com/2012/08/14/cloud-foundry-now-supports-auto-reconfiguration-for-node-js-applications/)
