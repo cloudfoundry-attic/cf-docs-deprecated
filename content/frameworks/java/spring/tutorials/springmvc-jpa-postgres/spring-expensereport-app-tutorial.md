@@ -19,12 +19,10 @@ Before you begin this tutorial, you should:
 
 1.  Be familiar with STS (Spring Tool Suite) or Eclipse.
 
-### Setup: Exercise2-Starter
+### Setup:Exercise2-Starter
 Import the source code from the downloaded folder Exercise2-Starter as follows. Open STS, Select **File > Import > Maven > Existing Maven Projects** and select Exercise2-Starter folder.
-
-  ![maven-import-step1](/images/spring_tutorial/import-maven-project-step1.png)
-
-  ![maven-import-step2](/images/spring_tutorial/import-maven-project-step2.png)
+![maven-import-step1](/images/spring_tutorial/import-maven-project-step1.png)
+![maven-import-step2](/images/spring_tutorial/import-maven-project-step2.png)
 
 In the Expense Reporting App, there are two roles:
 
@@ -49,9 +47,9 @@ The below figure shows the runtime interaction of the application.
 
 1.  User logs in to the Expense Reporting system.
 
-2.  User creates, deletes, or updates an expense.
+2.  User creates or deletes or updates an expense.
 
-3.  The expense goes to the ExpenseService where JPA will persist, delete, or update its state in the database.
+3.  The expense goes to the ExpenseSevice where JPA will persist or delete or update its state in the database.
 
 *  The class diagram of the application is :
 
@@ -66,7 +64,7 @@ Before creating Entities, replace pom.xml with [this](/frameworks/java/spring/tu
 
 ## **Step 1:** Adding Entities
 An entity is a lightweight persistence domain object. Typically, an entity represents a table in a relational database, and each entity instance corresponds to a row in that table. The persistent state of an entity is represented through either persistent fields or persistent properties. These fields or properties use object-relational mapping annotations to map the entities and entity relationships to the relational data in the underlying data store.
-The application requires the following entities to be added:
+The application requires the following entities to be added.
 
 + Expense
 + User
@@ -74,7 +72,7 @@ The application requires the following entities to be added:
 + Attachment
 + State
 
-These classes are POJOs with getters and setters for their properties, and they're annotated with `@Entity`. By default, JPA takes a class name as a table name. If you want to store it under a different table name, provide the `@Table` annotation with the name property. Create a package for entities as `com.springsource.html5expense.model` and add all entities to it.
+These classes are POJOs with getters and setters for its properties and annotated with `@Entity`. By default, JPA takes a class name as a table name. If you want to store it under a different table name, then provide the `@Table` annotation with the name property. Create a package for entities as `com.springsource.html5expense.model` and add all entities to it.
 ```java
 @Entity
 @Table(name = "EXPENSE")
@@ -91,10 +89,10 @@ public class Expense implements Serializable{
 }
 ```
 
-The `@Id` annotation specifies the primary key of the entity.  The `@GeneratedValue` annotation tells JPA that the value in that field should map to the primary key and that the primary key should use an auto-incrementing value strategy. The `@OneToOne` annotation defines a single-valued association
+The `@Id` annotation specifies the primary key of the entity and the `@GeneratedValue` annotation tells JPA that the value in that field should map to the primary key and that the primary key should use an auto-incrementing value strategy. The `@OneToOne` annotation defines a single-valued association
  to another entity that has one-to-one multiplicity.
 
-You can get the Entity classes [here](/frameworks/java/spring/tutorials/springmvc-jpa-postgres/code/entities.html).
+You can get the Entity classes [here](/frameworks/java/spring/tutorials/springmvc-jpa-postgres/code/entities.html)
 
 ## **Step 2:** Adding Services
 `@Service` specifies a special component that provides the business services through interface.
@@ -123,7 +121,7 @@ These are the business methods to:
 + Update an expense's status.
 
 * Create a package for service interfaces as `com.springsource.html5expense.service` and add `AttachmentService`, `ExpenseService`, `ExpenseTypeService`, `UserService` and `RoleService` interfaces which define the business methods.
-You can get the service interfaces [here](/frameworks/java/spring/tutorials/springmvc-jpa-postgres/code/services.html).
+You can get the service interfaces [here](/frameworks/java/spring/tutorials/springmvc-jpa-postgres/code/services.html)
 
 * Create a package `com.springsource.html5expense.serviceImpl` for service implementation and add the following classes
  `JpaAttachmentServiceImpl`, `JpaExpenseServiceImpl`, `JpaExpenseTypeServiceImpl`,
@@ -150,61 +148,17 @@ public List<Expense> getExpensesByUser(User user){
     return query.getResultList();
 }
 ```
-You can get the service implementation classes [here](/frameworks/java/spring/tutorials/springmvc-jpa-postgres/code/services-implementation.html).
+You can get the service implementation classes [here](/frameworks/java/spring/tutorials/springmvc-jpa-postgres/code/services-implementation.html)
 
 Once you have added service implementation classes, ensure you aren't getting errors.
 
 ## **Step 3:** Adding the controller
-The Controller is responsible for mapping requests. The `@RequestMapping` annotation is used to map requests onto specific handler methods. The following table explains the URLs we used in the ExpenseReport application.
-
-<table class="spring-tutorial-index-table">
-    <thead>
-            <tr>
-                <th>No</th>
-                <th>HTTP Method</th>
-                <th>URL Pattern</th>
-                <th>Purpose</th>
-            </tr>
-    </thead>
-    <tbody>
-            <tr>
-                <td>1</td>
-                <td>GET</td>
-                <td>/expensereports</td>
-                <td>Get all the expensereports for the user</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>POST</td>
-                <td>/expensereports</td>
-                <td>Create a new expensereport</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>GET</td>
-                <td>/expensereports/{id}</td>
-                <td>Return an expensereport whose expenseid is passed</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>POST</td>
-                <td>/expensereports/{id}</td>
-                <td>Update an expensereport whose expenseid is passed</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>DELETE</td>
-                <td>/expensereports/{id}</td>
-                <td>Delete an expensereport whose expenseid is passed</td>
-            </tr>
-    </tbody>
-</table>
-
-Create a package for Controllers as `com.springsource.html5expense.controller` and add the following class: `ExpenseController`.
-To support uploading attachments of expenses, we have added a createNewExpenseReport function in ExpenseController which calls for a file upload mechanism. To automatically detect the presence of the file upload, simply add a `@RequestParam` argument of type MultipartFile.
+The Controller is responsible for mapping requests. The `@RequestMapping` annotation is used to map requests onto specific handler methods. Create a package for Controllers as `com.springsource.html5expense.controller` and add the following class: `ExpenseController`.
+To support uploading attachments of expenses, we have added a createNewExpenseReport function in ExpenseController which calls for a file upload mechanism. To automatically detect the presence of the fileupload simply add a `@RequestParam` argument of type MultipartFile.
 ```java
-@RequestMapping(value="/expensereports",method = RequestMethod.POST)
-public String createNewExpenseReport(@RequestParam("file") MultipartFile file,HttpServletRequest request){
+@RequestMapping(value="/createNewExpenseReport",method = RequestMethod.POST)
+public String createNewExpenseReport(@RequestParam("file") MultipartFile file,
+     HttpServletRequest request){
     String description = request.getParameter("description");
     String expenseTypeVal =request.getParameter("expenseTypeId");
     ExpenseType expenseType = expenseTypeService.getExpenseTypeById(new Long(expenseTypeVal));
@@ -215,61 +169,46 @@ public String createNewExpenseReport(@RequestParam("file") MultipartFile file,Ht
     String fileName = "";
     String contentType = "";
     if(file!=null){
-       try{
-            fileName =file.getOriginalFilename();
-            contentType = file.getContentType();
-            Attachment attachment = new Attachment(fileName, contentType,  file.getBytes());
-            attachmentService.save(attachment);
-            Long id = expenseService.createExpense(description,expenseType,expenseDate,
-            amountVal,user,attachment);
-        }catch(Exception e){
-         }
+    try{
+        fileName =file.getOriginalFilename();
+        contentType = file.getContentType();
+        Attachment attachment = new Attachment(fileName, contentType,  file.getBytes());
+        attachmentService.save(attachment);
+        Long id = expenseService.createExpense(description,expenseType,expenseDate,
+        amountVal,user,attachment);
+       }catch(Exception e){
+      }
     }
-    return "redirect:/expensereports";
+    return "redirect:/";
 }
 ```
-In the method below, we have used `ModelMap`. It is a place where you can store key/value pairs to be used by the view in rendering a response.  It is through this context that you request specific information in the response.
+In the method below we have used `ModelMap`. It is a place where you can store key/value pairs to be used by the view in rendering a response.  It is through this context that you request specific information in the response.
+ In our controller, we have gathered some data about the pending expenses and made them available in the ModelMap using the autowired ExpenseService reference. We can also use HTTP request to store key/values pair of data. To use HttpServletRequest, simply add another argument of type HttpServletRequest.
 
 ```java
-    @RequestMapping(value="/expensereports", method = RequestMethod.GET)
-    public String getAllExpenseReports(ModelMap model, Principal principal,HttpServletRequest request ) {
-         String name = principal.getName();
-        model.addAttribute("username", name);
-        User user = getUserService().getUserByUserName(name);
-        List<Expense> pendingExpenseList = getExpenseService().getExpensesByUser(user);
-        model.addAttribute("pendingExpenseList",pendingExpenseList);
-        request.getSession().setAttribute("user", user);
-        return "myexpense";
-    }
+@RequestMapping(value="/", method = RequestMethod.GET)
+public String printWelcome(ModelMap model, Principal principal,HttpServletRequest request ) {
+    String name = principal.getName();
+    model.addAttribute("username", name);
+    User user = getUserService().getUserByUserName(name);
+    List<Expense> pendingExpenseList = getExpenseService().getExpensesByUser(user);
+    model.addAttribute("pendingExpenseList",pendingExpenseList);
+    request.getSession().setAttribute("user", user);
+    return "myexpense";
+}
 ```
- In our controller, we have gathered some data about the pending expenses and made them available in the ModelMap using the autowired ExpenseService reference. We can also use HTTP request to store key/value pairs of data. To use HttpServletRequest, simply add another argument of type HttpServletRequest.
-
- Since HTML only supports two methods (POST and GET), to use the DELETE and PUT methods, add `HiddenHttpMethodFilter` in web.xml. Now use the Spring form tag with that method as `delete`. The `HiddenHttpMethodFilter` will create a `_method` parameter that will be converted into the corresponding HTTP method request.
-
-```xml
-<filter>
-    <filter-name>hiddenHttpMethodFilter</filter-name>
-    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
-</filter>
-<filter-mapping>
-    <filter-name>hiddenHttpMethodFilter</filter-name>
-    <url-pattern>/</url-pattern>
-    <servlet-name>appServlet</servlet-name>
-</filter-mapping>
-```
-
- You can get the controller class code [here](/frameworks/java/spring/tutorials/springmvc-jpa-postgres/code/controllers.html).
+You can get the controller classes code [here](/frameworks/java/spring/tutorials/springmvc-jpa-postgres/code/controllers.html)
 
 
 ## **Step 4:** Configuring the ExpenseReport application
 The application needs to be configured in order to make it ready to deploy. Create a new package `com.springsource.html5expense.config` and add the following classes: `ComponentConfig`, `WebConfig`. The ComponentConfig class has been marked with `@Configuration` annotation to configure beans. This is an alternative to XML configuration for bean definition. We can pass this class as an argument to Spring container as a source for bean creation.
  To declare a bean, simply annotate a method with the `@Bean` annotation in your config class. This method is used to register a bean definition within an ApplicationContext of the type specified as the method's return value. By default, the bean name will be the same as the method name.
 
-In order to work with data from a PostgreSQL database, we need to obtain a connection to the database in order to define the dataSource bean. If your PostgreSQL server requires authentication, put the username and password of your PostgreSQL server in the dataSource bean. Otherwise, don't set these two properties. We have to set the `org.hibernate.cfg.Environment.HBM2DDL_AUTO` JPA property to automatically create tables for our Entities.
+In order to work with data from a PostgreSQL database, we need to obtain a connection to the database in order to define the dataSource bean. If your PostgreSQL serevr requires authentication, put the username and password of your PostgreSQL server in dataSource bean. Otherwise, don't set these two properties. We have to set the `org.hibernate.cfg.Environment.HBM2DDL_AUTO` JPA property, to automatically create tables for our Entities.
 
 *Note:*
-: While deploying to Cloud Foundry, do not keep database properties such as username, password, database name, host name in a separate file. Doing so will cause
- the auto-reconfiguration mechanism to not work.
+: Don't keep database properties such as username, password, database name, host name into separate file. While deploying to Cloud Foundry
+    the auto-reconfiguration mechanism will not work.
 ```java
 @Configuration
 @EnableTransactionManagement
@@ -277,28 +216,28 @@ In order to work with data from a PostgreSQL database, we need to obtain a conne
 Expense.class})
 public class ComponentConfig {
 
-  @Bean
-  public DataSource dataSource()  {
+@Bean
+public DataSource dataSource()  {
     SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
     dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
     dataSource.setDriverClass(org.postgresql.Driver.class);
     dataSource.setUsername("postgres");
     dataSource.setPassword("postgres");
     return dataSource;
-  }
+}
 
-  @Bean
-  public LocalContainerEntityManagerFactoryBean entityManagerFactory(){
-    LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
+@Bean
+public LocalContainerEntityManagerFactoryBean entityManagerFactory(){
+LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
     emfb.setJpaVendorAdapter( jpaAdapter());
     emfb.setDataSource(dataSource());
     emfb.setJpaPropertyMap(createPropertyMap());
     emfb.setJpaDialect(new HibernateJpaDialect());
     emfb.setPackagesToScan(new String[]{Expense.class.getPackage().getName()});
     return emfb;
-  }
+}
 
-  public Map<String,String> createPropertyMap(){
+public Map<String,String> createPropertyMap(){
     Map<String,String> map= new HashedMap();
     map.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, "create");
     map.put(org.hibernate.cfg.Environment.HBM2DDL_IMPORT_FILES, "import.sql");
@@ -307,7 +246,7 @@ public class ComponentConfig {
     map.put("hibernate.c3p0.timeout", "360000");
     map.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
     return map;
-  }
+    }
 }
 
 ```
@@ -321,11 +260,11 @@ public MultipartResolver multipartResolver(){
     return multipartResolver;
 }
 ```
-Next, configure the components using `@ComponentScan`. It will Configure component scanning directives for use with `@Configuration` classes and provides parallel support with Spring XML's `<context:component-scan>` element, passing a basePackageClasses() or basePackages() value.
+Next, configure the components using `@ComponentScan`. It will Configure component scanning directives for use with `@Configuration` classes and provides parallel support with Spring XML's `<context:component-scan>` element,passing a basePackageClasses() or basePackages() value.
 
   The `@EnableTransactionManagement` annotation is responsible for Spring's annotation-driven transaction management capability, similar to the support found in Spring's <tx:*> XML namespace.
 
-* Create a new file `import.sql` in `src/main/resources` and add these SQL statements:
+* Create a new file `import.sql` in `src/main/resources` and add sql statements.
 
 ```sql
 insert into role(roleid,rolename) values(nextval('hibernate_sequence'),'ROLE_USER');
@@ -345,7 +284,7 @@ map.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, "create");
 map.put(org.hibernate.cfg.Environment.HBM2DDL_IMPORT_FILES, "import.sql");
 ```
 
-* To load the `ComponentConfig` class as part of contextConfiglocation, add contextClass as `AnnotationConfigWebApplicationContext` and `contextConfigLocation` as
+* To load `ComponentConfig` class as part of contextConfiglocation, add contextClass as `AnnotationConfigWebApplicationContext` and `contextConfigLocation` as
 `com.springsource.html5expense.config`.
 ```xml
 <context-param>
@@ -375,7 +314,7 @@ public InternalResourceViewResolver internalResourceViewResolver() {
 }
 ```
 
-The application requires the following files to be added, `login.jsp`, `expenseapproval.jsp`, `myexpense.jsp`, `newexpense.jsp`, `signup.jsp` in the `webapp/WEB-INF/view` folder. You can download the jsp files [here](/frameworks/java/spring/tutorials/springmvc-jpa-postgres/code/views.html).
+The application requires the following files to be added, `login.jsp`, `expenseapproval.jsp`, `myexpense.jsp`, `newexpense.jsp`, `signup.jsp` in `webapp/WEB-INF/view` folder. You can download the jsp files [here](/frameworks/java/spring/tutorials/springmvc-jpa-postgres/code/views.html).
 
 ## Check Point
 1. Let's build the app and test it locally. Right click on the app and select **Run As -> Maven clean**.
@@ -394,7 +333,7 @@ The application requires the following files to be added, `login.jsp`, `expensea
 
     ![maven_run.png](/images/spring_tutorial/maven_run.png)
 
-5. Once the server starts, open your browser and enter the application url : `http://localhost:8080/html5expense/expensereports/new`. A form to create a new expense will open.
+5. Once the server starts, open your browser and enter the application url : `http://localhost:8080/html5expense/createNewExpense`. A form to create a new expense will open.
 
     ![create new expense](/images/spring_tutorial/create_new_expense.png)
 

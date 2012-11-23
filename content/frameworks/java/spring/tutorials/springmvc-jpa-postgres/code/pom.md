@@ -157,10 +157,10 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 <!-- POSTGRE SQL -->
 
 <dependency>
-    <groupId>org.hibernate</groupId>
-    <artifactId>hibernate-entitymanager</artifactId>
-    <version>4.0.0.Final</version>
-</dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.0.0.Final</version>
+        </dependency>
 <dependency>
     <groupId>postgresql</groupId>
     <artifactId>postgresql</artifactId>

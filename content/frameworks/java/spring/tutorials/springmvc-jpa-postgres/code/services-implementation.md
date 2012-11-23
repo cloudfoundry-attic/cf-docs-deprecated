@@ -38,7 +38,7 @@ public class JpaAttachmentServiceImpl implements AttachmentService{
 
 	@Transactional
 	public List<Attachment> getAttachmentByExpenseId(Long expenseId){
-		Query query = entityManager.createQuery("select a from Attachment a where "+
+		Query query = entityManager.createQuery("select a from Attachment a where"+
 				 "a.expense.id =:expenseId");
 				query.setParameter("expenseId", expenseId);
 
@@ -133,7 +133,7 @@ public class JpaExpenseServiceImpl implements ExpenseService {
 	@Override
 	@Transactional
 	public List<Expense> getExpensesByUser(User user){
-		Query query = getEntityManager().createQuery("select e from Expense e where "+
+		Query query = getEntityManager().createQuery("select e from Expense e where"+
 			"e.user.userId =:userId ORDER BY e.expenseDate DESC",Expense.class);
 				query.setParameter("userId", user.getUserId());
 				return query.getResultList();
@@ -146,7 +146,7 @@ public class JpaExpenseServiceImpl implements ExpenseService {
 		state.add(State.NEW);
 		state.add(State.OPEN);
 		state.add(State.IN_REVIEW);
-		Query query = entityManager.createQuery("select e from Expense e where "+
+		Query query = entityManager.createQuery("select e from Expense e where"+
 				"e.state IN (:state) ORDER BY e.expenseDate DESC",Expense.class);
 				query.setParameter("state", state);
 				return query.getResultList();
@@ -158,7 +158,7 @@ public class JpaExpenseServiceImpl implements ExpenseService {
 		List<Enum> state = new ArrayList<Enum>();
 		state.add(State.REJECTED);
 		state.add(State.APPROVED);
-		Query query = entityManager.createQuery("select e from Expense e where "+
+		Query query = entityManager.createQuery("select e from Expense e where"+
 				 "e.state IN (:state) e.expenseDate DESC",Expense.class);
 				query.setParameter("state", state);
 				return query.getResultList();
@@ -250,7 +250,7 @@ public class JpaRoleServiceImpl implements RoleService{
 	}
 	@Transactional
 	public Role getRoleByName(String name){
-		Query query = getEntityManager().createQuery("select r from Role r where "+
+		Query query = getEntityManager().createQuery("select r from Role r where"+
 				 "roleName =:roleName",Role.class);
 				query.setParameter("roleName", name);
 		return (query.getResultList()!=null && query.getResultList().size()>0)?
@@ -289,7 +289,7 @@ public class JpaUserServiceImpl implements UserService{
 	@Override
 	@Transactional
 	public User getUserByUserName(String userName){
-		Query query = getEntityManager().createQuery("from User u where "+
+		Query query = getEntityManager().createQuery("from User u where"+
                            "u.userName =:username");
                             query.setParameter("username",userName);
 	    return  (query.getResultList()!=null && query.getResultList().size()>0)?

@@ -23,7 +23,7 @@ public interface ExpenseService {
 	public Long createExpense(String description,ExpenseType expenseType,Date expenseDate,
                Double amount,User user,Attachment attachment);
 	public Expense getExpense(Long expenseId);
-	public List<Expense> getAllExpenses();
+	public List getAllExpenses();
 	public List<Expense> getExpensesByUser(User user);
 	public List<Expense> getPendingExpensesList();
 	public List<Expense> getApprovedAndRejectedExpensesList();

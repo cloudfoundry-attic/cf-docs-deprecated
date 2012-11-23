@@ -59,7 +59,7 @@ $ vmc services
 
 ```
 
-**Step 3** To get the remote service connection details, enter **vmc tunnel data service name**
+**Step 3** To get the remote service connection details, enter **vmc tunnel <data service name>**
 
 ```bash
 $ vmc tunnel postgres

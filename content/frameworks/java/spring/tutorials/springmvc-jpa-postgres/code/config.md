@@ -39,24 +39,25 @@ public class ComponentConfig {
 
    @Bean
     public DataSource dataSource()  {
-      SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-      dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
-      dataSource.setDriverClass(org.postgresql.Driver.class);
-      dataSource.setUsername("postgres");
-      dataSource.setPassword("postgres");
-      return dataSource;
+    SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
+    dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
+    dataSource.setDriverClass(org.postgresql.Driver.class);
+    dataSource.setUsername("postgres");
+    dataSource.setPassword("postgres");
+    return dataSource;
   }
 
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-      LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
-      emfb.setJpaVendorAdapter( jpaAdapter());
-      emfb.setDataSource(dataSource());
-      emfb.setJpaPropertyMap(createPropertyMap());
-      emfb.setJpaDialect(new HibernateJpaDialect());
-      emfb.setPackagesToScan(new String[]{Expense.class.getPackage().getName()});
-      return emfb;
-    }
+
+@Bean
+public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
+    emfb.setJpaVendorAdapter( jpaAdapter());
+    emfb.setDataSource(dataSource());
+    emfb.setJpaPropertyMap(createPropertyMap());
+    emfb.setJpaDialect(new HibernateJpaDialect());
+    emfb.setPackagesToScan(new String[]{Expense.class.getPackage().getName()});
+    return emfb;
+}
 
 public Map<String,String> createPropertyMap()
 {
@@ -134,37 +135,46 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 @Import(ComponentConfig.class)
 @EnableWebMvc
-public class WebConfig extends WebMvcConfigurerAdapter {
+public class WebConfig extends WebMvcConfigurerAdapter
+ {
  @Override
  public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
 
  }
 
- private boolean debug;
+private boolean debug;
 
- private int maxUploadSizeInMb = 20 * 1024 * 1024;
+private int maxUploadSizeInMb = 20 * 1024 * 1024;
 
- @Override
- public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-  configurer.enable();
- }
+@Bean(name = "multipartResolver")
+public CommonsMultipartResolver commonsMultipartResolver() {
+    CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+    commonsMultipartResolver.setMaxUploadSize( maxUploadSizeInMb  );
+    return commonsMultipartResolver;
+}
 
- @Bean
- public MessageSource messageSource() {
+@Override
+public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+configurer.enable();
+}
+
+@Bean
+public MessageSource messageSource() {
     String[] baseNames = "messages,errors".split(",");
     ResourceBundleMessageSource resourceBundleMessageSource = new ResourceBundleMessageSource();
     resourceBundleMessageSource.setBasenames(baseNames);
     return resourceBundleMessageSource;
- }
+}
 
- @Bean
- public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
+@Bean
+public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
     return new PropertySourcesPlaceholderConfigurer();
- }
+}
 
- @Override
- public void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> returnValueHandlers) {
+@Override
+public void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> returnValueHandlers) {
 
- }
+}
+
 }
 ```

@@ -17,7 +17,7 @@ Before you begin this tutorial, you should be done with:
 
 1. Getting the Cloud Foundry plugin for STS installed.
 2. Installing VMC.
-3. The previous exercise.
+3. Assuming previous exercise get completed.
 
 ## Subtopics
 
@@ -25,15 +25,15 @@ Before you begin this tutorial, you should be done with:
 + [Deploy Spring MVC App with PostgreSQL to Cloud Foundry using VMC](#deploy-spring-mvc-app-with-postgresql-to-cloud-foundry-using-vmc)
 
 ## Deploy Spring MVC App with PostgreSQL to Cloud Foundry using STS
-1. Go to the Servers view and right click to add a New Server. Now you can see Cloud Foundry under VMware. Select Cloud Foundry and then click next. It will ask for your account information, at which point you can choose **VMware Cloud Foundry - http://api.cloudfoundry.com** as the URL.
+1. Go to Servers view and right click to add a New Server. Now you can see Cloud Foundry under VMware. Select Cloud Foundry and then click next. It will ask your account information, at which point you can choose **VMware Cloud Foundry - http://api.cloudfoundry.com** as the URL.
 
     ![spring-expensereport-login.png](/images/spring_tutorial/cloud_foundry.png)
 
-2. Once you have entered your Cloud Foundry account details, Click **validate** to make sure you have entered valid credentials.
+2. Once you have entered your Cloud Foundry account details, **Click validate** to make sure you have entered valid credentials.
 
     ![cloud foundry account information.png](/images/spring_tutorial/cloud_foundry_account.png)
 
-3. Clicking **Next** will take you to **Add and Remove**. Now you can select your Spring application. Once you have added your application, it will open a new window with the application name and type. This is where you can enter your application's name.
+3. Clicking **Next** will take you to **Add and Remove**. Now you can select your spring application. Once you have added your application, it will open a new window with the application name and type. This is where you can enter your application's name.
 
     ![spring-expensereport-login.png](/images/spring_tutorial/cloud_foundry_project_deploy.png)
 
@@ -49,14 +49,14 @@ Before you begin this tutorial, you should be done with:
 
     ![create_new_service.png](/images/spring_tutorial/create_new_service.png)
 
-6. Now you can see your services in the Services selection window. Select the PostgreSQL service and click Finish. Now the server starts to deploy our application to Cloud Foundry.
+6. Now you can see your services in services selection window. Select PostgreSQL service and click finish. Now server starts to deploy our application to Cloud Foundry.
   ![spring-expensereport-login.png](/images/spring_tutorial/service_selection_1.png)
 
 ## Check Point
 1. Upon completion of deployment, we can go and visit the actual app at the URL `[app-name].cloudfoundry.com]`.
   ![deployed_application_in_cloud_foundry.png](/images/spring_tutorial/deployed_application_in_cloud_foundry.png)
 
-* To get information about Tunneling to services on Cloud Foundry, please refer [here](/frameworks/java/spring/tutorials/springmvc-jpa-postgres/postgresql-dataservice-tunnel-on-cloudfoundry.html).
+* To get the information about Tunneling services on Cloud Foundry please refer [here](/frameworks/java/spring/tutorials/springmvc-jpa-postgres/postgresql-dataservice-tunnel-on-cloudfoundry.html).
 
 ## Deploy Spring MVC App with PostgreSQL to Cloud Foundry using VMC
 Deployment to Cloud Foundry using VMC can be done in two simple steps:
@@ -67,7 +67,7 @@ Deployment to Cloud Foundry using VMC can be done in two simple steps:
 
 Commands below show the exact commands and output when the app is deployed:
 
-**Step 1**  Go to your project work space and enter **mvn clean install** to create the war. The war file will be generated in the `target` folder.
+**Step 1**  Go to your project work space and give **mvn war:war** to create war.
 
 ``` bash
 $ mvn war:war
@@ -93,7 +93,7 @@ $ mvn war:war
 [INFO] Final Memory: 6M/124M
 [INFO] ------------------------------------------------------------------------
 ```
-**Step 2**  Now point `vmc target` to `http://api.cloudfoundry.com` and login to Cloud Foundry using your credentials. Once successfully logged into Cloud Foundry, enter **vmc push**, enter `N` when it asks whether to deploy from the current directory, and enter the project's target folder path in deployment path.
+**Step 2**  Now point vmc target to `http://api.cloudfoundry.com` and login to Cloud Foundry using your credentials.
 
 ```bash
 $ vmc target http://api.cloudfoundry.com
@@ -106,8 +106,8 @@ Password: **********
 Successfully logged into [http://api.cloudfoundry.com]
 
 $ vmc push
-Would you like to deploy from the current directory? [Yn]: N
-Deployment path:/home/user/expensereport/target
+Would you like to deploy from the current directory? [Yn]: /home/senthils/.rvm/gems/ruby-1.9.2-head/gems/interact-0.4.8/lib/interact/interactive.rb:569: warning: Insecure world writable dir /home/senthils/Downloads/springsource in PATH, mode 040777
+
 Application Name: html5expense
 Detected a Java SpringSource Spring Application, is this correct? [Yn]: Y
 Application Deployed URL [html5expense.cloudfoundry.com]:
@@ -142,4 +142,4 @@ Starting Application 'html5expense': OK
   ![deployed_application_in_cloud_foundry.png](/images/spring_tutorial/deployed_application_in_cloud_foundry.png)
 
 
-* To get information about Tunneling into services on Cloud Foundry, please refer [here](/frameworks/java/spring/tutorials/springmvc-jpa-postgres/postgresql-dataservice-tunnel-on-cloudfoundry.html).
+* To get the information about Tunneling services on Cloud Foundry please refer [here](/frameworks/java/spring/tutorials/springmvc-jpa-postgres/postgresql-dataservice-tunnel-on-cloudfoundry.html).
