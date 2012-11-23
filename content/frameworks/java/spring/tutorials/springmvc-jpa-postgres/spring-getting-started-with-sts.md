@@ -3,21 +3,19 @@ title: Spring MVC using JPA with PostgreSQL
 description: Spring MVC using JPA with PostgreSQL
 tags:
     - spring
-    - STS
+    - sts
 ---
 ## Introduction
 This is a guide for Java developers using the Spring framework and PostgreSQL database to build and deploy their apps on Cloud Foundry. It shows you how to set up and successfully deploy Spring Java PostgreSQL applications to Cloud Foundry.
 
 ## Prerequisites
-Before you get started, you need the following:
+Before you get started, you'll need the following:
 
 +  A [Cloud Foundry account](http://cloudfoundry.com/signup)
 
 +  The [vmc](/tools/vmc/installing-vmc.html) Cloud Foundry command line tool
 
 +  A [Spring Tool Suite™ (STS)](http://www.springsource.org/spring-tool-suite-download) installation
-
-+  A [Cloud Foundry plugin for STS](/tools/STS/configuring-STS.html).
 
 +  A [PostgreSQL Database](http://www.postgresql.org/download/) installation.
 

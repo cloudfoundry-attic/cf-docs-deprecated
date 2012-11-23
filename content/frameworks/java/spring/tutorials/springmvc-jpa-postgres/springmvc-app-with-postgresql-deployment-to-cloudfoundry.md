@@ -19,6 +19,7 @@ Before you begin this tutorial, you should be done with:
 2. Installing VMC.
 3. The previous exercise.
 
+
 ## Subtopics
 
 + [Deploy Spring MVC App with PostgreSQL to Cloud Foundry using STS](#deploy-spring-mvc-app-with-postgresql-to-cloud-foundry-using-sts)
@@ -29,7 +30,7 @@ Before you begin this tutorial, you should be done with:
 
     ![spring-expensereport-login.png](/images/spring_tutorial/cloud_foundry.png)
 
-2. Once you have entered your Cloud Foundry account details, Click **validate** to make sure you have entered valid credentials.
+2. Once you have entered your Cloud Foundry account details, click **Validate Account** to make sure you have entered valid credentials.
 
     ![cloud foundry account information.png](/images/spring_tutorial/cloud_foundry_account.png)
 
@@ -49,11 +50,11 @@ Before you begin this tutorial, you should be done with:
 
     ![create_new_service.png](/images/spring_tutorial/create_new_service.png)
 
-6. Now you can see your services in the Services selection window. Select the PostgreSQL service and click Finish. Now the server starts to deploy our application to Cloud Foundry.
+6. Now you can see your services in the services selection window. Select the PostgreSQL service and click finish. Now the server will start to deploy your application to Cloud Foundry.
   ![spring-expensereport-login.png](/images/spring_tutorial/service_selection_1.png)
 
 ## Check Point
-1. Upon completion of deployment, we can go and visit the actual app at the URL `[app-name].cloudfoundry.com]`.
+1. Upon completion of deployment, we can go and visit the actual app at the URL `[app-name].cloudfoundry.com`.
   ![deployed_application_in_cloud_foundry.png](/images/spring_tutorial/deployed_application_in_cloud_foundry.png)
 
 * To get information about Tunneling to services on Cloud Foundry, please refer [here](/frameworks/java/spring/tutorials/springmvc-jpa-postgres/postgresql-dataservice-tunnel-on-cloudfoundry.html).
@@ -67,7 +68,7 @@ Deployment to Cloud Foundry using VMC can be done in two simple steps:
 
 Commands below show the exact commands and output when the app is deployed:
 
-**Step 1**  Go to your project work space and enter **mvn clean install** to create the war. The war file will be generated in the `target` folder.
+**Step 1**  Go to your project work space and type **mvn clean install** to create the war. The war file will be generated in your `target` folder
 
 ``` bash
 $ mvn war:war
@@ -93,7 +94,7 @@ $ mvn war:war
 [INFO] Final Memory: 6M/124M
 [INFO] ------------------------------------------------------------------------
 ```
-**Step 2**  Now point `vmc target` to `http://api.cloudfoundry.com` and login to Cloud Foundry using your credentials. Once successfully logged into Cloud Foundry, enter **vmc push**, enter `N` when it asks whether to deploy from the current directory, and enter the project's target folder path in deployment path.
+**Step 2**  Now point `vmc target` to `http://api.cloudfoundry.com` and login to Cloud Foundry using your credentials. Once successfully logged into Cloud Foundry, enter `vmc push`, enter `N` when it asked whether to deploy from your current directory, and enter the project's target folder path in deployment path.
 
 ```bash
 $ vmc target http://api.cloudfoundry.com
@@ -101,7 +102,7 @@ Successfully targeted to [http://api.cloudfoundry.com]
 
 $ vmc login
 Attempting login to [http://api.cloudfoundry.com]
-Email: senthil.s@imaginea.com
+Email: ***********
 Password: **********
 Successfully logged into [http://api.cloudfoundry.com]
 
@@ -138,8 +139,8 @@ Starting Application 'html5expense': OK
 ```
 
 ## Check Point
-1. Upon completion of deployment, we can go and visit the actual app at the URL `[app-name].cloudfoundry.com]`.
+1. Upon completion of deployment, we can go and visit the actual app at the URL `[app-name].cloudfoundry.com`.
   ![deployed_application_in_cloud_foundry.png](/images/spring_tutorial/deployed_application_in_cloud_foundry.png)
 
 
-* To get information about Tunneling into services on Cloud Foundry, please refer [here](/frameworks/java/spring/tutorials/springmvc-jpa-postgres/postgresql-dataservice-tunnel-on-cloudfoundry.html).
+* To get information about Tunneling to services on Cloud Foundry, please refer [here](/frameworks/java/spring/tutorials/springmvc-jpa-postgres/postgresql-dataservice-tunnel-on-cloudfoundry.html).
