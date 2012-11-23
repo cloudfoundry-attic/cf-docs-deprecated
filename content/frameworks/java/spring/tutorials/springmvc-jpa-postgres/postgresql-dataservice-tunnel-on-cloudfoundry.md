@@ -27,7 +27,7 @@ Successfully targeted to [http://api.cloudfoundry.com]
 
 $ vmc login
 Attempting login to [http://api.cloudfoundry.com]
-Email: senthil.s@imaginea.com
+Email: *************
 Password: **********
 Successfully logged into [http://api.cloudfoundry.com]
 ```
@@ -107,7 +107,7 @@ da5857027ab844d7d9f474ceaf196c9d0=> \dt
 
     ![spring-expensereport-login.png](/images/spring_tutorial/cloud_foundry.png)
 
-2. Now enter your Cloud Foundry account information,  choose **VMware Cloud Foundry - https://api.cloudfoundry.com** for the URL, and click **Validate Account**.
+2. Now enter your Cloud Foundry account information,  choose **VMware Cloud Foundry - https://api.cloudfoundry.com** for the URL, and click **Validate Account** to ensure your credentials are vaild. Once you got response that your account information is valid then click **Finish**.
 
     ![cloud foundry account information.png](/images/spring_tutorial/cloud_foundry_account.png)
 

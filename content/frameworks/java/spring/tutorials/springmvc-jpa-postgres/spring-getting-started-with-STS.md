@@ -23,7 +23,7 @@ Before you get started, you need the following:
 
 
 ## Overview
-The Spring Framework provides a comprehensive programming and configuration model for modern Java-based enterprise applications - on any kind of deployment platform. A key element of Spring is infrastructural support at the application level: Spring focuses on the "plumbing" of enterprise applications so that teams can focus on application-level business logic, without unnecessary ties to specific deployment environments. For more details, visit the [SpringSource](http://www.springsource.org/spring-framework) site.
+The Spring Framework provides a comprehensive programming and configuration model for modern Java-based enterprise applications - on any kind of deployment platform. A key element of Spring is infrastructural support at the application level: Spring focuses on the "plumbing" of enterprise applications so that teams can focus on application-level business logic, without unnecessary ties to specific deployment environments. For more details visit [springsource](http://www.springsource.org/spring-framework) site.
 
 <table class="spring-tutorial-index-table">
     <thead>

@@ -1,87 +1,72 @@
 ```java
-package com.springsource.html5expense.controller;
+package com.springsource.html5expense.controllers;
 
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import com.springsource.html5expense.model.Role;
 import com.springsource.html5expense.model.User;
-import com.springsource.html5expense.service.RoleService;
-import com.springsource.html5expense.service.UserService;
+import com.springsource.html5expense.services.RoleService;
+import com.springsource.html5expense.services.UserService;
 
 @Controller
 public class LoginController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    RoleService roleService;
+    private RoleService roleService;
 
-    public UserService getUserService() {
-        return userService;
+    @RequestMapping(value = "/signup", method = RequestMethod.GET)
+    public String signUp() {
+        return "signup";
     }
 
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
-
-    public RoleService getRoleService() {
-        return roleService;
-    }
-
-    public void setRoleService(RoleService roleService) {
-        this.roleService = roleService;
-    }
-
-    @RequestMapping(value="/signup",method=RequestMethod.GET)
-    public String signUp(){
-        String name="signup";
-        return name;
-    }
-
-    @RequestMapping(value="/signup",method=RequestMethod.POST)
-    public String signUp(ModelMap model,HttpServletRequest request){
-        String userName = request.getParameter("userName");
-        String password = request.getParameter("password");
-        String mailId = request.getParameter("email");
-        User user = getUserService().getUserByUserName(userName);
-        if(user == null){
-            Role role = getRoleService().getRoleByName("ROLE_USER");
-            user = getUserService().createUser(userName, password, mailId,role);
+    @RequestMapping(value = "/signup", method = RequestMethod.POST)
+    public String signUp(ModelMap model, @PathVariable("userName")String userName, @PathVariable("password")String password,
+             @PathVariable("email")String mailId) {
+        User user = userService.getUserByUserName(userName);
+        if (user == null) {
+            Role role = roleService.getRoleByName("ROLE_USER");
+            user = new User(userName, password, mailId);
+            user.setRole(role);
+            user.setEnabled(true);
+            user = userService.createUser(user);
             String succMsg = "User registration succeeds ";
-            return "redirect:/login?succMsg="+succMsg;
-        }else{
-            String errorMsg = "User registration fails already same user name exists please try " +
-                    "with different user name";
-            request.setAttribute("errorMsg",errorMsg);
-            return "redirect:/signup?errorMsg="+errorMsg;
+            return "redirect:/login?succMsg=" + succMsg;
+        } else {
+            String errorMsg = "User registration fails already same user name exists please try "
+                 + "with different user name";
+            model.addAttribute("errorMsg", errorMsg);
+            return "redirect:/signup?errorMsg=" + errorMsg;
         }
     }
 
-    @RequestMapping(value="/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(ModelMap model) {
         return "login";
     }
 
-    @RequestMapping(value="/loginfailed", method = RequestMethod.GET)
+    @RequestMapping(value = "/loginfailed", method = RequestMethod.GET)
     public String loginerror(ModelMap model) {
         model.addAttribute("error", "true");
         return "login";
     }
 
-    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(ModelMap model) {
         return "login";
     }
 
-    @RequestMapping(value="/sessiontimeout",method = RequestMethod.GET)
+    @RequestMapping(value = "/sessiontimeout", method = RequestMethod.GET)
     public String sessionTimeout(ModelMap model) {
         String errorMsg = "Session has expired. Please login";
-        model.addAttribute("errorMsg",errorMsg);
+        model.addAttribute("errorMsg", errorMsg);
         return "login";
     }
 }
