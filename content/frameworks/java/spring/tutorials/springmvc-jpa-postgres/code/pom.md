@@ -29,6 +29,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
    </exclusions>
 </dependency>
 <dependency>
+      <groupId>org.cloudfoundry</groupId>
+       <artifactId>cloudfoundry-runtime</artifactId>
+        <version>0.8.2</version>
+</dependency>
+<dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-webmvc</artifactId>
     <version>${org.springframework-version}</version>
@@ -52,11 +57,17 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
     <version>${org.springframework-version}</version>
 </dependency>
 
-<!--Display Tag -->
+<!--Thymeleaf -->
 <dependency>
-      <groupId>displaytag</groupId>
-      <artifactId>displaytag</artifactId>
-      <version>1.1</version>
+    <groupId>org.thymeleaf</groupId>
+    <artifactId>thymeleaf-spring3</artifactId>
+    <version>2.0.6</version>
+</dependency>
+
+<dependency>
+    <groupId>org.codehaus.jackson</groupId>
+    <artifactId>jackson-mapper-asl</artifactId>
+    <version>1.9.9</version>
 </dependency>
 
 <!-- Spring-Batch -->
@@ -236,6 +247,26 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 
 
 </dependencies>
+<repositories>
+	<repository> 
+		<id>org.springframework.milestone</id> 
+		<name>Spring Framework Milestone Repository</name> 
+		<url>http://maven.springframework.org/milestone</url>
+		<snapshots> 
+			<enabled>false</enabled> 
+		</snapshots> 
+		<releases> 
+			<updatePolicy>never</updatePolicy> 
+		</releases> 
+</repository> 
+</repositories>
+ <pluginRepositories>
+        <pluginRepository>
+            <id>repository.springframework.maven.milestone</id>
+            <name>Spring Framework Maven Milestone Repository</name>
+            <url>http://maven.springframework.org/milestone</url>
+        </pluginRepository>
+    </pluginRepositories>
 <build>
 <plugins>
 <plugin>
@@ -274,6 +305,5 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 </plugin>
 </plugins>
 </build>
-</project>
-```
+</project>```
 
