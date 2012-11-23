@@ -1,47 +1,66 @@
 ---
 title: Hello World Spring MVC Project
-description: Create a Spring MVC Hello World Application
+description: Create Spring MVC Hello World Application
 tags:
-    - Spring MVC
-    - STS
-    - Tomcat
-    - Maven
+    - spring-mvc
+    - sts
+    - tomcat
+    - maven
 ---
 
 ## Introduction
-* Spring's Web MVC framework is designed around a `DispatcherServlet` that dispatches requests to `handlers`, with configurable handler mappings, view resolution, locale and theme resolution as well as support for uploading files. The controller interface offers only a `ModelAndView handleRequest(request,response)` method. This could be used for application controllers, but you would rather have the included implementation hierarchy consisting of say, `AbstractController`, `AbstractCommandController` and `SimpleFormController`. For more details, visit the [springsource.org](http://static.springsource.org/spring/docs/2.0.x/reference/mvc.html) site.
+* This section provides details on how to get started with STS (Spring Tool Suite) and Spring MVC to create a Hello world Spring MVC application. The SpringSource Tool Suite (STS) is a free, Eclipse-based distribution. It is a super set of the Java EE distribution of Eclipse, and includes a slew of handy plugins pre-installed, including Maven support. Maven is a tool that lets you easily compile your code.
 
-	<img style="max-width:80%" src="/images/spring_tutorial/spring-mvc-flow.png" alt="spring-mvc-flow">
+* To make sure that everything is easy to find in STS for this tutorial, use the **Window -> Reset** Perspective command.
 
-* This section provides details on how to get started with STS (Spring Tool Suite) and Spring MVC to create a Hello world Spring MVC application.
+    ![STS reset view](/images/spring_tutorial/sts-reset-view.png)
 
-## Create a Spring MVC Template Project
+* If you're using STS you'll need to install the Cloud Foundry WTP (web tools project) connector. Go to the Help -> Eclipse Marketplace. Search for "CloudFoundry" and you'll find the "Cloud Foundry integration for Eclipse." Install it if you haven't already.
+
+    ![STS reset view](/images/spring_tutorial/eclipse-marketplace.png)
+
+* Once Cloud Foundry plugin installed, Go to servers, right click to add New Server. Now you can see Cloud Foundry under VMware. Select Cloud Foundry, then click next.
+
+    ![cloud foundry runtime](/images/spring_tutorial/cloud_foundry.png)
+
+* Now enter your Cloud Foundry account information, choose **VMware Cloud Foundry - https://api.cloudfoundry.com** for the URL, and click **Finish**.
+
+    ![cloud foundry account information.png](/images/spring_tutorial/cloud_foundry_account.png)
+
+* Once you installed Cloud Foundry server, you can double click on the Cloud Foundry server to see what's going on in your account. The tab that presents has two sub tabs at the bottom: one called `Overview`, and another called `Applications`. You can click on an application to see the resources provisioned for the application, including which services (databases, message queues, etc) have been apportioned for it and how much RAM and CPU the application is taking.
+
+   ![cf-editor](/images/screenshots/configuring-STS/cf_eclipse_cf_editor.png)
+
+## Create Spring MVC Template Project
 1. Please open STS and navigate to the dashboard (**Help -> Dashboard**). From the dashboard, select **Spring Template Project**. You should see the window below.
   ![Spring MVC Template Project](/images/spring_tutorial/spring_template_project_mvc.png)
 2. Choose **Spring MVC Project**.  STS will ask you to download some extra
 elements if this your first time selecting this option.
   ![spring_template_project_mvc_download.png](/images/spring_tutorial/spring_template_project_mvc_download.png)
-3. Give your project the name `expensereport` and specify your top-level package as `com.springsource.html5expense`
+3. Give your project the name `html5expense` and specify your top-level package as `com.springsource.html5expense`
+  ![spring_template_project_mvc_download.png](/images/spring_tutorial/project-name-selection.png)
 4. Click on **Finish** and STS will create the project.
-5. Before running the project, right click on it and select **Run As -> Maven clean**
+  ![spring_template_project_mvc_download.png](/images/spring_tutorial/helloworld-project.png)
 
-    ![maven_clean.png](/images/spring_tutorial/maven_clean.png)
+## Deploy on Local Server
+1. Select project, drag it from `Project` panel and drop into your VMware vFabric tc server listed in the bottom left Server window.
+  ![Spring MVC Template Project](/images/spring_tutorial/project-deploy-local-step1.png)
+2. Select VMware vFabric tc server and click start button to run the server.
+  ![Spring MVC Template Project](/images/spring_tutorial/project-deploy-local-step2.png)
+3. Once server start is completed, open your browser and go to the application url `http://localhost:8080/html5expense` it will open the home page for the project which displays Hello world message with the current server time.
+  ![Hello World Output](/images/spring_tutorial/hello_world.png)
 
-6. Once Maven clean completes, select **Run As -> Maven install**. Dependencies will be downloaded from pom.xml.
+## Deploy on Cloud Foundry
+1. Select project, drag it from `Project` panel and drop into your Cloud Foundry server listed in the bottom left Server window. It'll ask you to specify information about the application: what runtime, what language, etc. The defaults are good enough in this case, so just leave them as-is and click `Next`.
 
-    ![maven_install.png](/images/spring_tutorial/maven_install.png)
+    ![spring-expensereport-project-deploy-step1](/images/spring_tutorial/project_deploy_step2.png)
 
-7. Now Select **Run As -> Maven build**
+2. Next, you'll be asked to specify the URL for the application as well as how much memory to allocate. Again, the defaults are fine in this case.
 
-    ![maven_build.png](/images/spring_tutorial/maven_build.png)
+    ![spring-expensereport-project-deploy-step2](/images/spring_tutorial/project_deploy_step3.png)
 
-8. Enter **tomcat:run** in Goals and click **Run**.
+3. The application will deploy, and - if you open the URL given in a browser window - you'll be greeted with a new application on Cloud Foundry!
 
-    ![maven_run.png](/images/spring_tutorial/maven_run.png)
+    ![Hello World Output](/images/spring_tutorial/helloworld-on-cloudfoundry.png)
 
-## Check Point
-*  Once the server has started, open your browser and go to the application url `http://localhost:8080/html5expense`. It will open the home page for the project which displays the Hello world message with the current server time. It should look like the screenshot below.
-
-	![Hello World Output](/images/spring_tutorial/hello_world.png)
-
-<a class="button-plain" style="padding: 3px 15px;" href="/frameworks/java/spring/tutorials/springmvc-jpa-postgres/spring-getting-started-with-STS.html">Prev</a> <a class="button-plain" style="padding: 3px 15px; float: right" href="/frameworks/java/spring/tutorials/springmvc-jpa-postgres/spring-expensereport-app-tutorial.html">Next</a>
+<a class="button-plain" style="padding: 3px 15px;" href="/frameworks/java/spring/tutorials/springmvc-jpa-postgres/spring-getting-started-with-sts.html">Prev</a> <a class="button-plain" style="padding: 3px 15px; float: right" href="/frameworks/java/spring/tutorials/springmvc-jpa-postgres/spring-expensereport-app-tutorial.html">Next</a>
