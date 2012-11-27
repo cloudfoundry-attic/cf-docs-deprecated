@@ -1,0 +1,202 @@
+---
+title: Node.js
+description: Integrating Shapes Toolbar and Canvas
+tags:
+    - nodejs
+    - express
+    - tutorial
+---
+
+## Introduction
+
+This chapter is a continuation of [chapter 2](/frameworks/nodejs/nodejs-tutorial/step02-creating-ui.html). 
+
+## Prerequisites
+
++ Should have completed [chapter 2](/frameworks/nodejs/nodejs-tutorial/step02-creating-ui.html), that explains developing and integratin UI elements.
+    
+    
+## Integrating Shapes Toolbar
+    
+In the previous exercise we have initialized widgets with some parameters. Let's have a look at each of them.
+
+Shapes toolbar widget
+```javascript
+var tb = $("#shapesToolbar").toolbar(
+            {
+                shapes:whiteboardApp.shapes, // shapes object with shape 'name' and 'iconname' ex: shapes = {  rectangle: {  name: 'rectangle', imagesPath:'/static/images/' } }
+                dropTarget:$('.ui-canvas'),
+                title:'Shapes',
+                shapeSelected:this.onShapeSelect,  // callback
+                dropTargetClicked:this.onClickDropTarget   //callback
+            }
+        );
+    },
+``` 
+There are two methods called `onShapeSelect` and `onClickDropTarget`. These are invoked when `shapeSelected` event and `dropTargetClicked` events occured in toolbar widget.  
+
+Below is the implemenation code for these methods:
+```javascript
+
+onShapeSelect:function(event) {
+        whiteboardApp.shapeToDraw = event.shapeSelected;
+        whiteboardApp.shapeSelected = true;
+ },
+
+ onClickDropTarget:function(event) {
+     if (whiteboardApp.shapeSelected) {
+         var scrollLeft = $('.ui-canvas').scrollLeft(),
+             mouseX = event.pageX - $('.ui-canvas').offset().left + scrollLeft, // offset X
+             mouseY = event.pageY - $('.ui-canvas').offset().top; // offset Y
+         whiteboardApp.notifyNewShapeEvent({
+             x: mouseX,
+             y: mouseY
+         });
+         whiteboardApp.shapeSelected = false;
+     }
+ }
+
+```
+
+Add above two methods in 'main.js' file.
+
+When user selects a shape from toolbaar we are updating two parameters in whiteboarApp ( this is our main namespace for our app).
+And when user clicks on canvas take that x,y coordinates to draw shapes at that location, using `notifyShapeEvent` method.
+
+Now open `main.js` file and add below two methods in it.
+
+```javascript
+notifyNewShapeEvent: function (posObj) {
+        var uniqId = util.getUniqId(),
+            _data = {};
+        whiteboardApp.sockJSClient.sockJS.send(JSON.stringify({
+            action: 'new_shape',
+            positionObj: posObj,
+            shape: whiteboardApp.shapeToDraw,
+            args: [
+                {
+            	uid: uniqId
+                }
+            ]
+        }));
+        _data.positionObj = posObj;
+        _data.args = [{uid : uniqId }];
+        _data.shape = whiteboardApp.shapeToDraw;
+        whiteboardApp.createNewShape(_data);
+    }
+    
+ createNewShape: function (data) {
+        var args = [],
+            argsObj = whiteboardApp.shapes[data.shape].defaultValues;
+
+        argsObj.left = data.positionObj.x;
+        argsObj.top = data.positionObj.y;
+        argsObj.uid = data.args[0].uid;
+        args.push(argsObj);
+        whiteboardApp.shapes[data.shape].toolAction.apply(this, args);
+    
+    }    
+``` 
+
+`notifyNewShapeEvent` notifies the server about new shape creation, so that all other clients whiteboard is update with this new shape and it also calls `createNewShape` method to draw shape on this client canvas.
+
+
+Now we need a method that receives a data from server when it broadcasts data. For that let's create a file called 'sockJSClient.js' and save it in a folder 'static\js\'
+
+```javascript
+whiteboardApp.sockJSClient = {
+    sockjs_url: '/echo',
+    init: function () {
+        this.sockJS = new SockJS(this.sockjs_url);
+        this.sockJS.onopen = this.onSocketOpen;
+        this.sockJS.onmessage = this.onSocketMessage;
+        this.sockJS.onclose = this.onSocketClose;
+    },
+
+    onSocketOpen: function (conn) {
+        $('#spinner').hide();
+        whiteboardApp.sockJSClient.sockJS.send(JSON.stringify({
+            action: 'text',
+            message: 'Joined',
+            userName: whiteboardApp.userName
+        }));
+    },
+
+    onSocketMessage: function (e) {
+        var data = JSON.parse(e.data);
+        switch (data.action) {
+            case 'new_shape':
+                whiteboardApp.createNewShape(data);
+            break;
+            case 'modified':
+                whiteboardApp.canvasWidgetInstance.canvas('modifyObject', data);
+            break;
+            case 'deleted':
+                whiteboardApp.canvasWidgetInstance.canvas('deleteObject', data);
+            break;
+        }
+    },
+
+    onSocketClose: function (conn) {
+        whiteboardApp.sockJSClient.sockJS.send(JSON.stringify({
+            action: 'text',
+            message: 'Left',
+            userName: whiteboardApp.userName
+        }));
+    }
+};
+
+``` 
+
+We can send a JSON object to server by `sockJS.send` method as shown above.
+
+Load this file by adding '<script>` tag in `index.html' as shown below.
+
+```html
+ <script type="text/javascript" src="static/js/sockJSClient.js"></script>
+ ```
+ 
+## Check Point
+
+Open your browser and type http://localhost:4000. Now you can add shapes to canvas as shown below:
+
+![app with UI](/images/screenshots/nodejs-whiteboard/whiteboard-02.png)
+
+
+To check collaboration feature open another instance of the app in different tab/window. You will notice that whenever one user adds a shape to canvas, same shape is added in another user's canvas. However when you modify a shape is not get updated on another user's canvas.
+To get this, let us implement methods required for that.
+
+```javascript
+onShapeModify:function(event, data) {
+     whiteboardApp.sockJSClient.sockJS.send(whiteboardApp.getModifiedShapeJSON(data, "modified"));
+ },
+
+ onShapeDelete:function(event, data) {
+     whiteboardApp.sockJSClient.sockJS.send(whiteboardApp.getModifiedShapeJSON(data, "deleted"));
+ },
+
+ getModifiedShapeJSON: function (shape, _action) {
+     var _obj = JSON.stringify({
+         action: _action,
+         name: shape.name,
+         args: [{
+             uid: shape.uid,
+             object: shape
+         }] 
+     });
+     return _obj;
+ },
+ onApplyModify: function(event, data) {
+     whiteboardApp.shapes[data.name].modifyAction.apply(this, data.args);
+ }
+
+``` 
+
+The above methods are triggered by canvas widget events.
+
+Open two instances of app and check for the collaboration feature working.
+
+## Check Point
+
+<p><a class="button-plain"  style="padding: 3px 15px;" href="/frameworks/nodejs/nodejs-tutorial/step02-creating-ui.html">Prev</a>  <a class="button-plain"  style="padding: 3px 15px; float: right;" href="/frameworks/nodejs/nodejs-tutorial/step04-integrating-chat.html">Next</a></p>
+

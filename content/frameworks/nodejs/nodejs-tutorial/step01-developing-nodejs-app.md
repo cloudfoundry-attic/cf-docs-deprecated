@@ -1,0 +1,345 @@
+---
+title: Node.js
+description: New Whiteboard app with SockJS and FabricJS
+tags:
+    - nodejs
+    - express
+    - tutorial
+---
+
+## Introduction
+
+This section introduces the Whiteboard application, teaches you how to get started with a new Node.js application with Sockjs and some other required configurations for the application.
+
+##Prerequisites
+
++ [Node.js](http://howtonode.org/how-to-install-nodejs) installed on your system to build node application.
++ [Sockjs](https://github.com/sockjs/sockjs-node) server installed on you system.
++ [Express](http://expressjs.com/) a web application framework for node, also installed on your system.
++ You are proficient in developing node.js application.
+
+## Whiteboard Application Overivew
+
+This application is a realtime collaborative white board application that uses canvas for drawing shapes. 
+
+## Create the App
+
+Create a directory 'nodejs-whiteboard' for the application and change into it.
+
+``` bash
+$ mkdir nodejs-whiteboard
+$ cd nodejs-whiteboard
+```
+
+Use `npm` (Node Package Manager) to install the Express, static modules and Sockjs server:
+
+```bash
+$ npm install express
+$ npm install sockjs
+$ npm install static
+```
+Let's start with the server module. Create the file app.js in the root directory of your project, and fill it with the following code: 
+
+```javascript
+
+(function () {
+    /**
+     * Initialize app by importing required modules and starting servers
+     * @method init
+     * @param none
+     */
+    function init() {
+        var express = require('express'),
+            http = require('http'),
+            app = express();
+
+        /* Set static folder */
+        app.use('/static', express.static(__dirname + '/static'));
+
+        /* Redirect user to index.html when requested for root */
+        app.get('/', function (req, res) {
+            res.sendfile(__dirname + '/index.html');
+        });
+
+        loadConfig(function(dataObj) {
+            /* Create http server */
+            var server = http.createServer(app);
+            
+            /* Server is set to listent to specific port */
+            server.listen(process.env.VCAP_APP_PORT || dataObj.port);
+            
+            /* Initialize the SockJS server*/
+            initSockServer(server);
+        });
+    }
+
+    /**
+     * Loads configuration.json file and sends data to callback
+     * @method loadConfig
+     * @param {Function} callback
+     */
+
+    function loadConfig(callback) {
+        var fs = require('fs');
+        /* Load configuration data */
+        fs.readFile(__dirname + '/config.json', function(err, data) {
+            callback(JSON.parse(data))
+        });
+    }
+
+    /**
+     * Initializes the sockJS server
+     * @method initSockServer
+     * @param  server - http server instance
+     */
+
+    function initSockServer(server) {
+        var sockJSServer = require('./sockJSServer');
+        sockJSServer.initSockJS(server);
+    }
+    init();
+})();
+
+```
+
+The above file loads `config.json` and `sockJSServer.js` 
+
+Lets start creating them. Create a file called `config.json` in the root directory of your project and add below code.
+
+``` javascript
+	
+	{
+	"port" : "4000"	
+	}
+
+```
+
+In cloudfoundry environment, we will be using the port provided to us as part of the environment variables, VMC_APP_PORT, rather than any hard coded port number. Below is the code for that
+
+``` javascript 
+	
+	 server.listen(process.env.VCAP_APP_PORT || dataObj.port);
+
+```
+
+Create a file called `sockJSServer.js` in the root directory of your project. And below is the code to write in `sockJSServer.js` to start sockJS server.
+This creates a sockJS server for adding a communication channel between the browser and the web server.
+
+```javascript
+
+ var sockjs = require('sockjs');
+
+     /* Create sockjs server */
+     var sockjs_echo = sockjs.createServer({
+         sockjs_url:"http://cdn.sockjs.org/sockjs-0.3.min.js",
+         websocket:false
+     });
+
+     /* We call installHandlers passing in the app server so we can listen and answer any incoming requests on the echo path.*/
+     sockjs_echo.installHandlers(server, {
+         prefix:'/echo'
+     });
+
+     /* Listens for incoming connect events */
+     sockjs_echo.on('connection', onSockJSConnection);
+     
+```     
+
+Create a `package.json` file with the following contents:
+
+```javascript
+{
+ "name":"nodejs-whiteboard",
+  "version":"0.0.1",
+  "dependencies":{
+      "express":"",
+      "sockjs":""
+  }
+}
+
+```
+ 
+Now create a `index.html` page for our whiteboard app with the following markups and save it in the root:
+
+```html
+<!doctype html>
+<html lang="en">
+   <head> </head>
+   <body lang="en">
+      Welcome to whiteboard app
+   </body>
+</html>
+
+``` 
+That's it! You just wrote a working HTTP and SockJs server. Let's prove it by running and testing it. First, execute your script with Node.js: 
+Starting a new application in Node.js is as simple as executing a single command 'node <appname>'.
+
+```bash
+$ node app.js
+
+```
+ 
+## Check point
+Open your browser and type http://localhost:4000. You will see a page with 'Welcome to whiteboard app' text
+
+![Welcome screen](/images/screenshots/nodejs-whiteboard/welcome.png)
+
+Now let's write event listener functions.
+
+On the server side we need to have 2 methods for collaboration feature.
+
++ Listen for connection event
++ Listen for data events on the client
+
+Add below code in `sockJSServer.js' file
+
+```javascript
+/* List of incoming clients will be maintained in this map */
+	var clients = {};
+
+/* Listens for incoming connect events */
+	sockjs_echo.on('connection', onSockJSConnection); 
+
+/* Is triggered when a new user joins in */
+  function onSockJSConnection(conn) {
+       /* Add him to the clients list */
+      clients[conn.id] = conn;
+
+      /* Send new users all the previous data to update their whitebaord */
+      sendShapeActionsToClient(conn, clientData);
+      sendChatDataToClient(conn, clientData);
+
+      /* Listen for data events on this client */
+      conn.on('data', function (data) {
+          onDataHandler(data, conn.id);
+          pushUserData(data);
+      });
+
+      conn.on('close', function (data) {
+          delete clients[conn.id];
+          onDataHandler(JSON.stringify({userName: conn.userName, action:'text', message: 'left'}), conn.id);
+      });
+  }
+```
+Whenver a new client joins, we need to push the connection object to clients list to maintain a list of clients.
+
+```javascript
+	clients[conn.id] = conn;
+```
+
+And the data we recieve from client needs to be broadcasted to all other clients
+```javascript
+
+onDataHandler(data, conn.id);
+
+```
+Below is the implementation of the above method
+
+```javascript
+/* Handling data received from client to broadcast */
+  function onDataHandler(dataStr, id) {
+      var dataObj = JSON.parse(dataStr);
+      dataObj.id = id;
+      broadcast(dataObj);
+  }
+  
+ /* To broadcast the data received from one client to all other active clients */
+  function broadcast(message, includeSelf) {
+      for (var index in clients) {
+          if (clients.hasOwnProperty(index)) {
+              var client = clients[index];
+              if (includeSelf || client.id !== message.id) {
+                  client.write(JSON.stringify(message));
+              }
+          }
+      }
+  }
+```
+
+
+
+
+
+
+
+And whenever new user joins the board, he/she needs to be shown all previous drawings, for that first we need to capture the data from all clients and
+then you need to send that we have written two methods
+
+```javascript
+/* Send new users all the previous data to update their whitebaord */
+   sendShapeActionsToClient(conn, clientData);
+   sendChatDataToClient(conn, clientData);
+      
+```
+Below is the code for pushing all data from clients
+
+```javascript
+  function pushUserData(data) {
+      /* Push the data received from client*/
+      var dataObj = JSON.parse(data);
+      if (dataObj.action !== 'text') {
+          pushShapesData(dataObj);
+      } else {
+          pushChatData(dataObj);
+      }
+
+  }
+
+  function pushChatData(dataObj)  {
+      if (clientData.textObj === undefined) {
+          clientData.textObj = [];
+      }
+      clientData.textObj.push(dataObj);
+  }
+
+  function pushShapesData(dataObj) {
+      var shapeId = dataObj.args[0].uid;
+      switch (dataObj.action) {
+          case 'new_shape':
+              clientData[shapeId] = dataObj;
+              break;
+          case 'modified':
+              if (clientData[shapeId] !== undefined && clientData[shapeId].modify === undefined) {
+                  clientData[shapeId].modify = {};
+              }
+              clientData[shapeId].modify[shapeId] = dataObj;
+              break;
+          case 'deleted':
+              delete clientData[shapeId];
+              break;
+      }
+  }
+
+```
+
+And for sending data to new user add below methods.
+
+
+```javascript
+function sendShapeActionsToClient(connection, shapesData) {
+      for (var index in shapesData) {
+          if (shapesData.hasOwnProperty(index)) {
+              if (shapesData[index].action === 'new_shape') {
+                  connection.write(JSON.stringify(shapesData[index]));
+              }
+              if (shapesData[index].modify) {
+                  for (var action in shapesData[index].modify) {
+                      connection.write(JSON.stringify(shapesData[index].modify[action]));
+                  }
+              }
+          }
+      }
+  }
+
+  function sendChatDataToClient(connection, chatData) {
+      if (chatData.textObj) {
+          for (var action in chatData.textObj) {
+              connection.write(JSON.stringify(chatData.textObj[action]));
+          }
+      }
+  }
+
+```
+
+<p><a class="button-plain"  style="padding: 3px 15px;" href="/frameworks/nodejs/nodejs-tutorial/nodejs-app-with-sockjs.html">Prev</a>  <a class="button-plain"  style="padding: 3px 15px; float: right;" href="/frameworks/nodejs/nodejs-tutorial/step02-creating-ui.html">Next</a></p>
+
