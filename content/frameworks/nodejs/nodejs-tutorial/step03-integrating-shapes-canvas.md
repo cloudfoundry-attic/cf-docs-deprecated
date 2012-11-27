@@ -9,16 +9,15 @@ tags:
 
 ## Introduction
 
-This chapter is a continuation of [chapter 2](/frameworks/nodejs/nodejs-tutorial/step02-creating-ui.html). 
+This chapter is a continuation of [Chapter 2](/frameworks/nodejs/nodejs-tutorial/step02-creating-ui.html).
 
 ## Prerequisites
 
-+ Should have completed [chapter 2](/frameworks/nodejs/nodejs-tutorial/step02-creating-ui.html), that explains developing and integratin UI elements.
-    
-    
++ Should have completed [Chapter 2](/frameworks/nodejs/nodejs-tutorial/step02-creating-ui.html), which explains developing and integrating UI elements.
+  
 ## Integrating Shapes Toolbar
     
-In the previous exercise we have initialized widgets with some parameters. Let's have a look at each of them.
+In the previous exercise you have learned to initialize widgets with some parameters. Let's have a look at each of them.
 
 Shapes toolbar widget
 ```javascript
@@ -32,10 +31,10 @@ var tb = $("#shapesToolbar").toolbar(
             }
         );
     },
-``` 
-There are two methods called `onShapeSelect` and `onClickDropTarget`. These are invoked when `shapeSelected` event and `dropTargetClicked` events occured in toolbar widget.  
+```
+There are two methods called `onShapeSelect` and `onClickDropTarget`. These are invoked when `shapeSelected` event and `dropTargetClicked` events occur in the toolbar widget.
 
-Below is the implemenation code for these methods:
+Below is the code to implement these methods:
 ```javascript
 
 onShapeSelect:function(event) {
@@ -60,10 +59,10 @@ onShapeSelect:function(event) {
 
 Add above two methods in 'main.js' file.
 
-When user selects a shape from toolbaar we are updating two parameters in whiteboarApp ( this is our main namespace for our app).
-And when user clicks on canvas take that x,y coordinates to draw shapes at that location, using `notifyShapeEvent` method.
+When user selects a shape from the toolbar, you  update two parameters in the WhiteboardApp (this will be your main namespace for the app). When a user clicks on the canvas, take those x,y coordinates to draw shapes at that location, using notifyShapeEvent method.
 
-Now open `main.js` file and add below two methods in it.
+Next open main.js file and add the below two methods in it.
+
 
 ```javascript
 notifyNewShapeEvent: function (posObj) {
@@ -75,7 +74,7 @@ notifyNewShapeEvent: function (posObj) {
             shape: whiteboardApp.shapeToDraw,
             args: [
                 {
-            	uid: uniqId
+                  uid: uniqId
                 }
             ]
         }));
@@ -84,7 +83,7 @@ notifyNewShapeEvent: function (posObj) {
         _data.shape = whiteboardApp.shapeToDraw;
         whiteboardApp.createNewShape(_data);
     }
-    
+ 
  createNewShape: function (data) {
         var args = [],
             argsObj = whiteboardApp.shapes[data.shape].defaultValues;
@@ -94,14 +93,13 @@ notifyNewShapeEvent: function (posObj) {
         argsObj.uid = data.args[0].uid;
         args.push(argsObj);
         whiteboardApp.shapes[data.shape].toolAction.apply(this, args);
-    
-    }    
-``` 
+ }
+```
+ 
+`notifyNewShapeEvent` notifies the server about the new shape creation, so that all other client's canvas is updated with this new shape. This method also calls `createNewShape` method to draw shape on this client canvas.
 
-`notifyNewShapeEvent` notifies the server about new shape creation, so that all other clients whiteboard is update with this new shape and it also calls `createNewShape` method to draw shape on this client canvas.
 
-
-Now we need a method that receives a data from server when it broadcasts data. For that let's create a file called 'sockJSClient.js' and save it in a folder 'static\js\'
+Now you need a method that will receive a data broadcasted from server. Now you create a file called 'sockJSClient.js' and save it in a folder 'static\js\'
 
 ```javascript
 whiteboardApp.sockJSClient = {
@@ -148,23 +146,25 @@ whiteboardApp.sockJSClient = {
 
 ``` 
 
-We can send a JSON object to server by `sockJS.send` method as shown above.
+You can send a JSON object to the server using `sockJS.send` method as shown above.
 
-Load this file by adding '<script>` tag in `index.html' as shown below.
+Load this file by adding it to `index.html` as shown below.
 
-```html
+```javascript
+
  <script type="text/javascript" src="static/js/sockJSClient.js"></script>
- ```
+
+``` 
  
 ## Check Point
 
-Open your browser and type http://localhost:4000. Now you can add shapes to canvas as shown below:
+Open your browser and type http://localhost:4000. Now you can add shapes to the canvas as shown below:
 
 ![app with UI](/images/screenshots/nodejs-whiteboard/whiteboard-02.png)
 
 
-To check collaboration feature open another instance of the app in different tab/window. You will notice that whenever one user adds a shape to canvas, same shape is added in another user's canvas. However when you modify a shape is not get updated on another user's canvas.
-To get this, let us implement methods required for that.
+To check the collaboration feature, open another instance of the app in a different tab/window. You will notice that whenever one user adds a shape to the canvas, the same shape is added in all other users’ canvases. However when you modify a shape, it does not get updated on their  canvases. To do this, you need to implement the required methods.
+
 
 ```javascript
 onShapeModify:function(event, data) {
@@ -182,7 +182,7 @@ onShapeModify:function(event, data) {
          args: [{
              uid: shape.uid,
              object: shape
-         }] 
+         }]
      });
      return _obj;
  },
@@ -190,11 +190,10 @@ onShapeModify:function(event, data) {
      whiteboardApp.shapes[data.name].modifyAction.apply(this, data.args);
  }
 
-``` 
-
+```
 The above methods are triggered by canvas widget events.
 
-Open two instances of app and check for the collaboration feature working.
+Open two instances of the app and check if the collaboration feature works.
 
 ## Check Point
 
