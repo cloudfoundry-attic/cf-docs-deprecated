@@ -33,7 +33,7 @@ your local computer and then use the `vmc` Ruby command line utility, or the
 Eclipse/Spring Tool Suite (STS) Cloud Foundry plug-in, to publish your
 application to your Micro Cloud Foundry. You and others on your network, can
 then test your application at
-http://*appname*.*cloudname*.cloudfoundry.me.
+http://api.*appname*.cloudfoundry.me.
 
 When you are ready to move the application to production, you use `vmc` or STS
 to publish the application to a local or hosted Cloud Foundry instance.
@@ -49,7 +49,7 @@ application.
 The Micro Cloud Foundry virtual machine connects to VMware servers
 to set up DNS for your application. This is accomplished by using a
 configuration token, which is generated for you when you visit the Micro Cloud
-Foundry Web site at https://micro.cloudfoundry.com/dns. The generated DNS
+Foundry Web site at https://www.cloudfoundry.com/micro/dns. The generated DNS
 token is good for one use; if your network changes, you must return to the Micro
 Cloud Foundry Web site, generate a new token, and, in the Micro Cloud Foundry
 virtual machine, select option 4 to reconfigure your domain.
@@ -96,8 +96,7 @@ the VMware Cloud Foundry plug-in installed. See [Configuring Spring Tool Suite o
 1.  Unzip/tar the compressed Micro Cloud Foundry VM. This creates the folder
     `micro` containing the virtual machine files.
 
-2.  Start VMware Workstation, VMware Fusion, or VMware Player and open the `micro/micro.vmx` file.  Be sure that you are opening the existing VMX file and not
-creating a new VM and attaching the VMDK disk.
+2.  Start VMware Workstation, VMware Fusion, or VMware Player and open the `micro/micro.vmx` file.
 
 3.  Power on the virtual machine.
 
@@ -114,9 +113,9 @@ creating a new VM and attaching the VMDK disk.
 8.  Enter the configuration token from the Micro Cloud Foundry Web site.
 
 ```bash
-              Welcome to VMware Micro Cloud Foundry version v116-20121101.000204
+              Welcome to VMware Micro Cloud Foundry version 1.2.0
 
-Network up / offline
+Network up
 Micro Cloud Foundry not configured
 
 1. configure
@@ -124,9 +123,9 @@ Micro Cloud Foundry not configured
 3. help
 4. shutdown VM
 
-Select option: 1
+select option: 1
 
-Set password Micro Cloud Foundry VM user (vcap)
+set password Micro Cloud Foundry VM user
 Password: ********
 Confirmation: ********
 Password changed!
@@ -137,12 +136,12 @@ Select network: 1
 
 HTTP proxy: |none|
 
-Enter Micro Cloud Foundry configuration token or offline domain name: clover-east-soft
+Enter Micro Cloud Foundry configuration token or offline domain name: shock-throw-caption
 ```
 The Micro Cloud Foundry virtual machine verifies your DNS and configures the Micro Cloud.
 
 **Note**
-: If you plan to use Micro Cloud Foundry without an Internet connection, enter a fictitious domain name instead of the DNS configuration token. This is an advanced configuration option described in [Using Micro Cloud Foundry](/infrastructure/micro/using-mcf.html#working-offline-with-micro-cloud-foundry).
+: If you plan to use Micro Cloud Foundry without an Internet connection, enter a fictious domain name instead of the DNS configuration token. This is an advanced configuration option described in [Using Micro Cloud Foundry](/infrastructure/micro/using-mcf.html#working-offline-with-micro-cloud-foundry).
 
 
 ## Registering a Micro Cloud Foundry User with vmc
@@ -164,10 +163,6 @@ machine. You log in with this account to publish and manage applications.
 
 In the steps that follow, *appname* is the domain you registered for
 your application at the Micro Cloud Foundry Web site.
-
-*Note*
-: If you are using offline mode, you'll need to configure your host for offline mode
-    before setting the target.  See [using-mcf.html#working-offline-with-micro-cloud-foundry](using-mcf.html#working-offline-with-micro-cloud-foundry)
 
 Target your Micro Cloud Foundry. In a shell, enter the following command:
 

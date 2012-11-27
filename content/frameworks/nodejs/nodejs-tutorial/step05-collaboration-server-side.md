@@ -5,6 +5,7 @@ tags:
     - nodejs
     - express
     - tutorial
+    - server side
 ---
 
 To add collaboration features like broadcasting data received from one client to all other active users add following code in `app.js`.

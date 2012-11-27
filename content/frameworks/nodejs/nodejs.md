@@ -21,7 +21,7 @@ Before you get started, you need the following:
 
 ## Deploying Node.js Applications to Cloud Foundry
 
-When you deploy a Node.js application to Cloud Foundry, the current directory must contain the application and the app.js file.
+When you deploy a Node.js application to Cloud Foundry, the current directory must contain the application, `app.js`, and, if your application depends on any modules, a `package.json` file that names them.
 
 Here are steps to create and deploy a "hello world" Node.js web server application that uses the [Express](http://expressjs.com) web module:
 
@@ -51,39 +51,19 @@ app.listen(3000);
 
 ```
 
-If your application is using a server file other than server.js, app.js, index.js, main.js and application.js, then a package.json file is required.
-If you have two of the files listed above inside the root of your package, then you would need package.json to specify which file with which to start.
 
-By default, here is the order of files loaded as your server starts:
-
-1. application.js
-
-2. main.js
-
-3. index.js
-
-4. app.js
-
-5. server.js
-
-For example, if main.js and app.js are in your root package, main.js will be read by default, unless you specify otherwise in the package.json.
-
-Create a `package.json` file with the following content:
+Create a `package.json` file with the following contents:
 
 ```javascript
 {
  "name":"hello-node",
   "version":"0.0.1",
-  "scripts":{
-      "start":"node server.js"
+  "dependencies":{
+      "express":""
   }
 }
 
 ```
-
-If there is a `server.js` file in the root of your package, npm will use the default the `start` command of `node server.js`.
-If your application is using app.js as its starting point, you don't need package.json.
-
 
 ### Deploy the App
 
@@ -156,9 +136,3 @@ $ vmc runtimes
 
 +	[Using Cloud Foundry MongoDB services](/services/mongodb/nodejs-mongodb.html) from Node.js applications
 +	[Using Cloud Foundry RabbitMQ services](/services/rabbitmq/nodejs-rabbitmq.html) from Node.js
-
-## Read More
-
-+ [Cloud Foundry Supports Node.js Modules with NPM](http://blog.cloudfoundry.com/2012/05/24/cloud-foundry-supports-node-js-modules-with-npm/)
-+ [New Runtime Module for Node.js Applications](http://blog.cloudfoundry.com/2012/08/21/new-runtime-module-for-node-js-applications/)
-+ [Cloud Foundry Now Supports Auto-Reconfiguration for Node.js Applications](http://blog.cloudfoundry.com/2012/08/14/cloud-foundry-now-supports-auto-reconfiguration-for-node-js-applications/)

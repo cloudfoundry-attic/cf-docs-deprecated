@@ -9,7 +9,7 @@ tags:
 
 You use the Cloud Foundry command-line interface (known as `vmc`) at a Unix terminal or Windows command prompt to execute all the Cloud Foundry operations, such as configuring your applications and deploying them to Cloud Foundry.
 
-You execute the `vmc` commands in the same way whether you are deploying your application to CloudFoundry.com or to your own local version of Cloud Foundry (Micro Cloud Foundry).  The basic commands are the same; the only difference is that you initially specify a different target before you log in using your Cloud Foundry credentials.
+You execute the `vmc` commands in the same way whether you are deploying your application to the PaaS Cloud Foundry (`cloudfoundry.com`), or to your own local version of Cloud Foundry (Micro Cloud Foundry).  The basic commands are the same; the only difference is that you initially specify a different target before you log in using your Cloud Foundry credentials.
 
 This section describes the prerequisites for installing `vmc`, installation instructions, and how to deploy a simple application.
 
@@ -29,7 +29,7 @@ The following versions of Ruby are currently supported:
 * 1.8.7
 * 1.9.2
 
-If you have already installed Ruby and RubyGems, then you can skip to [Installing vmc: Procedure](#installing-vmc-procedure).
+If you have already installed Ruby and RubyGems, then you can skip to [Installing vmc: Main Steps](#installing-vmc-main-steps).
 
 The following sections provide basic information about installing Ruby and RubyGems on Windows and a variety of Linux computers:
 
@@ -43,11 +43,11 @@ The following sections provide basic information about installing Ruby and RubyG
 
 ## Installing vmc: Procedure
 
-Installing `vmc` is easy once you have installed [Ruby and RubyGems](/frameworks/ruby/installing-ruby.html) on your computer.
+Installing `vmc` is easy once you have installed [Ruby and RubyGems](#prerequisite-installing-ruby-and-rubygems) on your computer.
 
 *  If you haven't already done so, signup for your free [Cloud Foundry](http://cloudfoundry.com/) account.  You will receive an email with your user credentials.
 
-* Open a terminal (Linux and Mac) and execute the following command:
+* Open a terminal (Linux) and execute the following command:
 
 ```bash
 prompt$ sudo gem install vmc
@@ -62,16 +62,16 @@ prompt> gem install vmc
 
 * Execute the `vmc target` command to specify the Cloud Foundry target to which you will deploy your applications:
 
-    + To deploy on the PaaS Cloud Foundry, specify `https://api.cloudfoundry.com`
-    + To deploy on your local Micro Cloud Foundry, specify `http://api.<appname>.cloudfoundry.me`, where *appname* is the domain you registered for your application at the Micro Cloud Foundry Web site.  See [Installing Micro Cloud Foundry](/infrastructure/micro/installing-mcf.html).
+    + To deploy on the PaaS Cloud Foundry, specify `api.cloudfoundry.com`
+    + To deploy on your local Micro Cloud Foundry, specify `api.<appname>.cloudfoundry.me`, where *appname* is the domain you registered for your application at the Micro Cloud Foundry Web site.  See [Installing Micro Cloud Foundry](/infrastructure/micro/installing-mcf.html).
 
     The following command targets the PaaS Cloud Foundry:
 
 ```bash
-prompt$ vmc target https://api.cloudfoundry.com
+prompt$ vmc target api.cloudfoundry.com
 ```
 
-To determine your current target, execute the `vmc target` command without any parameters:
+    To determine your current target, execute the `vmc target` command without any parameters:
 
 ```bash
 prompt$ vmc target

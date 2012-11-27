@@ -93,12 +93,6 @@ Have a cool Cloud Foundry app you'd like to see listed here?  [Email us](mailto:
    <td>A public key fingerprint calculator for Chrome.</td>
    <td></td>
  </tr>
- <tr>
-   <td><a href="http://iloveu.cloudfoundry.com/" target="_blank">Love-CloudFoundry</a></td>
-   <td><a href="https://github.com/hackerzhou/Love-CloudFoundry" target="_blank">https://github.com/hackerzhou/Love-CloudFoundry</a></td>
-   <td>An app using HTML5, jQuery, Ruby Sinatra, and vPostgres running on Cloud Foundry.</td>
-   <td></td>
- </tr>
 </table>
 
 
