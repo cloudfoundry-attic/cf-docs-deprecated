@@ -1,6 +1,6 @@
 ---
 title: Node.js
-description: Adding UI elements
+description: Creating UI elements
 tags:
     - nodejs
     - express
@@ -9,17 +9,19 @@ tags:
 
 ## Introduction
 
-This chapter is a continuation of [chapter 1](/frameworks/nodejs/nodejs-tutorial/step01-developing-nodejs-app.html). 
+This chapter is a continuation of [Chapter 1](/frameworks/nodejs/nodejs-tutorial/step01-developing-nodejs-app.html). 
 
 ## Prerequisites
 
-    + Should have completed [chapter 1](/frameworks/nodejs/nodejs-tutorial/step01-developing-nodejs-app.html), that explains creating a http and sockjs server
-    + Should know how to develop JQuery widgets
-    + Shoould have a basic knowledge on [Fabric.js](http://fabricjs.com/)
+
++  Should have completed [chapter 1](/frameworks/nodejs/nodejs-tutorial/step01-developing-nodejs-app.html), that explains creating a http and sockjs server
++  Should know how to develop JQuery widgets
++  Shoould have a basic knowledge on [Fabric.js](http://fabricjs.com/)
   
-This whiteboard applicaiton layout is divided into 2 basic parts
-+ top bar - for app title and user name
-+ app part - for toolbar, canvas and chat window
+This Whiteboard application layout is divided into 2 basic parts
+
++  top bar - for app title and user name
++  app part - for toolbar, canvas and chat window
 
 Add below script in index.html 
 ```html
@@ -37,15 +39,15 @@ Add below script in index.html
 
 ```
   
-This whiteboard application uses following 3 widgets:
+This whiteboard application uses the following 3 widgets:
 
 + Shapes toolbar
 + Canvas
 + Chat Window
 
-Download the folder called ['static'](/nodejs-code/whiteboard/static.zip) where you will find above 3 widgets under 'js/widgets' folder, 'css' files for styling and 'images'.
+Download the folder called ['static'](/nodejs-code/whiteboard/static.zip). In it you will find the above 3 widgets under 'js/widgets' folder, 'css' files for styling and 'images'.
 
-Now that you have all requires files you need to use them by adding them in 'html' file.
+Now you have all the requires files, use them by adding them to 'html' file.
 
 Adding 'css' files.
 Copy below lines of script inside head tag of index.html
@@ -125,7 +127,7 @@ var whiteboardApp = {
 }
 
 ```
-At the start of the application, we will ask user for name. Below is the method for that
+At the start of the application, user will be asked for a name. Below method explains how to do so.
 
 ```javascript
  initShowPrompt: function () {
@@ -141,15 +143,15 @@ At the start of the application, we will ask user for name. Below is the method 
 
 ```
 
-If we look at init method of each widget, there are few callback functions which will be invoked on certian events. We will have a look at them in out next chapter.
+If you look at init method of each widget, there are a few callback functions which will be invoked during certian events. This is explained in next chapter.
 
-Since explaining how to create a widget is out of the scope of this document, it is not convered here. You can learn it from [here](http://net.tutsplus.com/tutorials/javascript-ajax/coding-your-first-jquery-ui-plugin/)
+Since explaining how to create a widget not within the scope of this document, you can learn about it [here](http://net.tutsplus.com/tutorials/javascript-ajax/coding-your-first-jquery-ui-plugin/).
 
 ## Check Point
 
-Open your browser and type http://localhost:4000. This time instead of blank app with welcome message, you will see widgets rendered on your screen after you have given your name when prompted for your name.
+Open your browser and type http://localhost:4000. This time instead of blank app with a welcome message, you will see widgets rendered on your screen after you have given your name when prompted for it.
 
 ![app with UI](/images/screenshots/nodejs-whiteboard/whiteboard-01.png)
 
-<p><a class="button-plain"  style="padding: 3px 15px;" href="/frameworks/nodejs/nodejs-tutorial/step01-developing-nodejs-app.html">Prev</a>  <a class="button-plain"  style="padding: 3px 15px; float: right;" href="/frameworks/nodejs/nodejs-tutorial/step03-developing-nodejs-app.html">Next</a></p>
+<p><a class="button-plain"  style="padding: 3px 15px;" href="/frameworks/nodejs/nodejs-tutorial/step01-developing-nodejs-app.html">Prev</a>  <a class="button-plain"  style="padding: 3px 15px; float: right;" href="/frameworks/nodejs/nodejs-tutorial/step03-integrating-shapes-canvas.html">Next</a></p>
 

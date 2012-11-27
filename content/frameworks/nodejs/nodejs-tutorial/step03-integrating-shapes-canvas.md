@@ -150,11 +150,13 @@ whiteboardApp.sockJSClient = {
 
 We can send a JSON object to server by `sockJS.send` method as shown above.
 
-Load this file by adding '<script>` tag in `index.html' as shown below.
+Load this file by adding it to `index.html` as shown below.
 
-```html
+```javascript
+
  <script type="text/javascript" src="static/js/sockJSClient.js"></script>
- ```
+
+``` 
  
 ## Check Point
 

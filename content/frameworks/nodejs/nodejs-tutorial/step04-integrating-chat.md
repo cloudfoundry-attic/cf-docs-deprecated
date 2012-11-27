@@ -87,5 +87,5 @@ In 'onSocketOpen' method:
 Below is the screenshot that shows two users using the app to chat each other and share drawings.
 
 ![app with UI](/images/screenshots/nodejs-whiteboard/whiteboard-03.png)
-<p><a class="button-plain"  style="padding: 3px 15px;" href="/frameworks/nodejs/nodejs-tutorial/step03-integrating-shapes-canvas.html">Prev</a>  <a class="button-plain"  style="padding: 3px 15px; float: right;" href="/frameworks/nodejs/nodejs-tutorial/step04-integratin-chat.html">Next</a></p>
+<p><a class="button-plain"  style="padding: 3px 15px;" href="/frameworks/nodejs/nodejs-tutorial/step03-integrating-shapes-canvas.html">Prev</a>  <a class="button-plain"  style="padding: 3px 15px; float: right;" href="/frameworks/nodejs/nodejs-tutorial/step05-deploying-whiteboardapp.html">Next</a></p>
 
