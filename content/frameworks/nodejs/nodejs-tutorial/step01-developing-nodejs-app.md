@@ -11,16 +11,16 @@ tags:
 
 This section introduces the Whiteboard application, teaches you how to get started with a new Node.js application with Sockjs and some other required configurations for the application.
 
-##Prerequisites
+## Prerequisites
 
 + [Node.js](http://howtonode.org/how-to-install-nodejs) installed on your system to build node application.
 + [Sockjs](https://github.com/sockjs/sockjs-node) server installed on you system.
 + [Express](http://expressjs.com/) a web application framework for node, also installed on your system.
 + You are proficient in developing node.js application.
 
-## Whiteboard Application Overivew
+## Whiteboard Application Overview
 
-This application is a realtime collaborative white board application that uses canvas for drawing shapes. 
+This application is a realtime collaborative White board application that uses a canvas to drawing shapes. 
 
 ## Create the App
 
@@ -104,7 +104,7 @@ Let's start with the server module. Create the file app.js in the root directory
 
 The above file loads `config.json` and `sockJSServer.js` 
 
-Lets start creating them. Create a file called `config.json` in the root directory of your project and add below code.
+Let's start creating. Create a file called `config.json` in the root directory of your project and add the below code.
 
 ``` javascript
 	
@@ -114,7 +114,7 @@ Lets start creating them. Create a file called `config.json` in the root directo
 
 ```
 
-In cloudfoundry environment, we will be using the port provided to us as part of the environment variables, VMC_APP_PORT, rather than any hard coded port number. Below is the code for that
+In the Cloud Foundry environment, you will be using the port provided as a part of the environment variables, VMC_APP_PORT, rather than any hard coded port number. Find the code for it here.
 
 ``` javascript 
 	
@@ -122,8 +122,8 @@ In cloudfoundry environment, we will be using the port provided to us as part of
 
 ```
 
-Create a file called `sockJSServer.js` in the root directory of your project. And below is the code to write in `sockJSServer.js` to start sockJS server.
-This creates a sockJS server for adding a communication channel between the browser and the web server.
+Create a file called `sockJSServer.js` in the root directory of your project. Below is the code to be written in `sockJSServer.js` to start sockJS server.
+This creates a sockJS server to create a communication channel between the browser and the web server.
 
 ```javascript
 
@@ -158,7 +158,6 @@ Create a `package.json` file with the following contents:
 }
 
 ```
- 
 Now create a `index.html` page for our whiteboard app with the following markups and save it in the root:
 
 ```html
@@ -171,7 +170,7 @@ Now create a `index.html` page for our whiteboard app with the following markups
 </html>
 
 ``` 
-That's it! You just wrote a working HTTP and SockJs server. Let's prove it by running and testing it. First, execute your script with Node.js: 
+That's it! You just wrote a working HTTP and SockJs server. Let's verify it by running and testing it. First, execute your script with Node.js: 
 Starting a new application in Node.js is as simple as executing a single command 'node <appname>'.
 
 ```bash
@@ -180,18 +179,18 @@ $ node app.js
 ```
  
 ## Check point
-Open your browser and type http://localhost:4000. You will see a page with 'Welcome to whiteboard app' text
+Open your browser and type http://localhost:4000. You will see a page that says 'Welcome to whiteboard app'.
 
 ![Welcome screen](/images/screenshots/nodejs-whiteboard/welcome.png)
 
 Now let's write event listener functions.
 
-On the server side we need to have 2 methods for collaboration feature.
+On the server side we need to have 2 methods for the collaboration feature.
 
 + Listen for connection event
 + Listen for data events on the client
 
-Add below code in `sockJSServer.js' file
+Add the below code in `sockJSServer.js' file
 
 ```javascript
 /* List of incoming clients will be maintained in this map */
@@ -221,13 +220,13 @@ Add below code in `sockJSServer.js' file
       });
   }
 ```
-Whenver a new client joins, we need to push the connection object to clients list to maintain a list of clients.
+Whenever a new client joins, we need to push the connection object to clients list to maintain a list of clients.
 
 ```javascript
 	clients[conn.id] = conn;
 ```
 
-And the data we recieve from client needs to be broadcasted to all other clients
+And the data we receive from client needs to be broadcasted to all other clients
 ```javascript
 
 onDataHandler(data, conn.id);
@@ -255,15 +254,8 @@ Below is the implementation of the above method
       }
   }
 ```
-
-
-
-
-
-
-
-And whenever new user joins the board, he/she needs to be shown all previous drawings, for that first we need to capture the data from all clients and
-then you need to send that we have written two methods
+Every new user who joins the board, needs to be shown all previous drawings. In order to do that first you need to capture the data from all clients and
+then you need to send that data. For that you need to written two methods.
 
 ```javascript
 /* Send new users all the previous data to update their whitebaord */
@@ -271,7 +263,7 @@ then you need to send that we have written two methods
    sendChatDataToClient(conn, clientData);
       
 ```
-Below is the code for pushing all data from clients
+Below is the code for pushing all data from clients.
 
 ```javascript
   function pushUserData(data) {
@@ -311,7 +303,6 @@ Below is the code for pushing all data from clients
   }
 
 ```
-
 And for sending data to new user add below methods.
 
 
