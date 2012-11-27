@@ -1,6 +1,6 @@
 ---
 title: Node.js
-description: Adding UI elements
+description: Creating UI elements
 tags:
     - nodejs
     - express
@@ -9,17 +9,19 @@ tags:
 
 ## Introduction
 
-This chapter is a continuation of [chapter 1](/frameworks/nodejs/nodejs-tutorial/step01-developing-nodejs-app.html). 
+This chapter is a continuation of [Chapter 1](/frameworks/nodejs/nodejs-tutorial/step01-developing-nodejs-app.html).
 
 ## Prerequisites
 
-    + Should have completed [chapter 1](/frameworks/nodejs/nodejs-tutorial/step01-developing-nodejs-app.html), that explains creating a http and sockjs server
-    + Should know how to develop JQuery widgets
-    + Shoould have a basic knowledge on [Fabric.js](http://fabricjs.com/)
+
++  Should have completed [chapter 1](/frameworks/nodejs/nodejs-tutorial/step01-developing-nodejs-app.html), that explains how to create a http and sockjs server
++  Should know how to develop JQuery widgets
++  Should have a basic knowledge of [Fabric.js](http://fabricjs.com/)
   
-This whiteboard applicaiton layout is divided into 2 basic parts
-+ top bar - for app title and user name
-+ app part - for toolbar, canvas and chat window
+This Whiteboard application layout is divided into 2 basic parts
+
++  Top bar - for app title and user name
++  App part - for toolbar, canvas and chat window
 
 Add below script in index.html 
 ```html
@@ -36,19 +38,18 @@ Add below script in index.html
   </div>
 
 ```
-  
-This whiteboard application uses following 3 widgets:
+This application uses the following 3 widgets:
 
 + Shapes toolbar
 + Canvas
 + Chat Window
 
-Download the folder called ['static'](/nodejs-code/whiteboard/static.zip) where you will find above 3 widgets under 'js/widgets' folder, 'css' files for styling and 'images'.
+Download the folder called ['static'](/nodejs-code/whiteboard/static.zip). In it you will find the above three widgets in the ‘js/widgets’ folder, ‘css’ files for styling and ‘images’.
 
-Now that you have all requires files you need to use them by adding them in 'html' file.
+Now that you have all the required files, add them to your ‘html’ file.
 
-Adding 'css' files.
-Copy below lines of script inside head tag of index.html
+### Adding ‘css’ files. 
+Copy the below lines of script inside the head tag of index.html
 
 ```html
  <link rel="stylesheet" href="static/css/thirdparty/bootstrap/bootstrap.min.css"  />
@@ -57,7 +58,7 @@ Copy below lines of script inside head tag of index.html
  <link rel="stylesheet" type="text/css" href="static/css/chat.css" />
 ```
 
-Adding 'js' files - that inlcude JQuery, JQueryUI, sockJSClient, Fabric.js and Shapes.js
+### Adding 'js' files - that inlcude JQuery, JQueryUI, sockJSClient, Fabric.js and Shapes.js
 
 ```html
     <script type="text/javascript" src="static/js/thirdparty/jquery/jquery-1.8.3.min.js"></script>
@@ -65,7 +66,7 @@ Adding 'js' files - that inlcude JQuery, JQueryUI, sockJSClient, Fabric.js and S
     <script type="text/javascript" src="static/js/thirdparty/sockjs/sockjs.min.js"></script>
     <script type="text/javascript" src="static/js/thirdparty/fabric/fabric-all.js"></script>
     <script type="text/javascript" src="static/js/shapes.js"></script>
-    
+       
     <!-- components -->
     <script type="text/javascript" src="static/js/widgets/jquery.ui.toolbar.js"></script>
     <script type="text/javascript" src="static/js/widgets/jquery.ui.chatwindow.js"></script>
@@ -79,18 +80,19 @@ Adding 'js' files - that inlcude JQuery, JQueryUI, sockJSClient, Fabric.js and S
 
 ## Initializing widgets
 
-To initialize the widgets, create a file called 'main.js' and save it under the folder 'static/js/' and add below code.
+To initialize the widgets, create a file called 'main.js' and save it under the folder 'static/js/' and add the below code.
 
 ```javascript
 var whiteboardApp = {
 
  init:function () {
- 	this.initToolbar();
+   this.initToolbar();
    this.initChatWindow();
+   this.initCanvas();
  } 
 
  initToolbar: function () {
-    var tb = $("#shapesToolbar").toolbar(
+     var tb = $("#shapesToolbar").toolbar(
             {
                 shapes:whiteboardApp.shapes, // shapes object with shape 'name' and 'iconname' ex: shapes = {  rectangle: {  name: 'rectangle', imagesPath:'/static/images/' } }
                 dropTarget:$('.ui-canvas'),
@@ -100,8 +102,8 @@ var whiteboardApp = {
             }
         );
     },
-
-    initChatWindow: function() {
+  
+  initChatWindow: function() {
         whiteboardApp.chatWidget = $(".chat-div").chatwindow(
             {
                 title: "Chat",
@@ -109,7 +111,7 @@ var whiteboardApp = {
             } );
     },
     
-    initCanvas:function() {
+   initCanvas:function() {
         whiteboardApp.canvasWidgetInstance = $("#canvas-holder").canvas(
             {
                 title: "Canvas",
@@ -125,7 +127,7 @@ var whiteboardApp = {
 }
 
 ```
-At the start of the application, we will ask user for name. Below is the method for that
+At the start of the application, user will be asked for a name. The method below explains how to perform this action.
 
 ```javascript
  initShowPrompt: function () {
@@ -141,15 +143,15 @@ At the start of the application, we will ask user for name. Below is the method 
 
 ```
 
-If we look at init method of each widget, there are few callback functions which will be invoked on certian events. We will have a look at them in out next chapter.
+If you look at init method of each widget, there are a few callback functions which will be invoked at certain events. This is explained in the next chapter.
 
-Since explaining how to create a widget is out of the scope of this document, it is not convered here. You can learn it from [here](http://net.tutsplus.com/tutorials/javascript-ajax/coding-your-first-jquery-ui-plugin/)
+Since explaining how to create a widget is not within the scope of this document, you can learn about it [here](http://net.tutsplus.com/tutorials/javascript-ajax/coding-your-first-jquery-ui-plugin/).
 
 ## Check Point
 
-Open your browser and type http://localhost:4000. This time instead of blank app with welcome message, you will see widgets rendered on your screen after you have given your name when prompted for your name.
+Open your browser and type http://localhost:4000. This time instead of a blank app with a welcome message, you will see widgets rendered on your screen after you have given your name when prompted for it.
 
 ![app with UI](/images/screenshots/nodejs-whiteboard/whiteboard-01.png)
 
-<p><a class="button-plain"  style="padding: 3px 15px;" href="/frameworks/nodejs/nodejs-tutorial/step01-developing-nodejs-app.html">Prev</a>  <a class="button-plain"  style="padding: 3px 15px; float: right;" href="/frameworks/nodejs/nodejs-tutorial/step03-developing-nodejs-app.html">Next</a></p>
+<p><a class="button-plain"  style="padding: 3px 15px;" href="/frameworks/nodejs/nodejs-tutorial/step01-developing-nodejs-app.html">Prev</a>  <a class="button-plain"  style="padding: 3px 15px; float: right;" href="/frameworks/nodejs/nodejs-tutorial/step03-integrating-shapes-canvas.html">Next</a></p>
 

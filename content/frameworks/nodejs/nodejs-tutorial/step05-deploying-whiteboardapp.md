@@ -37,3 +37,11 @@ $ vmc push
 ```
 
 Access the application with your browser at the specified URL, [http://nodejs-whiteboard.cloudfoundry.com](http://nodejs-whiteboard.cloudfoundry.com) in this example.
+
+## Changing the version of Node your App uses
+
+You can use the runtime flag and pass the desired runtime. For how to list the runtimes see the next section
+
+```bash
+Example to use Node 0.6.8
+```
