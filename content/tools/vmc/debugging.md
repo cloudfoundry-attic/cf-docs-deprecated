@@ -6,11 +6,6 @@ tags:
     - vmc
 ---
 
-This chapter includes the following topics to help you debug problems with your application:
-
-+ [Viewing Log Files](#viewing-log-files)
-+ [Attaching a Debugger to Your Application](#attaching-a-debugger-to-your-application)
-
 ##Viewing Log Files
 
 If you get errors when attempting to deploy, start, or run your application, it is helpful to view the various log files which will likely contain error codes or exceptions that can help you pinpoint what the problem is.
@@ -53,6 +48,5 @@ Both of these commands display the information to the terminal, so you must redi
 prompt$ vmc files hotels tomcat/logs/catalina.2011-10-18.log  > catalina.log
 ```
 
-##Attaching a Debugger to Your Application
 
-Documentation not yet available.
+You could also try [Debugging Applications with Cloud Foundry Integration for Eclipse](/tools/STS/debugging-CF-Eclipse.html).
