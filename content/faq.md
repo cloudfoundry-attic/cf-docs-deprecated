@@ -76,7 +76,7 @@ update ... # not allowed
 The application bound to a service that has run out of capacity may see errors such as "INSERT is disabled." Other services (redis, MongoDB) will exhibit similar behavior.
 
 #### <a id="email"></a> Can I send and receive email from my app?
-Applications cannot send outbound email via TCP port 25. An app can use an external email service available on a different port (such as 587 for SMTP-AUTH). Applications cannot receive email by listening on port 25 either. We recommend using an external mail service such as [SendGrid](http://sendgrid.com/) or [Mailgun](http://mailgun.net/).
+Applications cannot send outbound email via TCP port 25. An app can use an external email service available on a different port (such as 587 or 465). Applications cannot receive email by listening on port 25 either. We recommend using an external mail service such as [SendGrid](http://sendgrid.com/) or [Mailgun](http://mailgun.net/).
 
 #### <a id="firewall"></a> Is there a firewall that prevents my app from accessing external services?
 No, your application has direct access to the internet with the exception of connecting to TCP port 25 (used for sending email).
