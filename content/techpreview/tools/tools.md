@@ -3,14 +3,14 @@ title: Tools
 description: How to work with Cloud Foundry Tools
 ---
 
-# VMC
+## VMC
 
 links to vmc articles
 
-# STS
+## STS
 
 links to STS articles
 
-# How to build your own tools
+## How to build your own tools
 
 API docs that don't exist yet

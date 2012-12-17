@@ -3,35 +3,35 @@ title: Languages and Frameworks
 description: Using Different Languages and Frameworks with Cloud Foundry
 ---
 
-# Java
+## Java
 
-## Spring
+### Spring
 
 links to spring docs
 
-## Play
+### Play
 
 links to play docs
 
-# Scala
+## Scala
 
 links to scala docs
 
-# Node.js
+## Node.js
 
 links to node docs
 
-# Ruby
+## Ruby
 
-## Rails
+### Rails
 
 links to rails docs
 
-## Sinatra
+### Sinatra
 
 links to sinatra docs
 
-## Rack
+### Rack
 
 links to rack docs
 

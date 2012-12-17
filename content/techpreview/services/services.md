@@ -3,24 +3,24 @@ title: Services
 description: Using Cloud Foundry Services
 ---
 
-# Relational Databases
+## Relational Databases
 
-## MySQL
+### MySQL
 
 links to MySQL docs (or if there is only one link - make the above a link)
 
-# Message Queues
+## Message Queues
 
-## Rabbitmq (or if there is only one link - make the above a link)
+### Rabbitmq (or if there is only one link - make the above a link)
 
 links to rabbit (or if there is only one link - make the above a link)
 
-# Key Value Stores 
+## Key Value Stores 
 
-## Redis 
+### Redis 
 
 links to redis (or if there is only one link - make the above a link)
 
-## Mongodb
+### Mongodb
 
 links to mongodb (or if there is only one link - make the above a link)
