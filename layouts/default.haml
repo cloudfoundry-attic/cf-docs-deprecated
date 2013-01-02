@@ -313,7 +313,12 @@
               |
               %a{:href => "http://www.vmware.com/help/privacy.html", :rel => "external", :target => "_blank"} Privacy
           .span-5.last.right
-            %p="Copyright &copy; #{DateTime.now.year} VMware, Inc. All rights reserved."
+            %p
+              Copyright &copy;
+              :javascript
+                var d = new Date();
+                document.write(d.getFullYear());
+              VMware, Inc. All rights reserved.
     :javascript
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-22181585-10']);
