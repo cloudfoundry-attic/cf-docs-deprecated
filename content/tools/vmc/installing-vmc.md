@@ -77,6 +77,10 @@ To determine your current target, execute the `vmc target` command without any p
 prompt$ vmc target
 ```
 
+
+**Note**
+: If you plan to use Micro Cloud Foundry you have to register a user by calling the command `vmc register`
+
 *   Login using the user credentials you received via email after you registered with Cloud Foundry.  Your username is typically your email address.
 
 ```bash
