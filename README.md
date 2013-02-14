@@ -1,5 +1,9 @@
 Copyright (c) 2006-2012 VMware, Inc. All Rights Reserved.
 
+# OBSOLETE
+
+Obsolete - please go to [http://cloudfoundry.github.com](http:/cloudfoundry.github.com)
+
 # docs.cloudfoundry.com
 
 These are the Cloud Foundry docs built with [nanoc][nanoc].
