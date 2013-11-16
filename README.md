@@ -1,6 +1,6 @@
 Copyright (c) 2006-2012 VMware, Inc. All Rights Reserved.
 
-# OBSOLETE
+# OBSOLETED
 
 Obsolete - please go to [http://cloudfoundry.github.com](http:/cloudfoundry.github.com)
 
